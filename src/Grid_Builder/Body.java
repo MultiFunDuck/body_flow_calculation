@@ -25,6 +25,7 @@ public class Body {
     }
 
     public Grid get_Grid(){
+        this.grid.panels = init_panels(this.grid.points);
         return this.grid;
     }
 
@@ -72,7 +73,7 @@ public class Body {
         return first_circle;
     }
 
-    private List<List<Panel>> init_panels(List<List<Point>> points){
+    public List<List<Panel>> init_panels(List<List<Point>> points){
         List<List<Panel>> panels = new ArrayList<>();
         int ox_size = points.size();
         int angle_size = points.get(0).size();
