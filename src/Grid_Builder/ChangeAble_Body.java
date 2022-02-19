@@ -13,7 +13,11 @@ public class ChangeAble_Body extends Body{
     public void curve_tail(int num_of_segment, double attack_angle){
         curve_segment(this.Parts.get(num_of_segment),attack_angle);
         line_up_others(num_of_segment,attack_angle);
+
+        this.grid.panels = this.init_panels(this.grid.points);
     }
+
+
 
     private void curve_segment(Body_Part segment, double attack_angle){
 
@@ -28,13 +32,6 @@ public class ChangeAble_Body extends Body{
             }
         }
 
-
-        List<Point> last = segment_points.get(segment_points.size()-1);
-        Point p1 = last.get(0);
-        Point p2 = last.get(1);
-        Point p3 = last.get(3);
-        Point p4 = last.get(4);
-        System.out.println(new Panel(p1,p2,p3,p4).normal.toString());
     }
 
     private void curve_segment_point(Point cur, Body_Part curving_part, double attack_angle){

@@ -1,7 +1,8 @@
 package math_primitives;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Panel {
@@ -9,6 +10,9 @@ public class Panel {
     Operator o = Operator.getInstance();
     public List<Point> points;
     public Point middle;
+
+
+
     public Vector normal;
     public int hash;
 
@@ -20,6 +24,7 @@ public class Panel {
         this.points = points;
         this.hash = points.get(0).hash;
         normal = o.weight_normal_vector(points);
+        middle = o.get_mid_point(points);
     }
 
     public Panel(Point p1, Point p2, Point p3, Point p4){
@@ -28,6 +33,7 @@ public class Panel {
         points.add(p2);
         points.add(p3);
         points.add(p4);
+        middle = o.get_mid_point(points);
         normal = o.weight_normal_vector(points);
         this.hash = p1.hash;
     }
@@ -44,7 +50,23 @@ public class Panel {
     }
 
     public String panelToFile(){
-        return this.hash + " " + this.points.get(0).hash + " " + this.points.get(1).hash + " " + this.points.get(2).hash + " " + this.points.get(3).hash + "\n";
+        return this.hash
+                + " " + this.points.get(0).hash
+                + " " + this.points.get(1).hash
+                + " " + this.points.get(2).hash
+                + " " + this.points.get(3).hash
+                + "\n";
+    }
+
+    public String panelWithDataToFile(){
+        NumberFormat formatter = new DecimalFormat("#0.00000000");
+        return this.hash
+                + " " + this.points.get(0).hash
+                + " " + this.points.get(1).hash
+                + " " + this.points.get(2).hash
+                + " " + this.points.get(3).hash
+                + " " + formatter.format(this.gamma)
+                + "\n";
     }
 
 
@@ -60,5 +82,6 @@ public class Panel {
     public Point get_4th_p(){
         return this.points.get(3);
     }
+
 
 }

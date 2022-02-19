@@ -95,4 +95,19 @@ public class Operator {
         mid = div(mid,points.size());
         return mid;
     }
+
+
+    public double[] ListToSimpleArray(List<Double> arrayList){
+        return   arrayList.stream()
+                .mapToDouble(f -> f != null ? f : Float.NaN)
+                .toArray();
+    }
+
+    public double[][] MatrixListToSimpleArray(List<List<Double>> arrayList){
+        double[][] doubleArray = new double[arrayList.size()][arrayList.get(0).size()];
+        for(int i = 0; i < arrayList.size(); i++){
+            doubleArray[i] = ListToSimpleArray(arrayList.get(i));
+        }
+        return doubleArray;
+    }
 }
