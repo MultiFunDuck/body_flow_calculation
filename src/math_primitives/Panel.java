@@ -17,8 +17,8 @@ public class Panel {
     public int hash;
 
 
-    public double normal_velocity, pressure, dimless_pressure, gamma;
-    Vector flow_velocity;
+    public double normal_velocity, velocity_module, pressure, dimless_pressure, gamma;
+    public Vector flow_velocity;
 
     public Panel(List<Point> points) {
         this.points = points;
@@ -66,6 +66,13 @@ public class Panel {
                 + " " + this.points.get(2).hash
                 + " " + this.points.get(3).hash
                 + " " + formatter.format(this.gamma)
+                + " " + formatter.format(this.flow_velocity.x)
+                + " " + formatter.format(this.flow_velocity.y)
+                + " " + formatter.format(this.flow_velocity.z)
+                + " " + formatter.format(this.normal_velocity)
+                + " " + formatter.format(this.velocity_module)
+                + " " + formatter.format(this.pressure)
+                + " " + formatter.format(this.dimless_pressure)
                 + "\n";
     }
 

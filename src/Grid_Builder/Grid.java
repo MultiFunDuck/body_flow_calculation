@@ -85,7 +85,7 @@ public class Grid {
             }
 
             fileWriter.write("\n");
-            fileWriter.write(this.panels.size()*this.panels.get(0).size() + " 4 1 Gamma\n");
+            fileWriter.write(this.panels.size()*this.panels.get(0).size() + " 4 8 Gamma V.x V.y V.z V.n |V| P Cp\n");
             for(int i = 0; i < this.panels.size(); i++){
                 for(int j = 0; j < this.panels.get(0).size(); j++){
                     fileWriter.write(this.panels.get(i).get(j).panelWithDataToFile());
@@ -102,9 +102,26 @@ public class Grid {
     }
 
 
-    public void write_down_data(Vector V_inf){
+    public void write_down_data(Vector V_inf, double inner_pressure, double inner_density){
         MDV_Solver solver = new MDV_Solver(panels, V_inf);
+
         write_gamma_to_panels(solver.calculate_gammas());
+
+        write_flow_velocity_to_panels(solver.calculate_flow_velocities());
+
+
+        write_normal_velocity_to_panels(solver.calculate_normal_velocities());
+
+
+        write_velocities_module_to_panels(solver.calculate_velocities_module());
+
+
+        write_pressure_to_panels(solver.calculate_pressure(inner_pressure,inner_density));
+
+
+        write_dimless_pressure_to_panels(solver.calculate_dimless_pressure());
+
+
 
     }
 
@@ -114,6 +131,47 @@ public class Grid {
         for(int i = 0; i < panels.size(); i++){
             for(int j = 0; j < panels.get(0).size(); j++){
                 panels.get(i).get(j).gamma = gammas[i * panels.get(0).size() + j];
+            }
+        }
+    }
+
+    public void write_flow_velocity_to_panels(List<List<Vector>> flow_velocities){
+
+        for(int i = 0; i < panels.size(); i++){
+            for(int j = 0; j < panels.get(0).size(); j++){
+                panels.get(i).get(j).flow_velocity = flow_velocities.get(i).get(j);
+            }
+        }
+    }
+
+    public void write_normal_velocity_to_panels(List<List<Double>> normal_velocities){
+        for(int i = 0; i < panels.size(); i++){
+            for(int j = 0; j < panels.get(0).size(); j++){
+                panels.get(i).get(j).normal_velocity = normal_velocities.get(i).get(j);
+            }
+        }
+    }
+
+    public void write_velocities_module_to_panels(List<List<Double>> velocities_module){
+        for(int i = 0; i < panels.size(); i++){
+            for(int j = 0; j < panels.get(0).size(); j++){
+                panels.get(i).get(j).velocity_module = velocities_module.get(i).get(j);
+            }
+        }
+    }
+
+    public void write_pressure_to_panels(List<List<Double>> pressure){
+        for(int i = 0; i < panels.size(); i++){
+            for(int j = 0; j < panels.get(0).size(); j++){
+                panels.get(i).get(j).pressure = pressure.get(i).get(j);
+            }
+        }
+    }
+
+    public void write_dimless_pressure_to_panels(List<List<Double>> dimless_pressure){
+        for(int i = 0; i < panels.size(); i++){
+            for(int j = 0; j < panels.get(0).size(); j++){
+                panels.get(i).get(j).dimless_pressure = dimless_pressure.get(i).get(j);
             }
         }
     }
