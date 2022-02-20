@@ -1,0 +1,11 @@
+dividing all by -1 in the end of calculate_tau_velocity_part in Velocity_Calculator
+ISN'T normal, and doesn't really correspond to theory where you should divide by 2
+
+However, I got exact dimless pressure coefficient by doing so,
+going to figure out, what is wrong here
+
+
+If I still won't take care of this, program SHOULD NOT start in main class
+It has to be a desktop app with UI, which allows you to construct body
+as you wish, add/remove body_parts and build them with splines, if needed.
+Hopefully I'll manage it by myself
