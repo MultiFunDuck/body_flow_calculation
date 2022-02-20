@@ -84,13 +84,16 @@ public class ChangeAble_Body extends Body{
 
         shift_segment(segment,x_shift, y_shift, z_shift);
         rotate_segment(segment, angle);
+
+        //Used to check if normal vectors match in lining up segments
+        /*
         List<List<Point>> segment_points = segment.points;
         List<Point> last = segment_points.get(0);
         Point p1 = last.get(0);
         Point p2 = last.get(1);
         Point p3 = last.get(3);
         Point p4 = last.get(4);
-        System.out.println(new Panel(p1,p2,p3,p4).normal.toString());
+        System.out.println(new Panel(p1,p2,p3,p4).normal.toString());*/
     }
 
     private void rotate_segment(Body_Part segment, double angle){

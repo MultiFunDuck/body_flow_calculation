@@ -15,8 +15,12 @@ import javafx.stage.Stage;
 import math_primitives.Flat_Point;
 import math_primitives.Radius;
 import math_primitives.Vector;
+import org.jfree.data.xy.XYDataset;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
 import separator.Even_Separator;
 import separator.Separator;
+import visualization.Line_Graph_Drawer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,25 +80,54 @@ public class Main  {
         Ch_body.add_part(cyl2_part);
         Ch_body.add_part(back_part);
 
-  *//*      System.out.println((conic_rad.get_end_radius() - conic_rad.get_radius(conic_rad.end-0.000001))/0.000001);
+        System.out.println((conic_rad.get_end_radius() - conic_rad.get_radius(conic_rad.end-0.000001))/0.000001);
         System.out.println(-(cosine_rad.get_start_radius()-cosine_rad.get_radius(cosine_rad.get_start() + 0.000001))/0.000001);
         System.out.println(Math.asin(-Math.PI*20/180));
-        System.out.println(Math.atan(-Math.PI*20/180));*//*
+        System.out.println(Math.atan(-Math.PI*20/180));
 
+
+
+        double angle = 0*Math.PI/4;
         Ch_body.init_Grid();
-        Ch_body.curve_tail(2,Math.PI/4);
+        //Ch_body.curve_tail(2,angle);
         Grid grid = Ch_body.get_Grid();
         grid.to_File("Grid.txt");
 
-        Vector V_inf = new Vector(1,0,1);
-        grid.write_down_data(V_inf);
+
+
+        Vector V_inf = new Vector(2*Math.cos(angle),0,Math.sin(angle));
+        double inner_pressure = 1.0;
+        double inner_density = 1.0;
+
+        grid.write_down_data(V_inf,inner_pressure,inner_density);
         grid.to_File_with_data("grid_with_data.txt");
 
+
+        int window_width = 1200;
+        int window_length = 840;
+
+        Line_Graph_Drawer drawer = new Line_Graph_Drawer(window_width,window_length);
+
+        int size = grid.panels.size()-35;
+
+        double[] data = new double[size];
+        double[] plots = new double[size];
+
+        for(int i = 0; i < size; i++){
+            data[i] = grid.panels.get(i).get(0).dimless_pressure;
+            plots[i] = grid.panels.get(i).get(0).middle.x;
+        }
+        XYSeries dataset =  new XYSeries("Function_Data", false,true);
+        for(int i = 0; i < data.length; i++){
+            dataset.add(data[i],plots[i]);
+        }
+
+        drawer.draw_function_graph(new XYSeriesCollection(dataset), "dimless_pressure_distribution");
     }*/
 
     public static void main(String[] args) {
 
-        int k = 2;
+        int k = 3;
 
         Radius ang_rad = new Circle_Angular_Radius();
         Separator ang_sep = new Even_Separator(ang_rad,64);
@@ -121,20 +154,42 @@ public class Main  {
         Ch_body.add_part(head_part);
         Ch_body.add_part(cyl_part);
         Ch_body.add_part(cosine_part);
-        Ch_body.add_part(cyl2_part);
+        //Ch_body.add_part(cyl2_part);
 
 
-        double angle = Math.PI/6;
+        double angle = 0*Math.PI/6;
         Ch_body.init_Grid();
-        Ch_body.curve_tail(2,angle);
+        //Ch_body.curve_tail(2,angle);
         Grid grid = Ch_body.get_Grid();
         grid.to_File("Grid.txt");
 
-        Vector V_inf = new Vector(2*Math.cos(angle),0,Math.sin(angle));
+        Vector V_inf = new Vector(1*Math.cos(angle),0,Math.sin(angle));
         double inner_pressure = 1.0;
         double inner_density = 1.0;
         grid.write_down_data(V_inf,inner_pressure,inner_density);
         grid.to_File_with_data("grid_with_data.txt");
 
+
+
+        int window_width = 1200;
+        int window_length = 840;
+
+        Line_Graph_Drawer drawer = new Line_Graph_Drawer(window_width,window_length);
+
+        int size = grid.panels.size()-15;
+
+        double[] data = new double[size];
+        double[] plots = new double[size];
+
+        for(int i = 0; i < size; i++){
+            data[i] = grid.panels.get(i).get(0).dimless_pressure;
+            plots[i] = grid.panels.get(i).get(0).middle.x;
+        }
+        XYSeries dataset =  new XYSeries("Function_Data", false,true);
+        for(int i = 0; i < data.length; i++){
+            dataset.add(data[i],plots[i]);
+        }
+
+        drawer.draw_function_graph(new XYSeriesCollection(dataset), "dimless_pressure_distribution");
     }
 }

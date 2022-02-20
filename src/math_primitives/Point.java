@@ -30,7 +30,7 @@ public class Point {
     public String pointToFile(){
 
         NumberFormat formatter = new DecimalFormat("#0.0000");
-        return this.hash + " " + formatter.format(this.x) + " " + formatter.format(this.y) + " " + formatter.format(this.z) + "\n";
+        return this.hash + " " + formatter.format(this.x) + " " + formatter.format(this.z) + " " + formatter.format(this.y) + "\n";
     }
 
     @Override
