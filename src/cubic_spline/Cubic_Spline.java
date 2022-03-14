@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Cubic_Spline {
 
-    private List<Cubic_Function> functions;
+    public List<Cubic_Function> functions;
     List<Flat_Point> flat_points;
     double left_slope;
     double right_slope;
@@ -58,20 +58,22 @@ public class Cubic_Spline {
 
 
         for(int i = 1; i < this.flat_points.size() - 1; i++){
+            Flat_Point prev_point = flat_points.get(i-1);
             Flat_Point cur_point = flat_points.get(i);
             Flat_Point next_point = flat_points.get(i+1);
 
-            double x_diff = next_point.x - cur_point.x;
+            double h_cur = cur_point.x - prev_point.x;
+            double h_next = next_point.x - cur_point.x;
 
 
             double D_next = cur_point.y;
-            double C_next = 3*A * x_diff * x_diff  +  2*B * x_diff  +  C;
-            double B_next = 3*A * x_diff   +  B;
+            double C_next = 3*A * h_cur * h_cur  +  2*B * h_cur  +  C;
+            double B_next = 3*A * h_cur   +  B;
             double A_next =
-                    next_point.y / (x_diff * x_diff * x_diff) -
-                            B_next / (x_diff) -
-                            C_next / (x_diff * x_diff) -
-                            D_next / (x_diff * x_diff * x_diff);
+                    next_point.y / (h_next * h_next * h_next) -
+                            B_next / (h_next) -
+                            C_next / (h_next * h_next) -
+                            D_next / (h_next * h_next * h_next);
 
             functions.add(new Cubic_Function(cur_point.x, next_point.x, A_next, B_next, C_next, D_next));
 
@@ -94,21 +96,25 @@ public class Cubic_Spline {
                 - C / (first_diff * first_diff)
                 - D / (first_diff * first_diff * first_diff);
 
+
+
         for(int i = 1; i < this.flat_points.size() - 1; i++){
+            Flat_Point prev_point = flat_points.get(i-1);
             Flat_Point cur_point = flat_points.get(i);
             Flat_Point next_point = flat_points.get(i+1);
 
-            double x_diff = next_point.x - cur_point.x;
+            double h_cur = cur_point.x - prev_point.x;
+            double h_next = next_point.x - cur_point.x;
 
 
             double D_next = cur_point.y;
-            double C_next = 3*A * x_diff * x_diff  +  2*B * x_diff  +  C;
-            double B_next = 3*A * x_diff   +  B;
+            double C_next = 3*A * h_cur * h_cur  +  2*B * h_cur  +  C;
+            double B_next = 3*A * h_cur   +  B;
             double A_next =
-                    next_point.y / (x_diff * x_diff * x_diff) -
-                    B_next / (x_diff) -
-                    C_next / (x_diff * x_diff) -
-                    D_next / (x_diff * x_diff * x_diff);
+                    next_point.y / (h_next * h_next * h_next) -
+                    B_next / (h_next) -
+                    C_next / (h_next * h_next) -
+                    D_next / (h_next * h_next * h_next);
 
             A = A_next;
             B = B_next;
