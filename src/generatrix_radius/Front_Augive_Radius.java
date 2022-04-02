@@ -25,5 +25,34 @@ public class Front_Augive_Radius extends Radius {
         return R;
     }
 
+    @Override
+    public Radius get_derivative() {
+        Radius derivative = new Radius() {
+            @Override
+            public double get_radius(double x) {
+                double x1 = start;
+                double x2 = x1 + end - start;
+                double d = diameter;
+                double l = x2-x1;
+                double denom = Math.sqrt((d/4 + l*l/d)*(d/4 + l*l/d) - ((x-x1) - l)*((x-x1) - l));
+
+                if(denom == 0){
+                    return 0;
+                }else{
+                    return (l + x1 - x)/denom;
+                }
+            }
+
+            @Override
+            public Radius get_derivative() {
+                return null;
+            }
+        };
+
+        derivative.start = start;
+        derivative.end = end;
+        return derivative;
+    }
+
 
 }

@@ -1,7 +1,6 @@
-package Grid_Builder;
+package grid_builder;
 
 import math_primitives.Operator;
-import math_primitives.Panel;
 import math_primitives.Point;
 
 import java.util.List;

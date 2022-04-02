@@ -23,5 +23,24 @@ public class Conic_Radius extends Radius {
         return R;
     }
 
+    @Override
+    public Radius get_derivative() {
+        Radius derivative = new Radius() {
+            @Override
+            public double get_radius(double x) {
+                return - Math.tan(Math.PI*(half_of_opening_angle)/180);
+            }
+
+            @Override
+            public Radius get_derivative() {
+                return null;
+            }
+        };
+
+        derivative.start = start;
+        derivative.end = end;
+        return derivative;
+    }
+
 
 }

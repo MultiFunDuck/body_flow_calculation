@@ -25,4 +25,25 @@ public class Cosine_Radius extends Radius {
         return R;
     }
 
+    @Override
+    public Radius get_derivative() {
+        Radius derivative = new Radius() {
+            @Override
+            public double get_radius(double x) {
+                double R = -Math.PI*(start_diameter - end_diameter)*Math.sin(Math.PI*(x - (start)) / (end-start))/4;
+
+                return R;
+            }
+
+            @Override
+            public Radius get_derivative() {
+                return null;
+            }
+        };
+
+        derivative.start = start;
+        derivative.end = end;
+        return derivative;
+    }
+
 }
