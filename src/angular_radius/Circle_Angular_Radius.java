@@ -25,5 +25,10 @@ public class Circle_Angular_Radius extends Radius {
         return 2*Math.PI;
     }
 
+    @Override
+    public Radius get_derivative() {
+        return null;
+    }
+
 
 }

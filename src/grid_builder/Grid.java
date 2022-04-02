@@ -1,4 +1,4 @@
-package Grid_Builder;
+package grid_builder;
 
 
 import high_level_math.MDV_Solver;

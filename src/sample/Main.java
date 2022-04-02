@@ -1,28 +1,9 @@
 package sample;
 
-import Grid_Builder.Body;
-import Grid_Builder.Body_Part;
-import Grid_Builder.ChangeAble_Body;
-import Grid_Builder.Grid;
-import Jama.Matrix;
-import angular_radius.Circle_Angular_Radius;
-import cubic_spline.Cubic_Function;
-import cubic_spline.Cubic_Spline;
-import cubic_spline.Smoothed_Spline_Operator;
-import cubic_spline.Smoothing_Cubic_Spline;
-import generatrix_radius.*;
-import math_primitives.Flat_Point;
-import math_primitives.Radius;
-import math_primitives.Vector;
-import org.jfree.data.xy.XYDataset;
-import org.jfree.data.xy.XYSeries;
-import org.jfree.data.xy.XYSeriesCollection;
-import separator.Even_Separator;
-import separator.Separator;
-import visualization.Line_Graph_Drawer;
+import _examples.Bodies_Example;
 
-import java.util.ArrayList;
-import java.util.List;
+import _examples.Body_Part_Example;
+import _examples.Radiis_Example;
 
 public class Main  {
 
@@ -193,58 +174,92 @@ public class Main  {
 //    }
 
 
-    public static void main(String[] args) {
+//    public static void main(String[] args) {
+//
+//
+//        List<Flat_Point> list = new ArrayList<Flat_Point>();
+//
+//        list.add(new Flat_Point(0,0 ));
+//        for(int i = 1; i < 10; i++){
+//            list.add(new Flat_Point(i,i*(10-i) + 15*Math.random()*Math.random()));
+//        }
+//        list.add(new Flat_Point(10,0 ));
+//
+//        Smoothed_Spline_Operator o = new Smoothed_Spline_Operator(list,0.01);
+//        Cubic_Spline ssp = new Cubic_Spline(o.smoothed_points(),0,0);
+//
+//        System.out.println(o.smoothed_points().toString());
+//
+//
+//
+//        for(int i =0; i < ssp.functions.size()-1; i++){
+//            Cubic_Function cur = ssp.functions.get(i);
+//            Cubic_Function next = ssp.functions.get(i+1);
+//            System.out.println(cur.first_derivative(cur.end) + "    " + next.first_derivative(next.start));
+//            System.out.println(cur.second_derivative(cur.end) + "    " + next.second_derivative(next.start));
+//        }
+//
+//
+//
+//
+//        int window_width = 1200;
+//        int window_length = 840;
+//
+//        Line_Graph_Drawer drawer = new Line_Graph_Drawer(window_width,window_length);
+//
+//        int size = 100;
+//
+//        double[] data = new double[size+1];
+//        double[] plots = new double[size+1];
+//
+//        for(int i = 0; i <= size; i++){
+//            double a = i;
+//            data[i] = a/10;
+//            try {
+//                plots[i] = ssp.value(a/10);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        XYSeries dataset =  new XYSeries("Spline Data", false,true);
+//        for(int i = 0; i < data.length; i++){
+//            dataset.add(plots[i],data[i]);
+//        }
+//
+//        drawer.draw_function_graph(new XYSeriesCollection(dataset), "Spline_graph");
+//
+//        Radiis_example example = new Radiis_example();
+//        example.run_example();;
+//    }
+
+    public static void main(String[] args){
 
 
-        List<Flat_Point> list = new ArrayList<Flat_Point>();
+//        Radius cosine = new Cosine_Radius(0,2,2,1);
+//        Separator arc_cos = new Arclength_Separator(cosine,10);
+//
+//        arc_cos.get_separation();
+//
+//        Radius elipt_ang = new Elliptic_Angular_Radius(1,1.5);
+//        Separator arc_ang = new Arclength_Separator(elipt_ang,12);
+//
+//        Body_Part cos = new Body_Part(cosine,arc_cos,elipt_ang,arc_ang);
+//
+//        ChangeAble_Body body = new ChangeAble_Body();
+//        body.add_part(cos);
+//        body.init_Grid();
+//        Grid grid = body.get_Grid();
+//        grid.to_File("Testing_even_sep.txt");
 
-        list.add(new Flat_Point(0,0 ));
-        for(int i = 1; i < 10; i++){
-            list.add(new Flat_Point(i,i*(10-i) + 0*Math.random()*Math.random()));
-        }
-        list.add(new Flat_Point(10,0 ));
+        Radiis_Example example = new Radiis_Example("radii's_pics");
+        example.run_example();
 
-        Smoothed_Spline_Operator o = new Smoothed_Spline_Operator(list,0.5);
-        Cubic_Spline ssp = new Cubic_Spline(o.smoothed_points(),0,0);
+        Body_Part_Example example1 = new Body_Part_Example("body_parts");
+        example1.run_example();
 
-        System.out.println(o.smoothed_points().toString());
-
-
-
-        for(int i =0; i < ssp.functions.size()-1; i++){
-            Cubic_Function cur = ssp.functions.get(i);
-            Cubic_Function next = ssp.functions.get(i+1);
-            System.out.println(cur.first_derivative(cur.end) + "    " + next.first_derivative(next.start));
-            System.out.println(cur.second_derivative(cur.end) + "    " + next.second_derivative(next.start));
-        }
-
-
-
-
-        int window_width = 1200;
-        int window_length = 840;
-
-        Line_Graph_Drawer drawer = new Line_Graph_Drawer(window_width,window_length);
-
-        int size = 100;
-
-        double[] data = new double[size+1];
-        double[] plots = new double[size+1];
-
-        for(int i = 0; i <= size; i++){
-            double a = i;
-            data[i] = a/10;
-            try {
-                plots[i] = ssp.value(a/10);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        XYSeries dataset =  new XYSeries("Spline Data", false,true);
-        for(int i = 0; i < data.length; i++){
-            dataset.add(plots[i],data[i]);
-        }
-
-        drawer.draw_function_graph(new XYSeriesCollection(dataset), "Spline_graph");
+        Bodies_Example example2 = new Bodies_Example("bodies_example");
+        example2.run_example();
     }
+
 }
+

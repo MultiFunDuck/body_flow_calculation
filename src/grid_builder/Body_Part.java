@@ -1,4 +1,4 @@
-package Grid_Builder;
+package grid_builder;
 
 import math_primitives.Point;
 import math_primitives.Radius;

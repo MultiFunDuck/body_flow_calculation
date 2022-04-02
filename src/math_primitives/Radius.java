@@ -48,4 +48,6 @@ public abstract class Radius {
         return ((start <= x) && (x <= end));
     }
 
+    public abstract Radius get_derivative();
+
 }

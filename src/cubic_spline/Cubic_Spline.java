@@ -2,6 +2,7 @@ package cubic_spline;
 
 
 import math_primitives.Flat_Point;
+import math_primitives.Radius;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -142,6 +143,31 @@ public class Cubic_Spline {
         return 0;
     }
 
+    public double first_derivative(double x) throws Exception{
+        if(functions.get(0).start > x ||  x > functions.get(functions.size()-1).end){
+            throw new Exception("Trying to get Cubic_Spline_radius for point x = " + x + "which is out of Spline bounds");
+        }
 
+        for(int i = 0; i < functions.size(); i++){
+            if(functions.get(i).start <= x && x <= functions.get(i).end){
+                return functions.get(i).first_derivative(x);
+            }
+        }
 
+        return 0;
+    }
+
+    public double second_derivative(double x) throws Exception{
+        if(functions.get(0).start > x ||  x > functions.get(functions.size()-1).end){
+            throw new Exception("Trying to get Cubic_Spline_radius for point x = " + x + "which is out of Spline bounds");
+        }
+
+        for(int i = 0; i < functions.size(); i++){
+            if(functions.get(i).start <= x && x <= functions.get(i).end){
+                return functions.get(i).second_derivative(x);
+            }
+        }
+
+        return 0;
+    }
 }

@@ -18,4 +18,23 @@ public class Cylinder_Radius extends Radius {
         return diameter/2;
     }
 
+    @Override
+    public Radius get_derivative() {
+        Radius derivative = new Radius() {
+            @Override
+            public double get_radius(double x) {
+                return 0;
+            }
+
+            @Override
+            public Radius get_derivative() {
+                return null;
+            }
+        };
+
+        derivative.start = start;
+        derivative.end = end;
+        return derivative;
+    }
+
 }
