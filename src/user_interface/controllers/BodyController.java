@@ -1,58 +1,92 @@
 package user_interface.controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+
 public class BodyController {
 
     @FXML
     private javafx.scene.layout.AnchorPane AnchorPane;
 
-    @FXML
-    private TextField BodyDiameterField;
+    ObservableList<String> generatrix_radius = FXCollections.observableArrayList(
+            "Переднее оживало",
+            "Цилиндрическая",
+            "Косинусоидальная",
+            "Заднее оживало",
+            "Кубический сплайн",
+            "Сглаживающий кубический сплайн");
+
+    ObservableList<String> angular_radius = FXCollections.observableArrayList(
+            "Окружность","Эллипс");
 
     @FXML
-    private TextField ConicalPartField;
+    private ChoiceBox generatrix_radius_box;
 
     @FXML
-    private TextField CylindricalPartField;
+    private ChoiceBox angular_radius_box;
 
     @FXML
-    private TextField DiameterOfInfTrailField;
+    private void initialize(){
+        generatrix_radius_box.setValue("Переднее оживало");
+        generatrix_radius_box.setItems(generatrix_radius);
+
+        angular_radius_box.setValue("Окружность");
+        angular_radius_box.setItems(angular_radius);
+    }
 
     @FXML
-    private TextField HalfOfOpeningAngleField;
+    public Button init_body_button;
 
     @FXML
-    private TextField HeadPartField;
+    public Button body_part_add_button;
 
     @FXML
-    private TextField TailPartField;
+    public Button body_part_delete_button;
 
     @FXML
-    private TextField TransitionalPartField;
+    public Button draw_generatrix_button;
 
     @FXML
-    private TextField AttackAngleField;
+    private Pane pane_for_graph;
+
+
 
     @FXML
-    private TextField CurvatureRadiusField;
+    void init_body(ActionEvent event) {
+
+    }
 
     @FXML
-    private RadioButton AugiveRadioButton;
+    void draw_generatrix(ActionEvent event) {
+
+    }
 
     @FXML
-    private RadioButton CosineRadioButton;
+    void delete_body_part(){
+
+    }
 
     @FXML
-    private Button InitBodyDataButton;
+    void open_body_tab(ActionEvent event) {
 
-    @FXML
-    void InitBodyData(ActionEvent event) {
-
-
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../fxml_files/FrontAugiveTab.fxml"));
+            Parent root1 = fxmlLoader.load();
+            Stage stage1 = new Stage();
+            stage1.setScene(new Scene(root1, 900, 600));
+            stage1.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
