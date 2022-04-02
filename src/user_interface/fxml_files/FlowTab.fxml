@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user_interface.controllers.FlowAndCalcController">
+<children>
+    <GridPane layoutX="16.0" layoutY="23.0" prefHeight="436.0" prefWidth="647.0" AnchorPane.bottomAnchor="134.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="223.0" AnchorPane.topAnchor="30.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="130.59998168945313" minHeight="1.7999977111816463" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="334.3999877929688" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="334.3999877929688" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="334.3999877929688" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="334.3999877929688" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="290.40001525878904" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+        <children>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                <children>
+                    <Label layoutX="14.0" layoutY="33.0" text="Число Рейнольдса" />
+                  <Separator layoutX="198.0" layoutY="-32.0" orientation="VERTICAL" prefHeight="580.0" prefWidth="0.0" />
+                </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
+                <children>
+                    <TextField fx:id="ReynoldsNumber" layoutX="13.0" layoutY="28.0" prefHeight="25.0" prefWidth="188.0" text="500000" />
+                </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                <children>
+                    <TextField fx:id="FlowVelocity" layoutX="14.0" layoutY="28.0" prefHeight="25.0" prefWidth="186.0" text="1" />
+                </children>
+            </Pane>
+            <Pane prefHeight="34.0" prefWidth="223.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
+               <children>
+                    <RadioButton fx:id="GaussMethodRadioButton" layoutX="14.0" layoutY="25.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="230.0" selected="true" text="Метод Гаусса">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="SolveMethod" />
+                     </toggleGroup></RadioButton>
+                    <RadioButton fx:id="BiGradientRadioButton" layoutX="14.0" layoutY="54.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="224.0" text="Метод сопряжённых би-градиентов" toggleGroup="$SolveMethod" />
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5" />
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <children>
+                    <Label layoutX="14.0" layoutY="32.0" text="Скорость потока" />
+                </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <children>
+                  <Label layoutX="14.0" layoutY="26.0" text="Выбор метода расчёта" />
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <Label layoutX="14.0" layoutY="32.0" text="Плотность среды" />
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <children>
+                  <TextField fx:id="Density" layoutX="14.0" layoutY="32.0" prefHeight="25.0" prefWidth="186.0" text="10" />
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <children>
+                  <Label layoutX="14.0" layoutY="36.0" text="Количество разбиений &#10;контура панели" />
+                  <Separator layoutX="-236.0" layoutY="79.0" prefHeight="0.0" prefWidth="647.0" />
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <children>
+                  <TextField fx:id="numOfPlaneSeparations" layoutX="14.0" layoutY="32.0" prefHeight="25.0" prefWidth="188.0" text="2" />
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3" />
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2" />
+            <Pane prefHeight="200.0" prefWidth="200.0" />
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+               <children>
+                  <TextField fx:id="InnerPressure" layoutX="14.0" layoutY="24.0" prefHeight="25.0" prefWidth="186.0" text="10" />
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <children>
+                  <Label layoutX="14.0" layoutY="28.0" text="Давление в среде" />
+               </children>
+            </Pane>
+        </children>
+    </GridPane>
+    <Button fx:id="InitFlowAndCalcButton" layoutX="707.0" layoutY="460.0" mnemonicParsing="false" onAction="#InitFlowAndCalcData" prefHeight="50.0" prefWidth="162.0" text="Задать данные потока &#10;и способ расчёта&#10;" textAlignment="CENTER" AnchorPane.bottomAnchor="80.0" AnchorPane.rightAnchor="20.0" />
+      <Button fx:id="MakeCalculationButton" layoutX="711.0" layoutY="530.0" mnemonicParsing="false" onAction="#MakeCalculation" prefHeight="50.0" prefWidth="162.0" text="Произвести расчёт " AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="20.0" />
+</children>
+</AnchorPane>

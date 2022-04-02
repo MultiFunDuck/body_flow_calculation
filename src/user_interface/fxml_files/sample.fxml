@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user_interface.controllers.Controller">
+   <children>
+      <TabPane layoutX="1.0" layoutY="-1.0" prefHeight="568.0" prefWidth="895.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <tabs>
+          <Tab fx:id="BodyTab" text="Параметры эквивалентного тела">
+               <content>
+                  <fx:include fx:id="mBodyTab" source="BodyTab.fxml" />
+               </content>
+          </Tab>
+          <Tab fx:id="GridTab" text="Параметры сетки">
+               <content>
+                  <fx:include fx:id="mGridTab" source="GridTab.fxml" />
+               </content>
+          </Tab>
+           <Tab text="Граничные условия">
+              <content>
+                  <fx:include fx:id="mFlowTab" source="FlowTab.fxml" />
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

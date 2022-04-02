@@ -1,10 +1,10 @@
 package _examples;
 
-import angular_radius.Circle_Angular_Radius;
-import generatrix_radius.*;
-import math_primitives.Flat_Point;
-import math_primitives.Radius;
-import visualization.Line_Graph_Drawer;
+import radiis.angular_radius.Circle_Angular_Radius;
+import math.math_primitives.Flat_Point;
+import math.math_primitives.Radius;
+import radiis.generatrix_radius.*;
+import user_interface.visualization.Line_Graph_Drawer;
 
 import java.io.File;
 import java.util.ArrayList;

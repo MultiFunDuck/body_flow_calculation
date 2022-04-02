@@ -1,18 +1,18 @@
 package _examples;
 
-import arclenght.Arclenght_Calculator;
-import arclenght.Cartesian_Arclenght_Calculator;
-import arclenght.Polar_Arclenght_Calculator;
-import grid_builder.Body_Part;
-import grid_builder.ChangeAble_Body;
-import angular_radius.Circle_Angular_Radius;
-import angular_radius.Elliptic_Angular_Radius;
-import generatrix_radius.*;
-import math_primitives.Flat_Point;
-import math_primitives.Radius;
-import separator.Arclength_Separator;
-import separator.Even_Separator;
-import separator.Separator;
+import radiis.angular_radius.Circle_Angular_Radius;
+import radiis.angular_radius.Elliptic_Angular_Radius;
+import math.arclenght.Arclenght_Calculator;
+import math.arclenght.Cartesian_Arclenght_Calculator;
+import math.arclenght.Polar_Arclenght_Calculator;
+import calculation.grid_builder.Body_Part;
+import calculation.grid_builder.ChangeAble_Body;
+import math.math_primitives.Flat_Point;
+import math.math_primitives.Radius;
+import math.separator.Arclength_Separator;
+import math.separator.Even_Separator;
+import math.separator.Separator;
+import radiis.generatrix_radius.*;
 
 import java.io.File;
 import java.util.ArrayList;
