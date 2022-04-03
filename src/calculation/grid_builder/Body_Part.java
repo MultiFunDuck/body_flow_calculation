@@ -80,4 +80,12 @@ public class Body_Part {
     public double get_start(){ return this.start; }
 
     public double get_end(){ return this.end; }
+
+    public List<Double> get_ox_separation(){
+        return this.ox_separator.get_separation();
+    }
+
+    public double get_ox_radius(double x){
+        return this.ox_radius.get_radius(x);
+    }
 }

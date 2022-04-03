@@ -27,7 +27,23 @@ public class Circle_Angular_Radius extends Radius {
 
     @Override
     public Radius get_derivative() {
-        return null;
+        Radius derivative = new Radius() {
+            @Override
+            public double get_radius(double x) {
+
+                return 0;
+
+            }
+
+            @Override
+            public Radius get_derivative() {
+                return null;
+            }
+        };
+
+        derivative.start = start;
+        derivative.end = end;
+        return derivative;
     }
 
 

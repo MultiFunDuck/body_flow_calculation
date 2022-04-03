@@ -2,6 +2,8 @@ package user_interface.data_classes;
 
 
 import calculation.grid_builder.Body_Part;
+import math.math_primitives.Radius;
+import math.separator.Separator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,4 +24,8 @@ public class Body_Parts_Data {
     }
 
     public List<Body_Part> parts;
+
+    public List<Radius> radii;
+
+    public List<Separator> separators;
 }

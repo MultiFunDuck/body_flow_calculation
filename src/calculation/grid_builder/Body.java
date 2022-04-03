@@ -118,4 +118,8 @@ public class Body {
         }
         return flag;
     }
+
+    public List<Body_Part> get_parts(){
+        return this.Parts;
+    }
 }

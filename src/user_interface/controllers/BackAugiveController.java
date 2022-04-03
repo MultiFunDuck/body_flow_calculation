@@ -5,29 +5,30 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import math.arclenght.Cartesian_Arclenght_Calculator;
 import math.separator.Arclength_Separator;
 import math.separator.Even_Separator;
-import radiis.generatrix_radius.Front_Augive_Radius;
+import radiis.generatrix_radius.Back_Augive_Radius;
 import user_interface.data_classes.Body_Parts_Data;
 import user_interface.data_classes.Generatrix_Radius_Data;
 import user_interface.visualization.Line_Graph_Drawer;
 
 import java.io.File;
 
-public class FrontAugiveController {
+public class BackAugiveController {
 
     @FXML
     private RadioButton arc_separation_radio;
 
     @FXML
-    private Pane graph_pane;
+    private TextField diameter_field;
 
     @FXML
-    private TextField diameter_field;
+    private Pane graph_pane;
 
     @FXML
     private TextField lenght_field;
@@ -39,11 +40,13 @@ public class FrontAugiveController {
     private TextField separation_step_field;
 
     @FXML
+    private ToggleGroup separation_type;
+
+    @FXML
     private Button set_generatrix_button;
 
     @FXML
     void set_generatrix(ActionEvent event) {
-
         Generatrix_Radius_Data radius_data = Generatrix_Radius_Data.getInstance();
         Body_Parts_Data body_data = Body_Parts_Data.getInstance();
 
@@ -59,7 +62,7 @@ public class FrontAugiveController {
         double end = start + length;
         double diameter = Float.parseFloat(diameter_field.getText());
 
-        radius_data.radius = new Front_Augive_Radius(start,end,diameter);
+        radius_data.radius = new Back_Augive_Radius(start,end,diameter);
 
 
 
@@ -85,10 +88,12 @@ public class FrontAugiveController {
 
 
         Line_Graph_Drawer drawer = new Line_Graph_Drawer(480,360);
-        drawer.draw_radius(data.radius, data.separator, "resources/front_augive_graph");
-        Image img = new Image(new File("./resources/front_augive_graph.PNG").toURI().toString());
+        drawer.draw_radius(data.radius, data.separator, "resources/back_augive_graph");
+        Image img = new Image(new File("./resources/back_augive_graph.PNG").toURI().toString());
         graph_pane.getChildren().add(new ImageView(img));
 
     }
+
+
 
 }

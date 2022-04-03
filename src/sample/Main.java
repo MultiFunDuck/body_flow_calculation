@@ -24,7 +24,7 @@ public class Main extends Application {
         }
 
         Parent root = FXMLLoader.load(getClass().getResource("../user_interface/fxml_files/sample.fxml"));
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("Расчёт обтекания тела");
         primaryStage.setScene(new Scene(root, 1200, 800));
         primaryStage.show();
 
