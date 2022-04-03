@@ -5,6 +5,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import math.arclenght.Cartesian_Arclenght_Calculator;
+import math.separator.Arclength_Separator;
+import math.separator.Even_Separator;
+import radiis.generatrix_radius.Front_Augive_Radius;
+import user_interface.data_classes.Body_Parts_Data;
+import user_interface.data_classes.Generatrix_Radius_Data;
 
 public class FrontAugiveController {
 
@@ -28,6 +34,40 @@ public class FrontAugiveController {
 
     @FXML
     void set_generatrix(ActionEvent event) {
+
+        Generatrix_Radius_Data radius_data = Generatrix_Radius_Data.getInstance();
+        Body_Parts_Data body_data = Body_Parts_Data.getInstance();
+
+        double start = 0;
+        double length = Float.parseFloat(lenght_field.getText());
+
+        int parts_quantity = body_data.parts.size();
+        if(parts_quantity != 0){
+
+            start = body_data.parts.get(parts_quantity - 1).get_end();
+        }
+
+        double end = start + length;
+        double diameter = Float.parseFloat(diameter_field.getText());
+
+        radius_data.radius = new Front_Augive_Radius(start,end,diameter);
+
+
+
+
+        double step = Float.parseFloat(separation_step_field.getText());
+
+        if(ox_separation_radio.isSelected()){
+            int num_of_seps = Math.round((float)(length/step));
+            radius_data.separator = new Even_Separator(radius_data.radius,num_of_seps);
+        }
+        else{
+            Cartesian_Arclenght_Calculator calc = new Cartesian_Arclenght_Calculator(radius_data.radius);
+            double arc = calc.calculate_arclenght_precisely(start,end,0.001);
+            int num_of_seps = Math.round((float)(arc/step));
+
+            radius_data.separator = new Arclength_Separator(radius_data.radius,calc,num_of_seps);
+        }
 
     }
 

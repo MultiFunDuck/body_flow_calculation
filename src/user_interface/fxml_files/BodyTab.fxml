@@ -12,7 +12,7 @@
 <AnchorPane prefHeight="750.0" prefWidth="1200.0" style="-fx-background-color: #C3C3C3;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user_interface.controllers.BodyController">
 <children>
     <Button fx:id="init_body_button" layoutX="740.0" layoutY="637.0" mnemonicParsing="false" onAction="#init_body" prefHeight="99.0" prefWidth="249.0" text="Задать тело" AnchorPane.bottomAnchor="64.0" AnchorPane.leftAnchor="740.0" />
-      <Button fx:id="body_part_add_button" layoutX="27.0" layoutY="669.0" mnemonicParsing="false" onAction="#open_body_tab" prefHeight="37.0" prefWidth="186.0" text="Добавить часть тела" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="27.0" />
+      <Button fx:id="body_part_add_button" layoutX="27.0" layoutY="669.0" mnemonicParsing="false" onAction="#add_body_part" prefHeight="37.0" prefWidth="186.0" text="Добавить часть тела" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="27.0" />
       <ChoiceBox fx:id="generatrix_radius_box" layoutX="28.0" layoutY="625.0" prefHeight="25.0" prefWidth="161.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="28.0" />
       <Label layoutX="27.0" layoutY="588.0" prefHeight="25.0" prefWidth="161.0" style="-fx-background-color: #EAEAEA;" text="   Выбор типа образующей" AnchorPane.bottomAnchor="137.0" AnchorPane.leftAnchor="27.0" />
       <Label fx:id="result_generatrix_label" layoutX="300.0" layoutY="31.0" prefHeight="25.0" prefWidth="237.0" style="-fx-background-color: EAEAEA;" text="   График результирующей образующей" AnchorPane.topAnchor="30.0" />

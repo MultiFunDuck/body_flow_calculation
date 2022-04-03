@@ -11,11 +11,18 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.File;
+
 public class Main extends Application {
 
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        File folder = new File("resources");
+        if (!folder.exists()) {
+            folder.mkdir();
+        }
+
         Parent root = FXMLLoader.load(getClass().getResource("../user_interface/fxml_files/sample.fxml"));
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 1200, 800));

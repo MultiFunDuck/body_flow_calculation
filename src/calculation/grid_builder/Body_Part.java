@@ -76,4 +76,8 @@ public class Body_Part {
     public double get_start_radius(){
         return this.ox_radius.get_start_radius();
     }
+
+    public double get_start(){ return this.start; }
+
+    public double get_end(){ return this.end; }
 }
