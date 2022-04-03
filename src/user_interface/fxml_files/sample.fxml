@@ -13,16 +13,16 @@
                   <fx:include fx:id="mBodyTab" source="BodyTab.fxml" />
                </content>
           </Tab>
-          <Tab fx:id="GridTab" text="Задание параметров обтекания">
-               <content>
-                  <fx:include fx:id="mGridTab" source="GridTab.fxml" />
-               </content>
-          </Tab>
-           <Tab text="Результаты расчёта">
+           <Tab text="Задание параметров обтекания">
               <content>
                   <fx:include fx:id="mFlowTab" source="FlowTab.fxml" />
               </content>
             </Tab>
+          <Tab fx:id="GridTab" text="Результаты расчёта">
+               <content>
+                  <fx:include fx:id="mGridTab" source="GridTab.fxml" />
+               </content>
+          </Tab>
         </tabs>
       </TabPane>
    </children>

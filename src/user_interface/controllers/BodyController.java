@@ -23,7 +23,7 @@ import math.math_primitives.Radius;
 import user_interface.data_classes.Angular_Radius_Data;
 import user_interface.data_classes.Body_Parts_Data;
 import user_interface.data_classes.Generatrix_Radius_Data;
-import user_interface.data_classes.TableViewData;
+import user_interface.data_classes.PartViewData;
 import user_interface.visualization.Line_Graph_Drawer;
 
 import java.io.File;
@@ -33,7 +33,7 @@ public class BodyController {
     @FXML
     private javafx.scene.layout.AnchorPane AnchorPane;
 
-    ObservableList<TableViewData> table_data = FXCollections.observableArrayList();
+    ObservableList<PartViewData> table_data = FXCollections.observableArrayList();
 
     ObservableList<String> generatrix_radius = FXCollections.observableArrayList(
             "Выберите образующую",
@@ -165,7 +165,7 @@ public class BodyController {
             System.out.println("It just works");
             body_data.parts.add(part);
 
-            table_data.add(new TableViewData(body_data.parts.size(),(String)generatrix_radius_box.getValue(), (String)angular_radius_box.getValue()));
+            table_data.add(new PartViewData(body_data.parts.size(),(String)generatrix_radius_box.getValue(), (String)angular_radius_box.getValue()));
         }
 
         else{
@@ -234,16 +234,16 @@ public class BodyController {
 
 
     @FXML
-    private TableView<TableViewData> parts_table;
+    private TableView<PartViewData> parts_table;
 
     @FXML
-    private TableColumn<TableViewData, Integer> num_column;
+    private TableColumn<PartViewData, Integer> num_column;
 
     @FXML
-    private TableColumn<TableViewData, String> form_column;
+    private TableColumn<PartViewData, String> form_column;
 
     @FXML
-    private TableColumn<TableViewData, String> generatrix_column;
+    private TableColumn<PartViewData, String> generatrix_column;
 
 
 

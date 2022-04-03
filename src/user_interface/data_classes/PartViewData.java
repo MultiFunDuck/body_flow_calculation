@@ -1,12 +1,12 @@
 package user_interface.data_classes;
 
-public class TableViewData {
+public class PartViewData {
 
     Integer num;
     String generatrix;
     String form;
 
-    public TableViewData(Integer num, String generatrix, String form) {
+    public PartViewData(Integer num, String generatrix, String form) {
         this.num = num;
         this.generatrix = generatrix;
         this.form = form;
