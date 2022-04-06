@@ -108,6 +108,33 @@ public class Line_Graph_Drawer {
         }
     }
 
+    public void draw_polar_radius(Radius radius, Separator separator, String destination){
+        XYSeries dataset =  new XYSeries("Spline Data", false,true);
+
+
+        List<Double> sep = separator.get_separation();
+        for(double ang: sep){
+            double r = radius.get_radius(ang);
+            double y = r*Math.sin(ang);
+            double x = r*Math.cos(ang);
+            dataset.add(y,x);
+        }
+
+
+        JFreeChart chart = ChartFactory.createXYLineChart(
+                "График формы", "x axis ", "y axis ",
+                new XYSeriesCollection(dataset), PlotOrientation.HORIZONTAL, false, false, false);
+
+        ChartPanel chartPanel = new ChartPanel(chart);
+        chartPanel.setPreferredSize(new java.awt.Dimension(width, length));
+        chartPanel.setMouseZoomable(true, false);
+        try {
+            ChartUtilities.saveChartAsPNG(new File(destination + ".PNG"), chart, width, length);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void draw_full_generatix(List<Body_Part> parts, String destination){
         XYSeries dataset =  new XYSeries("Spline Data", false,true);
 

@@ -161,7 +161,6 @@ public class SmoothedCubicSplineController {
     }
 
 
-
     @FXML
     void set_generatrix(ActionEvent event) {
         Generatrix_Radius_Data radius_data = Generatrix_Radius_Data.getInstance();
@@ -169,8 +168,8 @@ public class SmoothedCubicSplineController {
         Points_List_Data data = Points_List_Data.getInstance();
 
 
-        double left_slope = (Math.PI/180) * Float.parseFloat(left_slope_field.getText());
-        double right_slope = (Math.PI/180) * Float.parseFloat(right_slope_field.getText());
+        double left_slope = Math.tan((Math.PI/180)*Float.parseFloat(left_slope_field.getText()));
+        double right_slope = Math.tan((Math.PI/180)*Float.parseFloat(right_slope_field.getText()));
         double lambda = Float.parseFloat(lambda_field.getText());
 
 

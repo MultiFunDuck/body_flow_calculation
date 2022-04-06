@@ -42,8 +42,6 @@ public class CosineController {
     @FXML
     private ToggleGroup separation_type;
 
-    @FXML
-    private Button set_generatrix_button;
 
     @FXML
     private TextField start_diameter_field;

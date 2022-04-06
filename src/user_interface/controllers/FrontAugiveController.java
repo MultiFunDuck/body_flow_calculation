@@ -38,8 +38,6 @@ public class FrontAugiveController {
     @FXML
     private TextField separation_step_field;
 
-    @FXML
-    private Button set_generatrix_button;
 
     @FXML
     void set_generatrix(ActionEvent event) {

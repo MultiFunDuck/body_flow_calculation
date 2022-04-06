@@ -42,8 +42,6 @@ public class BackAugiveController {
     @FXML
     private ToggleGroup separation_type;
 
-    @FXML
-    private Button set_generatrix_button;
 
     @FXML
     void set_generatrix(ActionEvent event) {
