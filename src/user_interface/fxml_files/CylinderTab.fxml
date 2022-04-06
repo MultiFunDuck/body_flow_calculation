@@ -51,7 +51,7 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #C3C3C3;">
                <children>
-                  <Pane fx:id="graph_pane" layoutX="368.0" layoutY="74.0" prefHeight="382.0" prefWidth="518.0" style="-fx-background-color: #EAEAEA;" />
+                  <Pane fx:id="graph_pane" layoutX="360.0" layoutY="75.0" prefHeight="380.0" prefWidth="500.0" style="-fx-background-color: #EAEAEA;" />
                   <Label layoutX="368.0" layoutY="31.0" prefHeight="27.0" prefWidth="221.0" style="-fx-background-color: #EAEAEA;" text="   График образующей" />
                   <GridPane layoutX="26.0" layoutY="74.0" prefHeight="308.0" prefWidth="307.0" style="-fx-background-color: #EAEAEA;">
                     <columnConstraints>

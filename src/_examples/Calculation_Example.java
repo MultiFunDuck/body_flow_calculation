@@ -38,25 +38,25 @@ public class Calculation_Example {
 
     public void simple_body_calc_example(){
         Radius ang_rad = new Circle_Angular_Radius();
-        Separator ang_sep = new Even_Separator(ang_rad,32);
+        Separator ang_sep = new Even_Separator(ang_rad,12);
 
         Radius head_rad = new Front_Augive_Radius(0,1,1);
-        Separator head_sep = new Even_Separator(head_rad,20);
+        Separator head_sep = new Even_Separator(head_rad,10);
 
         Radius cyl_rad = new Cylinder_Radius(1,2,1);
-        Separator cyl_sep = new Even_Separator(cyl_rad,20);
+        Separator cyl_sep = new Even_Separator(cyl_rad,10);
 
 
 
         Radius cosine_rad = new Cosine_Radius(2,3.5,1,0.3);
-        Separator cosine_sep = new Even_Separator(cosine_rad,30);
+        Separator cosine_sep = new Even_Separator(cosine_rad,15);
 
 
         Radius cyl2_rad = new Cylinder_Radius(3.5,4,0.3);
         Separator cyl2_sep = new Even_Separator(cyl2_rad,15);
 
         Radius back_rad = new Back_Augive_Radius(4,5,0.3);
-        Separator back_sep = new Even_Separator(back_rad,20);
+        Separator back_sep = new Even_Separator(back_rad,10);
 
         Body_Part head_part = new Body_Part(head_rad,head_sep,ang_rad,ang_sep);
         Body_Part cyl_part = new Body_Part(cyl_rad,cyl_sep,ang_rad,ang_sep);

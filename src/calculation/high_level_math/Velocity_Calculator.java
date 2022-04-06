@@ -30,8 +30,8 @@ public class Velocity_Calculator {
         Vector tau_part  = calculate_tau_velocity_part(mid,front,back,left,right);
 
 
-        Vector flow_velocity = o.sum(V_inf,tau_part);
-        flow_velocity = o.sum(flow_velocity,circ_velocity_part);
+        Vector flow_velocity = o.sum(V_inf,circ_velocity_part);
+        flow_velocity = o.sum(flow_velocity,tau_part);
 
 
         return flow_velocity;
@@ -60,7 +60,7 @@ public class Velocity_Calculator {
                 tau1 = new Vector(o.diff(front.middle,back.middle));
                 double length = tau1.length();
                 tau1 = tau1.get_normalized_vector();
-                tau1 = o.mul(tau1,(front.gamma - back.gamma) / (2*length));
+                tau1 = o.mul(tau1,(front.gamma - back.gamma) / length);
             }
         } catch (Exception e) {
             System.out.println("Exception while normalizing tau1 vector. Tau1.length() = 0");
@@ -70,14 +70,15 @@ public class Velocity_Calculator {
 
         try {
             tau2 = new Vector(o.diff(right.middle, left.middle));
+            double length = tau2.length();
             tau2 = tau2.get_normalized_vector();
-            tau2 = o.mul(tau2,(right.gamma - left.gamma) / 2);
+            tau2 = o.mul(tau2,(right.gamma - left.gamma) / length);
         } catch (Exception e) {
             System.out.println("Exception while normalizing tau2 vector. Tau2.length() = 0");
             e.printStackTrace();
         }
 
-        return o.div(o.sum(tau2,tau1),-1);
+        return o.div(o.sum(tau2,tau1),-2);
     }
 
     public Vector calculate_circular_velocity_part(Panel from_which){

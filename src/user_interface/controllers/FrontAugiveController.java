@@ -12,7 +12,7 @@ import math.arclenght.Cartesian_Arclenght_Calculator;
 import math.separator.Arclength_Separator;
 import math.separator.Even_Separator;
 import radiis.generatrix_radius.Front_Augive_Radius;
-import user_interface.data_classes.Body_Parts_Data;
+import user_interface.data_classes.Body_Data;
 import user_interface.data_classes.Generatrix_Radius_Data;
 import user_interface.visualization.Line_Graph_Drawer;
 
@@ -45,7 +45,7 @@ public class FrontAugiveController {
     void set_generatrix(ActionEvent event) {
 
         Generatrix_Radius_Data radius_data = Generatrix_Radius_Data.getInstance();
-        Body_Parts_Data body_data = Body_Parts_Data.getInstance();
+        Body_Data body_data = Body_Data.getInstance();
 
         double start = 0;
         double length = Float.parseFloat(lenght_field.getText());

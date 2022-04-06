@@ -21,7 +21,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import math.math_primitives.Radius;
 import user_interface.data_classes.Angular_Radius_Data;
-import user_interface.data_classes.Body_Parts_Data;
+import user_interface.data_classes.Body_Data;
 import user_interface.data_classes.Generatrix_Radius_Data;
 import user_interface.data_classes.PartViewData;
 import user_interface.visualization.Line_Graph_Drawer;
@@ -89,7 +89,7 @@ public class BodyController {
     void init_body(ActionEvent event) {
 
 
-        Body_Parts_Data body_data = Body_Parts_Data.getInstance();
+        Body_Data body_data = Body_Data.getInstance();
 
         if(body_data.parts.size() != 0){
             ChangeAble_Body body = new ChangeAble_Body();
@@ -99,6 +99,8 @@ public class BodyController {
 
             body.init_Grid();
             body.get_Grid().to_File("resources/grid.txt");
+            body_data.body = body;
+
 
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -121,8 +123,8 @@ public class BodyController {
 
     @FXML
     void draw_generatrix(ActionEvent event) {
-        Body_Parts_Data body_data = Body_Parts_Data.getInstance();
-        Line_Graph_Drawer drawer = new Line_Graph_Drawer(840,500);
+        Body_Data body_data = Body_Data.getInstance();
+        Line_Graph_Drawer drawer = new Line_Graph_Drawer(780,450);
         drawer.draw_full_generatix(body_data.parts, "resources/generatrix_graph");
         Image img = new Image(new File("./resources/generatrix_graph.PNG").toURI().toString());
         pane_for_graph.getChildren().add(new ImageView(img));
@@ -131,7 +133,7 @@ public class BodyController {
 
     @FXML
     void delete_body_part(){
-        Body_Parts_Data body_data = Body_Parts_Data.getInstance();
+        Body_Data body_data = Body_Data.getInstance();
 
         if(body_data.parts.size() != 0){
             body_data.parts.remove(body_data.parts.size() - 1);
@@ -153,7 +155,7 @@ public class BodyController {
 
         Generatrix_Radius_Data gen_data = Generatrix_Radius_Data.getInstance();
         Angular_Radius_Data ang_data = Angular_Radius_Data.getInstance();
-        Body_Parts_Data body_data = Body_Parts_Data.getInstance();
+        Body_Data body_data = Body_Data.getInstance();
 
 
         Radius ox_radius =  gen_data.radius;

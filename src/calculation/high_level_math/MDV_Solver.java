@@ -73,9 +73,9 @@ public class MDV_Solver {
 
 
     public Vector LineVectorIntegral(Point start_of_line, Point end_of_line, Point from_which){
-        Vector R12 = new Vector(o.diff(end_of_line,start_of_line));
-        Vector R10 = new Vector(o.diff(start_of_line,from_which));
-        Vector R20 = new Vector(o.diff(end_of_line,from_which));
+        Vector R12 = new Vector(o.diff(end_of_line, start_of_line));
+        Vector R10 = new Vector(o.diff(from_which, start_of_line));
+        Vector R20 = new Vector(o.diff(from_which, end_of_line));
         double r12 = R12.length();
         double r10 = R10.length();
         double r20 = R20.length();
