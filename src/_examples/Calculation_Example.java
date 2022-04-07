@@ -70,7 +70,7 @@ public class Calculation_Example {
         Ch_body.add_part(cyl_part);
         Ch_body.add_part(cosine_part);
         Ch_body.add_part(cyl2_part);
-        Ch_body.add_part(back_part);
+        //Ch_body.add_part(back_part);
 
 
         Ch_body.init_Grid();

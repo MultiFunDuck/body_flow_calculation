@@ -46,4 +46,11 @@ public class Point {
     }
 
 
+    public boolean isEqual(Point p) {
+
+        return (Math.abs(this.x - p.x) <= 0.001 &&
+                Math.abs(this.y - p.y) <= 0.001 &&
+                Math.abs(this.z - p.z) <= 0.001);
+    }
+
 }

@@ -18,8 +18,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Calculation_Example example3 = new Calculation_Example("_calculation_example");
-        example3.simple_body_calc_example();
+
         File folder = new File("resources");
         if (!folder.exists()) {
             folder.mkdir();
