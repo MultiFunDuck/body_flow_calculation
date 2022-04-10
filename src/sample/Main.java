@@ -1,10 +1,7 @@
 package sample;
 
-import _examples.Bodies_Example;
+import _examples.*;
 
-import _examples.Body_Part_Example;
-import _examples.Calculation_Example;
-import _examples.Radiis_Example;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,13 +15,14 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        init_examples();
 
         File folder = new File("resources");
         if (!folder.exists()) {
             folder.mkdir();
         }
 
-        Parent root = FXMLLoader.load(getClass().getResource("../user_interface/fxml_files/sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../user_interface/main_tabs/sample.fxml"));
         primaryStage.setTitle("Расчёт обтекания тела");
         primaryStage.setScene(new Scene(root, 1200, 800));
         primaryStage.show();
@@ -48,6 +46,9 @@ public class Main extends Application {
 
         Calculation_Example example3 = new Calculation_Example("_calculation_example");
         example3.run_example();
+
+        Separation_Example example4 = new Separation_Example("_separation_example");
+        example4.run_example();
     }
 
 }

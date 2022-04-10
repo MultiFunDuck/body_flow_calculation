@@ -1,4 +1,4 @@
-package user_interface.controllers;
+package user_interface.main_controllers;
 
 import calculation.grid_builder.Body_Part;
 import calculation.grid_builder.ChangeAble_Body;
@@ -39,8 +39,9 @@ public class BodyController {
             "Выберите образующую",
             "Переднее оживало",
             "Цилиндрическая",
-            "Косинусоидальная",
             "Заднее оживало",
+            "Косинусоидальная",
+            "Коническая",
             "Кубический сплайн",
             "Сглаживающий кубический сплайн");
 
@@ -187,7 +188,7 @@ public class BodyController {
         String gen_value = (String)generatrix_radius_box.getValue();
 
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../fxml_files/" + map_names_to_files(gen_value)));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../generatrix_tabs/" + map_names_to_files(gen_value)));
             Parent root1 = fxmlLoader.load();
             Stage stage1 = new Stage();
             stage1.setScene(new Scene(root1, 900, 600));
@@ -202,7 +203,7 @@ public class BodyController {
         String gen_value = (String)angular_radius_box.getValue();
 
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../fxml_files/" + map_names_to_files(gen_value)));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../form_tabs/" + map_names_to_files(gen_value)));
             Parent root1 = fxmlLoader.load();
             Stage stage1 = new Stage();
             stage1.setScene(new Scene(root1, 900, 600));
@@ -218,6 +219,8 @@ public class BodyController {
             return "FrontAugiveTab.fxml";
         if(name.equals("Цилиндрическая"))
             return "CylinderTab.fxml";
+        if(name.equals("Коническая"))
+            return "ConicTab.fxml";
         if(name.equals("Косинусоидальная"))
             return "CosineTab.fxml";
         if(name.equals("Кубический сплайн"))

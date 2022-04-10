@@ -22,9 +22,9 @@ public class Calculation_Example {
 
     String storage;
 
-    public Calculation_Example(String pics_storage){
-        this.storage = pics_storage;
-        File folder = new File(pics_storage);
+    public Calculation_Example(String calcs_example_storage){
+        this.storage = calcs_example_storage;
+        File folder = new File(calcs_example_storage);
         if (!folder.exists()) {
             folder.mkdir();
         }

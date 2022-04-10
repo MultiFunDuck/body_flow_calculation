@@ -1,17 +1,17 @@
 package _examples;
 
-import radiis.angular_radius.Circle_Angular_Radius;
-import radiis.angular_radius.Elliptic_Angular_Radius;
+import calculation.grid_builder.Body_Part;
+import calculation.grid_builder.ChangeAble_Body;
 import math.arclenght.Arclenght_Calculator;
 import math.arclenght.Cartesian_Arclenght_Calculator;
 import math.arclenght.Polar_Arclenght_Calculator;
-import calculation.grid_builder.Body_Part;
-import calculation.grid_builder.ChangeAble_Body;
 import math.math_primitives.Flat_Point;
 import math.math_primitives.Radius;
 import math.separator.Arclength_Separator;
 import math.separator.Even_Separator;
 import math.separator.Separator;
+import radiis.angular_radius.Circle_Angular_Radius;
+import radiis.angular_radius.Elliptic_Angular_Radius;
 import radiis.generatrix_radius.*;
 
 import java.io.File;
@@ -21,9 +21,9 @@ import java.util.List;
 public class Body_Part_Example {
     String body_parts_storage;
 
-    public Body_Part_Example(String pics_storage){
-        this.body_parts_storage = pics_storage;
-        File folder = new File(pics_storage);
+    public Body_Part_Example(String body_parts_storage){
+        this.body_parts_storage = body_parts_storage;
+        File folder = new File(body_parts_storage);
         if (!folder.exists()) {
             folder.mkdir();
         }

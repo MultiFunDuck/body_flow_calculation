@@ -25,9 +25,9 @@ public class Bodies_Example {
 
     String body_parts_storage;
 
-    public Bodies_Example(String pics_storage){
-        this.body_parts_storage = pics_storage;
-        File folder = new File(pics_storage);
+    public Bodies_Example(String bodies_storage){
+        this.body_parts_storage = bodies_storage;
+        File folder = new File(bodies_storage);
         if (!folder.exists()) {
             folder.mkdir();
         }

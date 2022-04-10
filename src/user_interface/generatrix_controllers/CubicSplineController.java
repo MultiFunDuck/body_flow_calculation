@@ -1,4 +1,4 @@
-package user_interface.controllers;
+package user_interface.generatrix_controllers;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -12,8 +12,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import math.arclenght.Cartesian_Arclenght_Calculator;
 import math.math_primitives.Flat_Point;
+import math.math_primitives.Radius;
 import math.separator.Arclength_Separator;
+import math.separator.Arithmetic_Separator;
 import math.separator.Even_Separator;
+import math.separator.Separator;
 import radiis.generatrix_radius.Cubic_Spline_Radius;
 import user_interface.data_classes.Generatrix_Radius_Data;
 import user_interface.data_classes.PointViewData;
@@ -33,6 +36,12 @@ public class CubicSplineController {
     @FXML
     private RadioButton arc_separation_radio;
 
+    @FXML
+    private RadioButton arithm_separation_radio;
+
+    @FXML
+    private RadioButton geom_separation_radio;
+
 
 
 
@@ -50,7 +59,8 @@ public class CubicSplineController {
     @FXML
     private TextField separation_step_field;
 
-
+    @FXML
+    private TextField common_ratio_field;
 
 
     @FXML
@@ -158,13 +168,51 @@ public class CubicSplineController {
     }
 
 
-    @FXML
-    void set_generatrix(ActionEvent event) {
-        Generatrix_Radius_Data radius_data = Generatrix_Radius_Data.getInstance();
+    Separator init_separator(Radius radius){
+        Separator separator;
+        double step = Float.parseFloat(separation_step_field.getText());
+        double start = radius.start;
+        double end = radius.end;
+        double length = end - start;
 
-        Points_List_Data data = Points_List_Data.getInstance();
+        if(ox_separation_radio.isSelected()){
+            int num_of_seps = Math.round((float)(length/step));
+            separator = new Even_Separator(radius,num_of_seps);
+        }
+        else if(arc_separation_radio.isSelected()){
+            Cartesian_Arclenght_Calculator calc = new Cartesian_Arclenght_Calculator(radius);
+            double arc = calc.calculate_arclenght_precisely(start,end,0.001);
+            int num_of_seps = Math.round((float)(arc/step));
 
+            separator = new Arclength_Separator(radius,calc,num_of_seps);
+        }
+        else if(arithm_separation_radio.isSelected()){
 
+            Cartesian_Arclenght_Calculator calc = new Cartesian_Arclenght_Calculator(radius);
+            double arc = calc.calculate_arclenght_precisely(start,end,0.001);
+            double free_term = 2*arc/step;
+            int num_of_seps = Math.round((float)((Math.sqrt(1 + 4 * free_term) - 1)/2 ));
+
+            separator = new Arithmetic_Separator(radius,calc,num_of_seps);
+        }
+        else{
+            common_ratio_field.setEditable(true);
+            double common_ratio = Float.parseFloat(common_ratio_field.getText());
+
+            Cartesian_Arclenght_Calculator calc = new Cartesian_Arclenght_Calculator(radius);
+            double arc = calc.calculate_arclenght_precisely(start,end,0.001);
+
+            double free_term = (common_ratio - 1) * arc/step;
+            int num_of_seps = Math.round((float)(Math.log(1 + free_term)/Math.log(common_ratio)));
+
+            separator = new Arithmetic_Separator(radius,calc,num_of_seps);
+
+        }
+
+        return separator;
+    }
+
+    Radius init_radius(Points_List_Data data){
         double left_slope = Math.tan((Math.PI/180)*Float.parseFloat(left_slope_field.getText()));
         double right_slope = Math.tan((Math.PI/180)*Float.parseFloat(right_slope_field.getText()));
 
@@ -173,28 +221,18 @@ public class CubicSplineController {
         for(Flat_Point p : data.points){
             buf_list.add(new Flat_Point(p));
         }
-        radius_data.radius = new Cubic_Spline_Radius(buf_list,left_slope,right_slope);
+
+        return new Cubic_Spline_Radius(buf_list, left_slope, right_slope);
+    }
+
+    @FXML
+    void set_generatrix(ActionEvent event) {
+        Generatrix_Radius_Data radius_data = Generatrix_Radius_Data.getInstance();
+        Points_List_Data data = Points_List_Data.getInstance();
 
 
-
-
-        double step = Float.parseFloat(separation_step_field.getText());
-        double start = radius_data.radius.start;
-        double end = radius_data.radius.end;
-        double length = end - start;
-
-
-        if(ox_separation_radio.isSelected()){
-            int num_of_seps = Math.round((float)(length/step));
-            radius_data.separator = new Even_Separator(radius_data.radius,num_of_seps);
-        }
-        else{
-            Cartesian_Arclenght_Calculator calc = new Cartesian_Arclenght_Calculator(radius_data.radius);
-            double arc = calc.calculate_arclenght_precisely(start,end,0.001);
-            int num_of_seps = Math.round((float)(arc/step));
-
-            radius_data.separator = new Arclength_Separator(radius_data.radius,calc,num_of_seps);
-        }
+        radius_data.radius = init_radius(data);
+        radius_data.separator = init_separator(radius_data.radius);
 
         show_graph(radius_data);
     }
@@ -205,5 +243,9 @@ public class CubicSplineController {
         drawer.draw_radius(data.radius, data.separator, "resources/cubic_spline_graph");
         Image img = new Image(new File("./resources/cubic_spline_graph.PNG").toURI().toString());
         graph_pane.getChildren().add(new ImageView(img));
+    }
+
+    public void enable_common_ratio(ActionEvent event) {
+        common_ratio_field.setDisable(!geom_separation_radio.isSelected());
     }
 }

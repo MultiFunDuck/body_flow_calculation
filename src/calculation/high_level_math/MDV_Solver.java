@@ -31,7 +31,7 @@ public class MDV_Solver {
             for(int j = 0; j < panels.get(0).size(); j++){
                 ArrayList<Double> subArray = new ArrayList<Double>();
 
-                for(int k = 0; k < panels.size(); k++){
+                for(int k = 0; k < panels.size() - 1; k++){
                     for(int l = 0; l < panels.get(0).size(); l++){
 
                         subArray.add(o.scalar_mul(unit_circulation(panels.get(i).get(j).middle,
@@ -42,31 +42,31 @@ public class MDV_Solver {
                     }
                 }
 
-//                int last = panels.size() - 1;
-//                Panel last_one_example = panels.get(last).get(0);
-//
-//                if(last_one_example.get_3rd_p().isEqual(last_one_example.get_4th_p())){
-//
-//                    for(int l = 0; l < panels.get(0).size(); l++){
-//
-//                        subArray.add(o.scalar_mul(unit_circulation(panels.get(i).get(j).middle,
-//                                panels.get(last).get(l))
-//                                ,panels.get(i).get(j).normal));
-//
-//
-//                    }
-//
-//                }
-//                else{
-//                    for(int l = 0; l < panels.get(0).size(); l++){
-//
-//                        subArray.add(o.scalar_mul(inf_unit_circulation(panels.get(i).get(j).middle,
-//                                panels.get(last).get(l))
-//                                ,panels.get(i).get(j).normal));
-//
-//
-//                    }
-//                }
+                int last = panels.size() - 1;
+                Panel last_one_example = panels.get(last).get(0);
+
+                if(last_one_example.get_3rd_p().isEqual(last_one_example.get_4th_p())){
+
+                    for(int l = 0; l < panels.get(0).size(); l++){
+
+                        subArray.add(o.scalar_mul(unit_circulation(panels.get(i).get(j).middle,
+                                panels.get(last).get(l))
+                                ,panels.get(i).get(j).normal));
+
+
+                    }
+
+                }
+                else{
+                    for(int l = 0; l < panels.get(0).size(); l++){
+
+                        subArray.add(o.scalar_mul(inf_unit_circulation(panels.get(i).get(j).middle,
+                                panels.get(last).get(l))
+                                ,panels.get(i).get(j).normal));
+
+
+                    }
+                }
 
                 subArray.set((subArray.size()-1),subArray.get(subArray.size()-1) + 1);  //Добавление еденичного столбца к последнему для избежания вырожденности
 

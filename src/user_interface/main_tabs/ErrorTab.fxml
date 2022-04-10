@@ -45,34 +45,44 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user_interface.controllers.EllipseController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user_interface.generatrix_controllers.FrontAugiveController">
   <tabs>
-    <Tab text="Эллиптическая форма">
+    <Tab text="Передне-оживальная часть">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #C3C3C3;">
                <children>
-                  <Pane fx:id="graph_pane" layoutX="368.0" layoutY="74.0" prefHeight="380.0" prefWidth="500.0" style="-fx-background-color: #EAEAEA;" AnchorPane.leftAnchor="368.0" AnchorPane.topAnchor="74.0" />
-                  <Label layoutX="368.0" layoutY="31.0" prefHeight="27.0" prefWidth="213.0" style="-fx-background-color: #EAEAEA;" text="   График формы" />
-                  <GridPane layoutX="26.0" layoutY="74.0" prefHeight="277.0" prefWidth="307.0" style="-fx-background-color: #EAEAEA;">
+                  <Pane layoutX="368.0" layoutY="74.0" prefHeight="382.0" prefWidth="518.0" style="-fx-background-color: #EAEAEA;" />
+                  <Label layoutX="368.0" layoutY="31.0" prefHeight="27.0" prefWidth="221.0" style="-fx-background-color: #EAEAEA;" text="   График образующей" />
+                  <GridPane layoutX="26.0" layoutY="74.0" prefHeight="308.0" prefWidth="307.0" style="-fx-background-color: #EAEAEA;">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
-                           <children>
-                              <TextField fx:id="big_axis_field" layoutX="9.0" layoutY="26.0" prefHeight="25.0" prefWidth="136.0" text="1.5" />
-                           </children>
-                        </Pane>
                         <Pane prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <Label layoutX="14.0" layoutY="21.0" prefHeight="27.0" prefWidth="133.0" style="-fx-background-color: #EAEAEA;" text="Большая полуось - a" />
+                              <Label layoutX="14.0" layoutY="21.0" prefHeight="27.0" prefWidth="65.0" style="-fx-background-color: #EAEAEA;" text="Длина" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                           <children>
+                              <TextField fx:id="lenght_field" layoutX="9.0" layoutY="26.0" prefHeight="25.0" prefWidth="136.0" text="1" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <children>
+                              <TextField fx:id="diameter_field" layoutX="9.0" layoutY="26.0" prefHeight="25.0" prefWidth="136.0" text="1" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                           <children>
+                              <Label layoutX="14.0" layoutY="21.0" prefHeight="27.0" prefWidth="72.0" style="-fx-background-color: #EAEAEA;" text="Диаметр" />
                            </children>
                         </Pane>
                         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
@@ -92,28 +102,18 @@
                         </Pane>
                         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
                            <children>
-                              <Label layoutX="7.0" layoutY="25.0" prefHeight="27.0" prefWidth="133.0" style="-fx-background-color: #EAEAEA;" text="Количество разбиений" />
+                              <Label layoutX="7.0" layoutY="25.0" prefHeight="27.0" prefWidth="125.0" style="-fx-background-color: #EAEAEA;" text="Шаг разбиения" />
                            </children>
                         </Pane>
                         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <children>
-                              <TextField fx:id="separation_num_field" layoutX="9.0" layoutY="26.0" prefHeight="25.0" prefWidth="136.0" text="16" />
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
-                           <children>
-                              <Label layoutX="11.0" layoutY="18.0" prefHeight="27.0" prefWidth="133.0" style="-fx-background-color: #EAEAEA;" text="Малая полуось - b" />
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <children>
-                              <TextField fx:id="small_axis_field" layoutX="9.0" layoutY="19.0" prefHeight="25.0" prefWidth="136.0" text="1" />
+                              <TextField fx:id="separation_step_field" layoutX="9.0" layoutY="26.0" prefHeight="25.0" prefWidth="136.0" text="0.1" />
                            </children>
                         </Pane>
                      </children>
                   </GridPane>
-                  <Label layoutX="26.0" layoutY="31.0" prefHeight="27.0" prefWidth="218.0" style="-fx-background-color: #EAEAEA;" text="   Параметры формы" />
-                  <Button fx:id="set_generatrix_button" layoutX="26.0" layoutY="456.0" mnemonicParsing="false" onAction="#set_generatrix" prefHeight="63.0" prefWidth="170.0" text="Задать форму" />
+                  <Label layoutX="26.0" layoutY="31.0" prefHeight="27.0" prefWidth="218.0" style="-fx-background-color: #EAEAEA;" text="   Параметры образующей" />
+                  <Button fx:id="set_generatrix_button" layoutX="26.0" layoutY="456.0" mnemonicParsing="false" onAction="#set_generatrix" prefHeight="63.0" prefWidth="170.0" text="Задать образующую" />
                </children></AnchorPane>
       </content>
     </Tab>

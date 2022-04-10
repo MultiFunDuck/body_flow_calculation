@@ -1,4 +1,4 @@
-package user_interface.controllers;
+package user_interface.main_controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

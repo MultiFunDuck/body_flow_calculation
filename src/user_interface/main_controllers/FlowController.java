@@ -1,4 +1,4 @@
-package user_interface.controllers;
+package user_interface.main_controllers;
 
 import calculation.grid_builder.ChangeAble_Body;
 import calculation.grid_builder.Grid;
@@ -82,7 +82,7 @@ public class FlowController {
     void draw_generatrix(int num_of_parts) {
         Body_Data body_data = Body_Data.getInstance();
         Line_Graph_Drawer drawer = new Line_Graph_Drawer(600,450);
-        drawer.draw_full_generatix(body_data.parts.subList(0,num_of_parts), "resources/generatrix_graph");
+        drawer.draw_full_generatix(body_data.parts.subList(0,num_of_parts), "./resources/generatrix_graph");
         Image img = new Image(new File("./resources/generatrix_graph.PNG").toURI().toString());
         graph_pane.getChildren().add(new ImageView(img));
     }
@@ -105,7 +105,7 @@ public class FlowController {
         Grid grid = body.get_Grid();
 
         grid.write_down_data(V_inf, calc_data.inner_pressure, calc_data.inner_density);
-        grid.to_File_with_data("resources/grid_with_data.txt");
+        grid.to_File_with_data("./resources/grid_with_data.txt");
 
     }
 

@@ -1,17 +1,14 @@
-package user_interface.controllers;
+package user_interface.generatrix_controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import math.arclenght.Cartesian_Arclenght_Calculator;
-import math.separator.Arclength_Separator;
+import math.math_primitives.Radius;
 import math.separator.Even_Separator;
+import math.separator.Separator;
 import radiis.generatrix_radius.Cylinder_Radius;
 import user_interface.data_classes.Body_Data;
 import user_interface.data_classes.Generatrix_Radius_Data;
@@ -21,8 +18,6 @@ import java.io.File;
 
 public class CylinderController {
 
-    @FXML
-    private RadioButton arc_separation_radio;
 
     @FXML
     private TextField diameter_field;
@@ -34,20 +29,19 @@ public class CylinderController {
     private TextField lenght_field;
 
     @FXML
-    private RadioButton ox_separation_radio;
-
-    @FXML
     private TextField separation_step_field;
 
-    @FXML
-    private ToggleGroup separation_type;
 
 
-    @FXML
-    void set_generatrix(ActionEvent event) {
-        Generatrix_Radius_Data radius_data = Generatrix_Radius_Data.getInstance();
-        Body_Data body_data = Body_Data.getInstance();
+    Separator init_separator(Radius radius){
 
+        double step = Float.parseFloat(separation_step_field.getText());
+        int num_of_seps = Math.round((float)(radius.length/step));
+
+        return new Even_Separator(radius,num_of_seps);
+    }
+
+    Radius init_radius(Body_Data body_data){
         double start = 0;
         double length = Float.parseFloat(lenght_field.getText());
 
@@ -60,26 +54,17 @@ public class CylinderController {
         double end = start + length;
         double diameter = Float.parseFloat(diameter_field.getText());
 
-        radius_data.radius = new Cylinder_Radius(start,end,diameter);
 
+        return new Cylinder_Radius(start,end,diameter);
+    }
 
+    @FXML
+    void set_generatrix(ActionEvent event) {
+        Generatrix_Radius_Data radius_data = Generatrix_Radius_Data.getInstance();
+        Body_Data body_data = Body_Data.getInstance();
 
-
-        double step = Float.parseFloat(separation_step_field.getText());
-
-        if(ox_separation_radio.isSelected()){
-            int num_of_seps = Math.round((float)(length/step));
-            radius_data.separator = new Even_Separator(radius_data.radius,num_of_seps);
-        }
-        else{
-            Cartesian_Arclenght_Calculator calc = new Cartesian_Arclenght_Calculator(radius_data.radius);
-            double arc = calc.calculate_arclenght_precisely(start,end,0.001);
-            int num_of_seps = Math.round((float)(arc/step));
-
-            radius_data.separator = new Arclength_Separator(radius_data.radius,calc,num_of_seps);
-        }
-
-
+        radius_data.radius = init_radius(body_data);
+        radius_data.separator = init_separator(radius_data.radius);
 
         show_graph(radius_data);
     }
