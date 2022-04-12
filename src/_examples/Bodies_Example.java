@@ -88,7 +88,7 @@ public class Bodies_Example {
         body.add_part(middle_cos_part);
         body.add_part(back_part);
         body.init_Grid();
-        body.get_Grid().to_File(body_parts_storage + "/simple_body.txt");
+        body.get_Grid().to_File(body_parts_storage + "/simple_body.mv");
 
         return body;
     }
@@ -152,7 +152,7 @@ public class Bodies_Example {
         body.add_part(_4BP);
 
         body.init_Grid();
-        body.get_Grid().to_File(body_parts_storage + "/spline_body.txt");
+        body.get_Grid().to_File(body_parts_storage + "/spline_body.mv");
 
         return body;
     }
@@ -205,7 +205,7 @@ public class Bodies_Example {
 
         body.init_Grid();
         body.curve_tail(2,30*Math.PI/180);
-        body.get_Grid().to_File(body_parts_storage + "/curved_body.txt");
+        body.get_Grid().to_File(body_parts_storage + "/curved_body.mv");
 
         return body;
 
@@ -269,7 +269,7 @@ public class Bodies_Example {
         body.add_part(_4BP);
 
         body.init_Grid();
-        body.get_Grid().to_File(body_parts_storage + "/elliptic_body.txt");
+        body.get_Grid().to_File(body_parts_storage + "/elliptic_body.mv");
 
         return body;
 
@@ -363,7 +363,7 @@ public class Bodies_Example {
         body.add_part(_4BP);
 
         body.init_Grid();
-        body.get_Grid().to_File(body_parts_storage + "/tapering_body.txt");
+        body.get_Grid().to_File(body_parts_storage + "/tapering_body.mv");
 
         return body;
     }
