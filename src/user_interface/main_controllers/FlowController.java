@@ -75,7 +75,7 @@ public class FlowController {
         }
 
         Grid grid = body.get_Grid();
-        grid.to_File("resources/grid_for_calculation.txt");
+        grid.to_File("resources/grid_for_calculation.mv");
     }
 
 
@@ -105,7 +105,7 @@ public class FlowController {
         Grid grid = body.get_Grid();
 
         grid.write_down_data(V_inf, calc_data.inner_pressure, calc_data.inner_density);
-        grid.to_File_with_data("./resources/grid_with_data.txt");
+        grid.to_File_with_data("./resources/grid_with_data.mv");
 
     }
 

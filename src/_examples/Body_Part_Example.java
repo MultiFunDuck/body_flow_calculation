@@ -53,7 +53,7 @@ public class Body_Part_Example {
         ChangeAble_Body body = new ChangeAble_Body();
         body.add_part(part);
         body.init_Grid();
-        body.get_Grid().to_File(body_parts_storage + "/front_aug_body.txt");
+        body.get_Grid().to_File(body_parts_storage + "/front_aug_body.mv");
     }
 
     public void back_aug_body_example(){
@@ -71,7 +71,7 @@ public class Body_Part_Example {
         ChangeAble_Body body = new ChangeAble_Body();
         body.add_part(part);
         body.init_Grid();
-        body.get_Grid().to_File(body_parts_storage + "/back_aug_body.txt");
+        body.get_Grid().to_File(body_parts_storage + "/back_aug_body.mv");
 
     }
 
@@ -89,7 +89,7 @@ public class Body_Part_Example {
         ChangeAble_Body body = new ChangeAble_Body();
         body.add_part(part);
         body.init_Grid();
-        body.get_Grid().to_File(body_parts_storage + "/cylinder_body.txt");
+        body.get_Grid().to_File(body_parts_storage + "/cylinder_body.mv");
 
 
     }
@@ -108,7 +108,7 @@ public class Body_Part_Example {
         ChangeAble_Body body = new ChangeAble_Body();
         body.add_part(part);
         body.init_Grid();
-        body.get_Grid().to_File(body_parts_storage + "/cosine_body.txt");
+        body.get_Grid().to_File(body_parts_storage + "/cosine_body.mv");
     }
 
 
@@ -133,6 +133,6 @@ public class Body_Part_Example {
         ChangeAble_Body body = new ChangeAble_Body();
         body.add_part(part);
         body.init_Grid();
-        body.get_Grid().to_File(body_parts_storage + "/smoother_spline_body.txt");
+        body.get_Grid().to_File(body_parts_storage + "/smoother_spline_body.mv");
     }
 }

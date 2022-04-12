@@ -75,7 +75,7 @@ public class Calculation_Example {
 
         Ch_body.init_Grid();
         Grid grid = Ch_body.get_Grid();
-        grid.to_File(storage +"/simple_body_grid.txt");
+        grid.to_File(storage +"/simple_body_grid.mv");
 
 
 
@@ -84,7 +84,7 @@ public class Calculation_Example {
         double inner_density = 1.0;
 
         grid.write_down_data(V_inf,inner_pressure,inner_density);
-        grid.to_File_with_data(storage + "/simple_body_grid_with_data.txt");
+        grid.to_File_with_data(storage + "/simple_body_grid_with_data.mv");
 
 
         int window_width = 1200;
@@ -145,13 +145,13 @@ public class Calculation_Example {
         Ch_body.init_Grid();
         Ch_body.curve_tail(2,angle);
         Grid grid = Ch_body.get_Grid();
-        grid.to_File(storage + "/curved_body_grid.txt");
+        grid.to_File(storage + "/curved_body_grid.mv");
 
         Vector V_inf = new Vector(1*Math.cos(angle),0,Math.sin(angle));
         double inner_pressure = 1.0;
         double inner_density = 1.0;
         grid.write_down_data(V_inf,inner_pressure,inner_density);
-        grid.to_File_with_data(storage + "/curved_body_grid_with_data.txt");
+        grid.to_File_with_data(storage + "/curved_body_grid_with_data.mv");
 
 
 
