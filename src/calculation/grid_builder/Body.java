@@ -11,7 +11,7 @@ public class Body {
 
 
     List<Body_Part> Parts;
-    Grid grid;
+    public Grid grid;
 
     public void add_part(Body_Part part){
         if(Parts == null){

@@ -2,7 +2,8 @@ package math.math_primitives;
 
 public class Vector {
 
-    double x,y,z;
+
+    public double x,y,z;
 
     public Vector(Vector v){
         this.x = v.x;

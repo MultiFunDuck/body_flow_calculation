@@ -60,7 +60,7 @@ public class FlowController {
         calc_data.attack_angle = Float.parseFloat(attack_angle_field.getText());
         calc_data.flow_velocity = Float.parseFloat(flow_velocity_field.getText());
         calc_data.inner_density = Float.parseFloat(inner_density_field.getText());
-        calc_data.inner_pressure = Float.parseFloat(attack_angle_field.getText());
+        calc_data.inner_pressure = Float.parseFloat(inner_pressure_field.getText());
         calc_data.main_parts_num = Integer.parseInt(main_body_parts_num_field.getText());
         calc_data.reynolds_num = Float.parseFloat(reynolds_num_field.getText());
 
@@ -75,15 +75,15 @@ public class FlowController {
         }
 
         Grid grid = body.get_Grid();
-        grid.to_File("resources/grid_for_calculation.txt");
+        grid.to_File("_results_on_grid/grid_for_calculation.mv");
     }
 
 
     void draw_generatrix(int num_of_parts) {
         Body_Data body_data = Body_Data.getInstance();
         Line_Graph_Drawer drawer = new Line_Graph_Drawer(600,450);
-        drawer.draw_full_generatix(body_data.parts.subList(0,num_of_parts), "./resources/generatrix_graph");
-        Image img = new Image(new File("./resources/generatrix_graph.PNG").toURI().toString());
+        drawer.draw_full_generatix(body_data.parts.subList(0,num_of_parts), "./_resources/generatrix_graph");
+        Image img = new Image(new File("./_resources/generatrix_graph.PNG").toURI().toString());
         graph_pane.getChildren().add(new ImageView(img));
     }
 
@@ -105,7 +105,7 @@ public class FlowController {
         Grid grid = body.get_Grid();
 
         grid.write_down_data(V_inf, calc_data.inner_pressure, calc_data.inner_density);
-        grid.to_File_with_data("./resources/grid_with_data.txt");
+        grid.to_File_with_data("./_results_on_grid/grid_with_data.mv");
 
     }
 

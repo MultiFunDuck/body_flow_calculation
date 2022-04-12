@@ -15,12 +15,29 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        init_examples();
 
-        File folder = new File("resources");
-        if (!folder.exists()) {
-            folder.mkdir();
+
+        File resources = new File("_resources");
+        if (!resources.exists()) {
+            resources.mkdir();
         }
+
+        File results_on_grid = new File("_results_on_grid");
+        if (!results_on_grid.exists()) {
+            results_on_grid.mkdir();
+        }
+
+        File graphs_of_results = new File("_graphs_of_results");
+        if (!graphs_of_results.exists()) {
+            graphs_of_results.mkdir();
+        }
+
+        File examples = new File("_examples");
+        if (!examples.exists()) {
+            examples.mkdir();
+        }
+
+        //init_examples();
 
         Parent root = FXMLLoader.load(getClass().getResource("../user_interface/main_tabs/sample.fxml"));
         primaryStage.setTitle("Расчёт обтекания тела");
@@ -35,19 +52,19 @@ public class Main extends Application {
     public void init_examples(){
 
 
-        Radiis_Example example = new Radiis_Example("_radii's_example");
+        Radiis_Example example = new Radiis_Example("_examples/_radii's_example");
         example.run_example();
 
-        Body_Part_Example example1 = new Body_Part_Example("_body_parts_example");
+        Body_Part_Example example1 = new Body_Part_Example("_examples/_body_parts_example");
         example1.run_example();
 
-        Bodies_Example example2 = new Bodies_Example("_bodies_example");
+        Bodies_Example example2 = new Bodies_Example("_examples/_bodies_example");
         example2.run_example();
 
-        Calculation_Example example3 = new Calculation_Example("_calculation_example");
+        Calculation_Example example3 = new Calculation_Example("_examples/_calculation_example");
         example3.run_example();
 
-        Separation_Example example4 = new Separation_Example("_separation_example");
+        Separation_Example example4 = new Separation_Example("_examples/_separation_example");
         example4.run_example();
     }
 

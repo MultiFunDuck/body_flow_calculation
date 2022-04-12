@@ -23,20 +23,6 @@ public class Velocity_Calculator {
 
 
 
-    public Vector calculate_flow_velocity(Panel mid, Panel front, Panel back, Panel left, Panel right){
-
-        Vector circ_velocity_part = calculate_circular_velocity_part(mid);
-
-        Vector tau_part  = calculate_tau_velocity_part(mid,front,back,left,right);
-
-
-        Vector flow_velocity = o.sum(V_inf,circ_velocity_part);
-        flow_velocity = o.sum(flow_velocity,tau_part);
-
-
-        return flow_velocity;
-
-    }
 
     public Vector calculate_tau_velocity_part(Panel mid, Panel front, Panel back, Panel left, Panel right){
 

@@ -73,8 +73,8 @@ public class CylinderController {
 
 
         Line_Graph_Drawer drawer = new Line_Graph_Drawer(480,360);
-        drawer.draw_radius(data.radius, data.separator, "resources/cylinder_graph");
-        Image img = new Image(new File("./resources/cylinder_graph.PNG").toURI().toString());
+        drawer.draw_radius(data.radius, data.separator, "_resources/cylinder_graph");
+        Image img = new Image(new File("./_resources/cylinder_graph.PNG").toURI().toString());
         graph_pane.getChildren().add(new ImageView(img));
 
     }

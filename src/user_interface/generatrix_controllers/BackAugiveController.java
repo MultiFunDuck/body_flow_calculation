@@ -9,10 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import math.arclenght.Cartesian_Arclenght_Calculator;
 import math.math_primitives.Radius;
-import math.separator.Arclength_Separator;
-import math.separator.Arithmetic_Separator;
-import math.separator.Even_Separator;
-import math.separator.Separator;
+import math.separator.*;
 import radiis.generatrix_radius.Back_Augive_Radius;
 import user_interface.data_classes.Body_Data;
 import user_interface.data_classes.Generatrix_Radius_Data;
@@ -91,7 +88,7 @@ public class BackAugiveController {
             double free_term = (common_ratio - 1) * arc/step;
             int num_of_seps = Math.round((float)(Math.log(1 + free_term)/Math.log(common_ratio)));
 
-            separator = new Arithmetic_Separator(radius,calc,num_of_seps);
+            separator = new Geometric_Separator(radius,calc,num_of_seps, common_ratio);
 
         }
 
@@ -132,8 +129,8 @@ public class BackAugiveController {
 
 
         Line_Graph_Drawer drawer = new Line_Graph_Drawer(480,360);
-        drawer.draw_radius(data.radius, data.separator, "resources/back_augive_graph");
-        Image img = new Image(new File("./resources/back_augive_graph.PNG").toURI().toString());
+        drawer.draw_radius(data.radius, data.separator, "_resources/back_augive_graph");
+        Image img = new Image(new File("./_resources/back_augive_graph.PNG").toURI().toString());
         graph_pane.getChildren().add(new ImageView(img));
 
     }

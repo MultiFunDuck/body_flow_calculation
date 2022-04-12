@@ -18,9 +18,9 @@
                   <fx:include fx:id="mFlowTab" source="FlowTab.fxml" />
               </content>
             </Tab>
-          <Tab fx:id="GridTab" text="Результаты расчёта">
+          <Tab fx:id="ResultsTab" text="Результаты расчёта">
                <content>
-                  <fx:include fx:id="mGridTab" source="GridTab.fxml" />
+                  <fx:include fx:id="mResultsTab" source="ResultsTab.fxml" />
                </content>
           </Tab>
         </tabs>

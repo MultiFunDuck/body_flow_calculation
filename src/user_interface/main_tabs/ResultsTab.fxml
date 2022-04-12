@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane prefHeight="751.0" prefWidth="1202.0" style="-fx-background-color: #C3C3C3;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user_interface.main_controllers.ResultsController">
+<children>
+      <Label fx:id="result_generatrix_label" layoutX="254.0" layoutY="34.0" prefHeight="25.0" prefWidth="232.0" style="-fx-background-color: EAEAEA;" text="   График выборки" AnchorPane.leftAnchor="254.0" AnchorPane.topAnchor="34.0" />
+      <Pane layoutX="254.0" layoutY="79.0" prefHeight="592.0" prefWidth="838.0" style="-fx-background-color: EAEAEA;" AnchorPane.bottomAnchor="79.0" AnchorPane.leftAnchor="254.0">
+         <children>
+            <Pane fx:id="graph_pane" layoutX="11.0" layoutY="12.0" prefHeight="560.0" prefWidth="800.0" style="-fx-background-color: EAEAEA;" />
+         </children>
+      </Pane>
+      <ChoiceBox fx:id="data_choicebox" layoutX="14.0" layoutY="312.0" prefHeight="26.0" prefWidth="154.0" AnchorPane.bottomAnchor="412.0" AnchorPane.leftAnchor="14.0" />
+      <Label fx:id="deleting_part_num_label1" layoutX="14.0" layoutY="197.0" prefHeight="25.0" prefWidth="154.0" style="-fx-background-color: #EAEAEA;" text="   Номер образующей" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="197.0" />
+      <Label fx:id="deleting_part_num_label11" layoutX="14.0" layoutY="276.0" prefHeight="25.0" prefWidth="154.0" style="-fx-background-color: #EAEAEA;" text="   Данные выборки" />
+      <Button fx:id="draw_graph_button" layoutX="14.0" layoutY="79.0" mnemonicParsing="false" onAction="#draw_graph" prefHeight="99.0" prefWidth="193.0" text="Отобразить график" />
+      <TextField fx:id="angle_num_field" layoutX="14.0" layoutY="230.0" prefHeight="26.0" prefWidth="154.0" text="0" />
+</children>
+</AnchorPane>

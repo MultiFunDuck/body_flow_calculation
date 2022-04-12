@@ -13,9 +13,7 @@ import javafx.scene.layout.Pane;
 import math.arclenght.Cartesian_Arclenght_Calculator;
 import math.math_primitives.Flat_Point;
 import math.math_primitives.Radius;
-import math.separator.Arclength_Separator;
-import math.separator.Arithmetic_Separator;
-import math.separator.Even_Separator;
+import math.separator.*;
 import math.separator.Separator;
 import radiis.generatrix_radius.Smoothed_Cubic_Spline_Radius;
 import user_interface.data_classes.Generatrix_Radius_Data;
@@ -208,7 +206,7 @@ public class SmoothedCubicSplineController {
             double free_term = (common_ratio - 1) * arc/step;
             int num_of_seps = Math.round((float)(Math.log(1 + free_term)/Math.log(common_ratio)));
 
-            separator = new Arithmetic_Separator(radius,calc,num_of_seps);
+            separator = new Geometric_Separator(radius,calc,num_of_seps, common_ratio);
 
         }
 
@@ -243,8 +241,8 @@ public class SmoothedCubicSplineController {
 
     void show_graph(Generatrix_Radius_Data data) {
         Line_Graph_Drawer drawer = new Line_Graph_Drawer(480,360);
-        drawer.draw_radius(data.radius, data.separator, "resources/cubic_spline_graph");
-        Image img = new Image(new File("./resources/cubic_spline_graph.PNG").toURI().toString());
+        drawer.draw_radius(data.radius, data.separator, "_resources/cubic_spline_graph");
+        Image img = new Image(new File("./_resources/cubic_spline_graph.PNG").toURI().toString());
         graph_pane.getChildren().add(new ImageView(img));
     }
 

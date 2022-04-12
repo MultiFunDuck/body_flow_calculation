@@ -4,6 +4,7 @@ package calculation.grid_builder;
 import calculation.high_level_math.Pressure_Calculator;
 import calculation.high_level_math.MDV_Solver;
 import calculation.high_level_math.Velocity_Calculator;
+import math.math_primitives.Operator;
 import math.math_primitives.Panel;
 import math.math_primitives.Point;
 import math.math_primitives.Vector;
@@ -87,7 +88,15 @@ public class Grid {
             }
 
             fileWriter.write("\n");
-            fileWriter.write(this.panels.size()*this.panels.get(0).size() + " 4 8 Gamma V.x V.y V.z V.n |V| P Cp\n");
+            fileWriter.write(this.panels.size()*this.panels.get(0).size() + " 4 29 Gamma V.n " +
+                    "V.x V.y V.z |V| " +
+                    "Tau_V.x Tau_V.y Tau_V.z |Tau_V| " +
+                    "Gamma_V.x Gamma_V.y Gamma_V.z |Gamma_V| " +
+                    "V0.x V0.y V0.z |V0| " +
+                    "V+.x V+.y V+.z |V+| " +
+                    "V-.x V-.y V-.z |V-| " +
+                    "Cp Cp+ Cp- P\n");
+
             for(int i = 0; i < this.panels.size(); i++){
                 for(int j = 0; j < this.panels.get(0).size(); j++){
                     fileWriter.write(this.panels.get(i).get(j).panelWithDataToFile());
@@ -111,7 +120,9 @@ public class Grid {
 
         write_gamma_to_panels(solver.calculate_gammas());
 
-        write_flow_velocity_to_panels(velocity_calculator);
+        write_tau_velocity_to_panels(velocity_calculator);
+        write_circular_velocity_to_panels(velocity_calculator);
+        write_flow_velocity_to_panels(V_inf);
 
 
         write_normal_velocity_to_panels(velocity_calculator);
@@ -145,9 +156,7 @@ public class Grid {
         }
     }
 
-
-
-    public void write_flow_velocity_to_panels(Velocity_Calculator velocity_calculator){
+    public void write_tau_velocity_to_panels(Velocity_Calculator velocity_calculator){
 
         int x_length = panels.size();
         int phi_length = panels.get(0).size();
@@ -184,11 +193,35 @@ public class Grid {
                     right = panels.get(i).get(j+1);
                 }
 
-                panels.get(i).get(j).flow_velocity = velocity_calculator.calculate_flow_velocity(mid,front,back,left,right);
+                panels.get(i).get(j).tau_velocity = velocity_calculator.calculate_tau_velocity_part(mid,front,back,left,right);
 
 
             }
         }
+    }
+
+    public void write_circular_velocity_to_panels(Velocity_Calculator velocity_calculator){
+        for(int i = 0; i < panels.size(); i++){
+            for(int j = 0; j < panels.get(0).size(); j++){
+                panels.get(i).get(j)
+                        .circ_velocity = velocity_calculator
+                        .calculate_circular_velocity_part(
+                                panels.get(i).get(j)
+                        );
+            }
+        }
+    }
+
+    public void write_flow_velocity_to_panels(Vector V_inf){
+        Operator o = Operator.getInstance();
+
+        for(int i = 0; i < panels.size(); i++){
+            for(int j = 0; j < panels.get(0).size(); j++){
+                panels.get(i).get(j)
+                        .flow_velocity = o.sum(V_inf, o.sum(panels.get(i).get(j).circ_velocity , panels.get(i).get(j).tau_velocity));
+            }
+        }
+
     }
 
     public void write_normal_velocity_to_panels(Velocity_Calculator velocity_calculator){
@@ -233,6 +266,7 @@ public class Grid {
 
     }
 
+
     public void write_dimless_pressure_to_panels(Pressure_Calculator pressure_calculator, Vector V_inf){
         for(int i = 0; i < panels.size(); i++){
             for(int j = 0; j < panels.get(0).size(); j++){
@@ -242,6 +276,11 @@ public class Grid {
             }
         }
     }
+
+
+
+
+
 }
 
 

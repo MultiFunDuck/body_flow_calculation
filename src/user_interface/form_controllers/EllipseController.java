@@ -77,8 +77,8 @@ public class EllipseController {
     public void show_graph(Angular_Radius_Data data){
 
         Line_Graph_Drawer drawer = new Line_Graph_Drawer(480,360);
-        drawer.draw_polar_radius(data.radius, data.separator, "resources/ellipse_graph");
-        Image img = new Image(new File("./resources/ellipse_graph.PNG").toURI().toString());
+        drawer.draw_polar_radius(data.radius, data.separator, "_resources/ellipse_graph");
+        Image img = new Image(new File("./_resources/ellipse_graph.PNG").toURI().toString());
         graph_pane.getChildren().add(new ImageView(img));
 
     }

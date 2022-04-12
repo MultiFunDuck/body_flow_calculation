@@ -18,7 +18,7 @@ public class Panel {
 
 
     public double normal_velocity, velocity_module, pressure, dimless_pressure, gamma;
-    public Vector flow_velocity;
+    public Vector circ_velocity, tau_velocity, flow_velocity;
 
     public Panel(List<Point> points) {
         this.points = points;
@@ -59,20 +59,59 @@ public class Panel {
     }
 
     public String panelWithDataToFile(){
+        Operator o = Operator.getInstance();
+        Vector V0 = o.diff(flow_velocity, tau_velocity);
+        Vector Vplus = o.sum(V0,tau_velocity);
+        Vector Vminus = o.diff(V0,tau_velocity);
+
         NumberFormat formatter = new DecimalFormat("#0.00000000");
         return this.hash
                 + " " + this.points.get(0).hash
                 + " " + this.points.get(1).hash
                 + " " + this.points.get(2).hash
                 + " " + this.points.get(3).hash
-                + " " + formatter.format(this.gamma)
-                + " " + formatter.format(this.flow_velocity.x)
-                + " " + formatter.format(this.flow_velocity.y)
-                + " " + formatter.format(this.flow_velocity.z)
-                + " " + formatter.format(this.normal_velocity)
-                + " " + formatter.format(this.velocity_module)
-                + " " + formatter.format(this.pressure)
+                + " " + formatter.format(gamma)
+                + " " + formatter.format(normal_velocity)
+
+
+                + " " + formatter.format(flow_velocity.x)
+                + " " + formatter.format(flow_velocity.z)
+                + " " + formatter.format(flow_velocity.y)
+                + " " + formatter.format(velocity_module)
+
+                + " " + formatter.format(tau_velocity.x)
+                + " " + formatter.format(tau_velocity.z)
+                + " " + formatter.format(tau_velocity.y)
+                + " " + formatter.format(tau_velocity.length())
+
+                + " " + formatter.format(circ_velocity.x)
+                + " " + formatter.format(circ_velocity.z)
+                + " " + formatter.format(circ_velocity.y)
+                + " " + formatter.format(circ_velocity.length())
+
+
+                + " " + formatter.format(V0.x)
+                + " " + formatter.format(V0.z)
+                + " " + formatter.format(V0.y)
+                + " " + formatter.format(V0.length())
+
+
+                + " " + formatter.format(Vplus.x)
+                + " " + formatter.format(Vplus.z)
+                + " " + formatter.format(Vplus.y)
+                + " " + formatter.format(Vplus.length())
+
+
+                + " " + formatter.format(Vminus.x)
+                + " " + formatter.format(Vminus.z)
+                + " " + formatter.format(Vminus.y)
+                + " " + formatter.format(Vminus.length())
+
+
                 + " " + formatter.format(this.dimless_pressure)
+                + " " + formatter.format(this.dimless_pressure)
+                + " " + formatter.format(1 - (1-dimless_pressure) * Vminus.length()*Vminus.length() / (Vplus.length()*Vplus.length()))
+                + " " + formatter.format(this.pressure)
                 + "\n";
     }
 

@@ -99,7 +99,7 @@ public class BodyController {
             }
 
             body.init_Grid();
-            body.get_Grid().to_File("resources/grid.txt");
+            body.get_Grid().to_File("_results_on_grid/grid.txt");
             body_data.body = body;
 
 
@@ -107,7 +107,7 @@ public class BodyController {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Сообщение");
             alert.setHeaderText(null);
-            alert.setContentText("Заданное тело см. в resources/grid.txt");
+            alert.setContentText("Заданное тело см. в _results_on_grid/grid.txt");
             alert.showAndWait();
         }
         else{
@@ -126,8 +126,8 @@ public class BodyController {
     void draw_generatrix(ActionEvent event) {
         Body_Data body_data = Body_Data.getInstance();
         Line_Graph_Drawer drawer = new Line_Graph_Drawer(780,450);
-        drawer.draw_full_generatix(body_data.parts, "resources/generatrix_graph");
-        Image img = new Image(new File("./resources/generatrix_graph.PNG").toURI().toString());
+        drawer.draw_full_generatix(body_data.parts, "_resources/generatrix_graph");
+        Image img = new Image(new File("./_resources/generatrix_graph.PNG").toURI().toString());
         pane_for_graph.getChildren().add(new ImageView(img));
     }
 

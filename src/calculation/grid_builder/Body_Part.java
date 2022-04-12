@@ -85,6 +85,10 @@ public class Body_Part {
         return this.ox_separator.get_separation();
     }
 
+    public List<Double> get_angle_separation(){
+        return this.angle_separator.get_separation();
+    }
+
     public double get_ox_radius(double x){
         return this.ox_radius.get_radius(x);
     }
