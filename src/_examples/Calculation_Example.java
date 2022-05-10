@@ -31,38 +31,35 @@ public class Calculation_Example {
     }
 
     public void run_example(){
+        simplest_body_calc_example();
         simple_body_calc_example();
         curved_body_calc_example();
     }
 
 
-    public void simple_body_calc_example(){
+    public void simplest_body_calc_example(){
         Radius ang_rad = new Circle_Angular_Radius();
-        Separator ang_sep = new Even_Separator(ang_rad,12);
+        Separator ang_sep = new Even_Separator(ang_rad,4);
+
 
         Radius head_rad = new Front_Augive_Radius(0,1,1);
-        Separator head_sep = new Even_Separator(head_rad,10);
+        Separator head_sep = new Even_Separator(head_rad,6);
 
         Radius cyl_rad = new Cylinder_Radius(1,2,1);
-        Separator cyl_sep = new Even_Separator(cyl_rad,10);
-
-
+        Separator cyl_sep = new Even_Separator(cyl_rad,6);
 
         Radius cosine_rad = new Cosine_Radius(2,3.5,1,0.3);
-        Separator cosine_sep = new Even_Separator(cosine_rad,15);
-
+        Separator cosine_sep = new Even_Separator(cosine_rad,9);
 
         Radius cyl2_rad = new Cylinder_Radius(3.5,4,0.3);
-        Separator cyl2_sep = new Even_Separator(cyl2_rad,15);
+        Separator cyl2_sep = new Even_Separator(cyl2_rad,3);
 
-        Radius back_rad = new Back_Augive_Radius(4,5,0.3);
-        Separator back_sep = new Even_Separator(back_rad,10);
+
 
         Body_Part head_part = new Body_Part(head_rad,head_sep,ang_rad,ang_sep);
         Body_Part cyl_part = new Body_Part(cyl_rad,cyl_sep,ang_rad,ang_sep);
         Body_Part cosine_part = new Body_Part(cosine_rad,cosine_sep,ang_rad,ang_sep);
         Body_Part cyl2_part = new Body_Part(cyl2_rad,cyl2_sep,ang_rad,ang_sep);
-        Body_Part back_part = new Body_Part(back_rad,back_sep,ang_rad,ang_sep);
 
 
         ChangeAble_Body Ch_body = new ChangeAble_Body();
@@ -70,7 +67,75 @@ public class Calculation_Example {
         Ch_body.add_part(cyl_part);
         Ch_body.add_part(cosine_part);
         Ch_body.add_part(cyl2_part);
-        //Ch_body.add_part(back_part);
+
+
+        Ch_body.init_Grid();
+        Grid grid = Ch_body.get_Grid();
+        grid.to_File(storage +"/simplest_body_grid.mv");
+
+
+
+        Vector V_inf = new Vector(1,0,0);
+        double inner_pressure = 1.0;
+        double inner_density = 1.0;
+
+        grid.write_down_data(V_inf,inner_pressure,inner_density);
+        grid.to_File_with_data(storage + "/simplest_body_grid_with_data.mv");
+
+
+        int window_width = 1200;
+        int window_length = 840;
+
+        Line_Graph_Drawer drawer = new Line_Graph_Drawer(window_width,window_length);
+
+        int size = grid.panels.size();
+
+        double[] data = new double[size];
+        double[] plots = new double[size];
+
+        for(int i = 0; i < size; i++){
+            data[i] = grid.panels.get(i).get(0).dimless_pressure;
+            plots[i] = grid.panels.get(i).get(0).middle.x;
+        }
+        XYSeries dataset =  new XYSeries("Function_Data", false,true);
+        for(int i = 0; i < data.length; i++){
+            dataset.add(data[i],plots[i]);
+        }
+
+        drawer.draw_function_graph(new XYSeriesCollection(dataset), storage + "/simplest_body_dimless_pressure_distribution");
+    }
+
+
+    public void simple_body_calc_example(){
+        Radius ang_rad = new Circle_Angular_Radius();
+        Separator ang_sep = new Even_Separator(ang_rad,12);
+
+
+        Radius head_rad = new Front_Augive_Radius(0,1,1);
+        Separator head_sep = new Even_Separator(head_rad,10);
+
+        Radius cyl_rad = new Cylinder_Radius(1,2,1);
+        Separator cyl_sep = new Even_Separator(cyl_rad,10);
+
+        Radius cosine_rad = new Cosine_Radius(2,3.5,1,0.3);
+        Separator cosine_sep = new Even_Separator(cosine_rad,15);
+
+        Radius cyl2_rad = new Cylinder_Radius(3.5,4,0.3);
+        Separator cyl2_sep = new Even_Separator(cyl2_rad,15);
+
+
+
+        Body_Part head_part = new Body_Part(head_rad,head_sep,ang_rad,ang_sep);
+        Body_Part cyl_part = new Body_Part(cyl_rad,cyl_sep,ang_rad,ang_sep);
+        Body_Part cosine_part = new Body_Part(cosine_rad,cosine_sep,ang_rad,ang_sep);
+        Body_Part cyl2_part = new Body_Part(cyl2_rad,cyl2_sep,ang_rad,ang_sep);
+
+
+        ChangeAble_Body Ch_body = new ChangeAble_Body();
+        Ch_body.add_part(head_part);
+        Ch_body.add_part(cyl_part);
+        Ch_body.add_part(cosine_part);
+        Ch_body.add_part(cyl2_part);
 
 
         Ch_body.init_Grid();
@@ -92,7 +157,7 @@ public class Calculation_Example {
 
         Line_Graph_Drawer drawer = new Line_Graph_Drawer(window_width,window_length);
 
-        int size = grid.panels.size()-35;
+        int size = grid.panels.size();
 
         double[] data = new double[size];
         double[] plots = new double[size];

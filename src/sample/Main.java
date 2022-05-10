@@ -38,10 +38,13 @@ public class Main extends Application {
         }
 
         //init_examples();
+        Calculation_Example example3 = new Calculation_Example("_examples/_calculation_example");
+        example3.simplest_body_calc_example();
+
 
         Parent root = FXMLLoader.load(getClass().getResource("../user_interface/main_tabs/sample.fxml"));
         primaryStage.setTitle("Расчёт обтекания тела");
-        primaryStage.setScene(new Scene(root, 1200, 800));
+        primaryStage.setScene(new Scene(root, 1024, 680));
         primaryStage.show();
 
     }

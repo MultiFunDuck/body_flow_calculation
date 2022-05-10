@@ -125,7 +125,7 @@ public class BodyController {
     @FXML
     void draw_generatrix(ActionEvent event) {
         Body_Data body_data = Body_Data.getInstance();
-        Line_Graph_Drawer drawer = new Line_Graph_Drawer(780,450);
+        Line_Graph_Drawer drawer = new Line_Graph_Drawer(625,375);
         drawer.draw_full_generatix(body_data.parts, "_resources/generatrix_graph");
         Image img = new Image(new File("./_resources/generatrix_graph.PNG").toURI().toString());
         pane_for_graph.getChildren().add(new ImageView(img));

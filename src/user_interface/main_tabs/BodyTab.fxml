@@ -8,29 +8,29 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="750.0" prefWidth="1200.0" style="-fx-background-color: #C3C3C3;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user_interface.main_controllers.BodyController">
+<AnchorPane prefHeight="650.0" prefWidth="1024.0" style="-fx-background-color: #C3C3C3;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user_interface.main_controllers.BodyController">
 <children>
-    <Button fx:id="init_body_button" layoutX="655.0" layoutY="576.0" mnemonicParsing="false" onAction="#init_body" prefHeight="99.0" prefWidth="249.0" text="Задать тело" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="655.0" />
-      <Button fx:id="body_part_add_button" layoutX="27.0" layoutY="669.0" mnemonicParsing="false" onAction="#add_body_part" prefHeight="38.0" prefWidth="162.0" text="Добавить часть тела" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="27.0" />
-      <ChoiceBox fx:id="generatrix_radius_box" layoutX="28.0" layoutY="625.0" prefHeight="25.0" prefWidth="161.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="28.0" />
-      <Label fx:id="result_generatrix_label" layoutX="378.0" layoutY="30.0" prefHeight="25.0" prefWidth="237.0" style="-fx-background-color: EAEAEA;" text="   График результирующей образующей" AnchorPane.leftAnchor="378.0" AnchorPane.topAnchor="30.0" />
-      <Pane layoutX="368.0" layoutY="76.0" prefHeight="482.0" prefWidth="811.0" style="-fx-background-color: EAEAEA;" AnchorPane.bottomAnchor="193.0" AnchorPane.leftAnchor="368.0">
+    <Button fx:id="init_body_button" layoutX="595.0" layoutY="450.0" mnemonicParsing="false" onAction="#init_body" prefHeight="86.0" prefWidth="206.0" text="Задать тело" />
+      <Button fx:id="body_part_add_button" layoutX="15.0" layoutY="550.0" mnemonicParsing="false" onAction="#add_body_part" prefHeight="38.0" prefWidth="154.0" text="Добавить часть тела" />
+      <ChoiceBox fx:id="generatrix_radius_box" layoutX="15.0" layoutY="506.0" prefHeight="25.0" prefWidth="154.0" />
+      <Label fx:id="result_generatrix_label" layoutX="358.0" layoutY="14.0" prefHeight="25.0" prefWidth="237.0" style="-fx-background-color: EAEAEA;" text="   График результирующей образующей" />
+      <Pane layoutX="358.0" layoutY="47.0" prefHeight="387.0" prefWidth="638.0" style="-fx-background-color: EAEAEA;">
          <children>
-            <Pane fx:id="pane_for_graph" layoutX="14.0" layoutY="14.0" prefHeight="450.0" prefWidth="780.0" style="-fx-background-color: EAEAEA;" />
+            <Pane fx:id="pane_for_graph" layoutX="7.0" layoutY="8.0" prefHeight="375.0" prefWidth="625.0" style="-fx-background-color: EAEAEA;" />
          </children>
       </Pane>
-      <Button fx:id="body_part_delete_button" layoutX="200.0" layoutY="668.0" mnemonicParsing="false" onAction="#delete_body_part" prefHeight="37.0" prefWidth="162.0" text="Удалить часть тела" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="200.0" />
-      <ChoiceBox fx:id="angular_radius_box" layoutX="200.0" layoutY="625.0" prefHeight="25.0" prefWidth="162.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="200.0" />
-      <Button fx:id="draw_generatrix_button" layoutX="378.0" layoutY="576.0" mnemonicParsing="false" onAction="#draw_generatrix" prefHeight="99.0" prefWidth="249.0" text="Отобразить график" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="378.0" />
-      <Label fx:id="deleting_part_num_label1" layoutX="27.0" layoutY="30.0" prefHeight="25.0" prefWidth="154.0" style="-fx-background-color: #EAEAEA;" text="   Список частей тела" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="30.0" />
-      <TableView fx:id="parts_table" editable="true" layoutX="27.0" layoutY="76.0" prefHeight="481.0" prefWidth="330.0" AnchorPane.bottomAnchor="193.0" AnchorPane.leftAnchor="27.0">
+      <Button fx:id="body_part_delete_button" layoutX="190.0" layoutY="551.0" mnemonicParsing="false" onAction="#delete_body_part" prefHeight="37.0" prefWidth="154.0" text="Удалить часть тела" />
+      <ChoiceBox fx:id="angular_radius_box" layoutX="190.0" layoutY="506.0" prefHeight="25.0" prefWidth="154.0" />
+      <Button fx:id="draw_generatrix_button" layoutX="358.0" layoutY="451.0" mnemonicParsing="false" onAction="#draw_generatrix" prefHeight="86.0" prefWidth="206.0" text="Отобразить график" />
+      <Label fx:id="deleting_part_num_label1" layoutX="15.0" layoutY="14.0" prefHeight="25.0" prefWidth="154.0" style="-fx-background-color: #EAEAEA;" text="   Список частей тела" />
+      <TableView fx:id="parts_table" editable="true" layoutX="14.0" layoutY="47.0" prefHeight="387.0" prefWidth="330.0">
         <columns>
           <TableColumn fx:id="num_column" prefWidth="36.0" text="№" />
           <TableColumn fx:id="generatrix_column" prefWidth="163.0" text="Образующая" />
             <TableColumn fx:id="form_column" prefWidth="130.0" text="Форма" />
         </columns>
       </TableView>
-      <Button fx:id="generatrix_choice_button" layoutX="26.0" layoutY="588.0" mnemonicParsing="false" onAction="#choose_generatrix" prefHeight="38.0" prefWidth="162.0" text="Выбор образующей" AnchorPane.bottomAnchor="137.0" AnchorPane.leftAnchor="26.0" />
-      <Button fx:id="form_choice_button" layoutX="200.0" layoutY="588.0" mnemonicParsing="false" onAction="#choose_form" prefHeight="38.0" prefWidth="162.0" text="Выбор формы" AnchorPane.bottomAnchor="137.0" AnchorPane.leftAnchor="200.0" />
+      <Button fx:id="generatrix_choice_button" layoutX="15.0" layoutY="455.0" mnemonicParsing="false" onAction="#choose_generatrix" prefHeight="38.0" prefWidth="154.0" text="Выбор образующей" />
+      <Button fx:id="form_choice_button" layoutX="190.0" layoutY="456.0" mnemonicParsing="false" onAction="#choose_form" prefHeight="38.0" prefWidth="154.0" text="Выбор формы" />
 </children>
 </AnchorPane>

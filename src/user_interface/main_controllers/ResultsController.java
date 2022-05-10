@@ -78,7 +78,7 @@ public class ResultsController {
 
 
         Body_Data body_data = Body_Data.getInstance();
-        Line_Graph_Drawer drawer = new Line_Graph_Drawer(800,560);
+        Line_Graph_Drawer drawer = new Line_Graph_Drawer(820,580);
         drawer.draw_results_graph(value_name,
                 "./_graphs_of_results/" + value_name + angle_num + "_graph",
                 body_data.body,

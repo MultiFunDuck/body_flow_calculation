@@ -171,7 +171,7 @@ public class Grid {
                     front = panels.get(i+1).get(j);
                     back  = null;
                 }
-                else if(i == x_length - 1){
+                else if(i == (x_length - 1)){
                     front = null;
                     back  = panels.get(i-1).get(j);
                 }
@@ -184,7 +184,7 @@ public class Grid {
                     left  = panels.get(i).get(phi_length-1);
                     right = panels.get(i).get(j+1);
                 }
-                else if(j == phi_length - 1){
+                else if(j == (phi_length - 1)){
                     left  = panels.get(i).get(j-1);
                     right = panels.get(i).get(0);
                 }

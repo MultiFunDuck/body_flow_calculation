@@ -28,6 +28,8 @@ public class MDV_Solver {
         unit_circulation_matrix = new ArrayList<>();
 
         for(int i = 0; i < panels.size(); i++){
+
+
             for(int j = 0; j < panels.get(0).size(); j++){
                 ArrayList<Double> subArray = new ArrayList<Double>();
 

@@ -69,7 +69,7 @@
                         </Pane>
                         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                            <children>
-                              <TextField fx:id="lenght_field" layoutX="9.0" layoutY="26.0" prefHeight="25.0" prefWidth="136.0" text="1" />
+                              <TextField fx:id="lenght_field" layoutX="9.0" layoutY="26.0" prefHeight="25.0" prefWidth="136.0" text="2" />
                            </children>
                         </Pane>
                         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">

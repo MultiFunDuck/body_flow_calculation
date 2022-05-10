@@ -129,5 +129,17 @@ public class Panel {
         return this.points.get(3);
     }
 
+    public double width(){
+        double back = new Vector(o.diff(get_1st_p(),get_2nd_p())).length();
+        double front = new Vector(o.diff(get_4th_p(),get_3rd_p())).length();
+        return (front + back)/2;
+    }
+
+    public double length(){
+        double left = new Vector(o.diff(get_1st_p(),get_4th_p())).length();
+        double right = new Vector(o.diff(get_2nd_p(),get_3rd_p())).length();
+        return (right + left)/2;
+    }
+
 
 }

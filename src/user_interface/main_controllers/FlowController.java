@@ -81,7 +81,7 @@ public class FlowController {
 
     void draw_generatrix(int num_of_parts) {
         Body_Data body_data = Body_Data.getInstance();
-        Line_Graph_Drawer drawer = new Line_Graph_Drawer(600,450);
+        Line_Graph_Drawer drawer = new Line_Graph_Drawer(450,300);
         drawer.draw_full_generatix(body_data.parts.subList(0,num_of_parts), "./_resources/generatrix_graph");
         Image img = new Image(new File("./_resources/generatrix_graph.PNG").toURI().toString());
         graph_pane.getChildren().add(new ImageView(img));
