@@ -31,21 +31,18 @@ public class Velocity_Calculator {
 
         try {
             if(back == null){
-                tau1 = new Vector(o.diff(front.middle,mid.middle));
-                double length = tau1.length();
-                tau1 = tau1.get_normalized_vector();
+                tau1 = new Vector(o.diff(front.middle,mid.middle)).get_normalized_vector();
+                double length = (mid.length() + front.length())/2;
                 tau1 = o.mul(tau1, (front.gamma - mid.gamma)/length);
             }
             else if(front == null){
-                tau1 = new Vector(o.diff(mid.middle,back.middle));
-                double length = tau1.length();
-                tau1 = tau1.get_normalized_vector();
+                tau1 = new Vector(o.diff(mid.middle,back.middle)).get_normalized_vector();
+                double length = (back.length() + mid.length())/2;
                 tau1 = o.mul(tau1,(mid.gamma - back.gamma)/length);
             }
             else{
-                tau1 = new Vector(o.diff(front.middle,back.middle));
-                double length = tau1.length();
-                tau1 = tau1.get_normalized_vector();
+                tau1 = new Vector(o.diff(front.middle,back.middle)).get_normalized_vector();
+                double length = (back.length()/2 + front.length()/2) + mid.length();
                 tau1 = o.mul(tau1,(front.gamma - back.gamma) / length);
             }
         } catch (Exception e) {
@@ -55,9 +52,8 @@ public class Velocity_Calculator {
 
 
         try {
-            tau2 = new Vector(o.diff(right.middle, left.middle));
-            double length = tau2.length();
-            tau2 = tau2.get_normalized_vector();
+            tau2 = new Vector(o.diff(right.middle, left.middle)).get_normalized_vector();
+            double length = (left.length()/2 + right.length()/2) + mid.length();
             tau2 = o.mul(tau2,(right.gamma - left.gamma) / length);
         } catch (Exception e) {
             System.out.println("Exception while normalizing tau2 vector. Tau2.length() = 0");

@@ -121,7 +121,7 @@ public class Calculation_Example {
         Separator cosine_sep = new Even_Separator(cosine_rad,15);
 
         Radius cyl2_rad = new Cylinder_Radius(3.5,4,0.3);
-        Separator cyl2_sep = new Even_Separator(cyl2_rad,15);
+        Separator cyl2_sep = new Even_Separator(cyl2_rad,5);
 
 
 
