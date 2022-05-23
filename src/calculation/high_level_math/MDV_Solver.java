@@ -70,7 +70,7 @@ public class MDV_Solver {
                     }
                 }
 
-                subArray.set((subArray.size()-1),subArray.get(subArray.size()-1) + 1);  //Добавление еденичного столбца к последнему для избежания вырожденности
+                subArray.set((subArray.size()-1),1.0);
 
                 unit_circulation_matrix.add(subArray);
 
@@ -93,7 +93,9 @@ public class MDV_Solver {
 
         unit_circulation = o.sum(unit_circulation, line_vector_integral(which_around.get_4th_p(),which_around.get_1st_p(),from_which));
 
-
+        if (unit_circulation.length() == 0){
+            System.out.println("Unit_circ_vector is zero");
+        }
 
 
         return o.div(unit_circulation, (-1));
@@ -117,6 +119,7 @@ public class MDV_Solver {
             W = o.mul(o.vector_mul(R12,R10),coef);
             return W;
         }
+
         return W;
     }
 

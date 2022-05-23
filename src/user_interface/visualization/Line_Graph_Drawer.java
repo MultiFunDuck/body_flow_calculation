@@ -296,10 +296,10 @@ public class Line_Graph_Drawer {
             case ("Cp"):
                 value = panel.dimless_pressure;
                 break;
-            case ("Cp-.x"):
+            case ("Cp-"):
                 value = 1 - (1-panel.dimless_pressure) * Vminus.length()*Vminus.length() / (Vplus.length()*Vplus.length());
                 break;
-            case ("Cp+.y"):
+            case ("Cp+"):
                 value = panel.dimless_pressure;
                 break;
             case ("P"):

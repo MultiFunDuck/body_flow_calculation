@@ -99,7 +99,7 @@ public class BodyController {
             }
 
             body.init_Grid();
-            body.get_Grid().to_File("_results_on_grid/grid.txt");
+            body.get_Grid().to_File("_results_on_grid/grid.mv");
             body_data.body = body;
 
 
@@ -107,7 +107,7 @@ public class BodyController {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Сообщение");
             alert.setHeaderText(null);
-            alert.setContentText("Заданное тело см. в _results_on_grid/grid.txt");
+            alert.setContentText("Заданное тело см. в _results_on_grid/grid.mv");
             alert.showAndWait();
         }
         else{

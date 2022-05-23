@@ -206,13 +206,13 @@ public class Calculation_Example {
         Ch_body.add_part(cyl2_part);
 
 
-        double angle = Math.PI/6;
+        double angle = Math.PI/12;
         Ch_body.init_Grid();
         Ch_body.curve_tail(2,angle);
         Grid grid = Ch_body.get_Grid();
         grid.to_File(storage + "/curved_body_grid.mv");
 
-        Vector V_inf = new Vector(1*Math.cos(angle),0,Math.sin(angle));
+        Vector V_inf = new Vector(Math.cos(angle),0,Math.sin(angle));
         double inner_pressure = 1.0;
         double inner_density = 1.0;
         grid.write_down_data(V_inf,inner_pressure,inner_density);

@@ -199,13 +199,25 @@ public class SmoothedCubicSplineController {
         else{
             common_ratio_field.setEditable(true);
             double common_ratio = Float.parseFloat(common_ratio_field.getText());
+            double p = 1/common_ratio;
 
             Cartesian_Arclenght_Calculator calc = new Cartesian_Arclenght_Calculator(radius);
             double arc = calc.calculate_arclenght_precisely(start,end,0.001);
 
-            double free_term = (common_ratio - 1) * arc/step;
-            int num_of_seps = Math.round((float)(Math.log(1 + free_term)/Math.log(common_ratio)));
+            int num_of_seps = 0;
 
+            if(step/(1-p) <= arc){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Ошибка");
+                alert.setHeaderText(null);
+                alert.setContentText("Суммарная длина разбиения меньше длины дуги!");
+                alert.showAndWait();
+            }
+            else{
+                double free_term = (1 - p) * arc/step;
+                num_of_seps = Math.round((float)(Math.log(1 - free_term)/Math.log(p)));
+                System.out.println(num_of_seps);
+            }
             separator = new Geometric_Separator(radius,calc,num_of_seps, common_ratio);
 
         }

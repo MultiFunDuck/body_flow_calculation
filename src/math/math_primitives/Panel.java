@@ -130,15 +130,15 @@ public class Panel {
     }
 
     public double width(){
-        double back = new Vector(o.diff(get_1st_p(),get_2nd_p())).length();
-        double front = new Vector(o.diff(get_4th_p(),get_3rd_p())).length();
-        return (front + back)/2;
+        Vector back = new Vector(o.diff(get_1st_p(),get_2nd_p()));
+        Vector front = new Vector(o.diff(get_4th_p(),get_3rd_p()));
+        return o.sum(front,back).length()/2;
     }
 
     public double length(){
-        double left = new Vector(o.diff(get_1st_p(),get_4th_p())).length();
-        double right = new Vector(o.diff(get_2nd_p(),get_3rd_p())).length();
-        return (right + left)/2;
+        Vector left = new Vector(o.diff(get_1st_p(),get_4th_p()));
+        Vector right = new Vector(o.diff(get_2nd_p(),get_3rd_p()));
+        return o.sum(left,right).length()/2;
     }
 
 
