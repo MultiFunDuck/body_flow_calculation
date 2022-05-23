@@ -1,4 +1,4 @@
-package calculation.high_level_math;
+package calculation.flow_calculation;
 
 import Jama.Matrix;
 import math.math_primitives.Operator;

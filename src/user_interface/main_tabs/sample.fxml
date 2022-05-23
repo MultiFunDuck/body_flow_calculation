@@ -23,6 +23,11 @@
                   <fx:include fx:id="mResultsTab" source="ResultsTab.fxml" />
                </content>
           </Tab>
+            <Tab fx:id="TailTab" text="Корректировка спутного следа">
+               <content>
+                  <fx:include fx:id="mTailTab" source="TailTab.fxml" />
+               </content>
+            </Tab>
         </tabs>
       </TabPane>
    </children>

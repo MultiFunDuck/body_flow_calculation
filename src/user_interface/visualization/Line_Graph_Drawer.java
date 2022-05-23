@@ -1,7 +1,7 @@
 package user_interface.visualization;
 
-import calculation.grid_builder.Body;
-import calculation.grid_builder.Body_Part;
+import calculation.grid_building.Body;
+import calculation.grid_building.Body_Part;
 import math.math_primitives.Operator;
 import math.math_primitives.Panel;
 import math.math_primitives.Radius;

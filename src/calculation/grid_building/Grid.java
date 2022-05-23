@@ -1,9 +1,9 @@
-package calculation.grid_builder;
+package calculation.grid_building;
 
 
-import calculation.high_level_math.Pressure_Calculator;
-import calculation.high_level_math.MDV_Solver;
-import calculation.high_level_math.Velocity_Calculator;
+import calculation.flow_calculation.Pressure_Calculator;
+import calculation.flow_calculation.MDV_Solver;
+import calculation.flow_calculation.Velocity_Calculator;
 import math.math_primitives.Operator;
 import math.math_primitives.Panel;
 import math.math_primitives.Point;

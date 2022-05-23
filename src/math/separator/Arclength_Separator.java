@@ -26,7 +26,7 @@ public class Arclength_Separator extends Separator {
     @Override
     public List<Double> get_separation() {
         //Precision for separation is hard-coded
-        double precision = 0.0001;
+        double precision = 0.000001;
 
         List<Double> separation = new ArrayList<>();
         separation.add(start);

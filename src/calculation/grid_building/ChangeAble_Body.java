@@ -1,4 +1,4 @@
-package calculation.grid_builder;
+package calculation.grid_building;
 
 import math.math_primitives.Operator;
 import math.math_primitives.Point;

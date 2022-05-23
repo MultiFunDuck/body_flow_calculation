@@ -1,8 +1,8 @@
 package user_interface.data_classes;
 
 
-import calculation.grid_builder.Body_Part;
-import calculation.grid_builder.ChangeAble_Body;
+import calculation.grid_building.Body_Part;
+import calculation.grid_building.ChangeAble_Body;
 
 import java.util.ArrayList;
 import java.util.List;

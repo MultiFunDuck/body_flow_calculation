@@ -1,4 +1,4 @@
-package calculation.high_level_math;
+package calculation.flow_calculation;
 
 import math.math_primitives.Operator;
 import math.math_primitives.Panel;

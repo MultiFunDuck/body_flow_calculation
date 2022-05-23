@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="650.0" prefWidth="1024.0" style="-fx-background-color: #C3C3C3;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user_interface.main_controllers.BodyController">
 <children>
-    <Button fx:id="init_body_button" layoutX="595.0" layoutY="450.0" mnemonicParsing="false" onAction="#init_body" prefHeight="86.0" prefWidth="206.0" text="Задать тело" />
+    <Button fx:id="init_body_button" layoutX="764.0" layoutY="450.0" mnemonicParsing="false" onAction="#init_body" prefHeight="86.0" prefWidth="206.0" text="Задать тело" />
       <Button fx:id="body_part_add_button" layoutX="15.0" layoutY="550.0" mnemonicParsing="false" onAction="#add_body_part" prefHeight="38.0" prefWidth="154.0" text="Добавить часть тела" />
       <ChoiceBox fx:id="generatrix_radius_box" layoutX="15.0" layoutY="506.0" prefHeight="25.0" prefWidth="154.0" />
       <Label fx:id="result_generatrix_label" layoutX="358.0" layoutY="14.0" prefHeight="25.0" prefWidth="237.0" style="-fx-background-color: EAEAEA;" text="   График результирующей образующей" />
@@ -21,7 +21,7 @@
       </Pane>
       <Button fx:id="body_part_delete_button" layoutX="190.0" layoutY="551.0" mnemonicParsing="false" onAction="#delete_body_part" prefHeight="37.0" prefWidth="154.0" text="Удалить часть тела" />
       <ChoiceBox fx:id="angular_radius_box" layoutX="190.0" layoutY="506.0" prefHeight="25.0" prefWidth="154.0" />
-      <Button fx:id="draw_generatrix_button" layoutX="358.0" layoutY="451.0" mnemonicParsing="false" onAction="#draw_generatrix" prefHeight="86.0" prefWidth="206.0" text="Отобразить график" />
+      <Button fx:id="draw_generatrix_button" layoutX="537.0" layoutY="450.0" mnemonicParsing="false" onAction="#draw_generatrix" prefHeight="86.0" prefWidth="206.0" text="Отобразить график" />
       <Label fx:id="deleting_part_num_label1" layoutX="15.0" layoutY="14.0" prefHeight="25.0" prefWidth="154.0" style="-fx-background-color: #EAEAEA;" text="   Список частей тела" />
       <TableView fx:id="parts_table" editable="true" layoutX="14.0" layoutY="47.0" prefHeight="387.0" prefWidth="330.0">
         <columns>
@@ -32,5 +32,7 @@
       </TableView>
       <Button fx:id="generatrix_choice_button" layoutX="15.0" layoutY="455.0" mnemonicParsing="false" onAction="#choose_generatrix" prefHeight="38.0" prefWidth="154.0" text="Выбор образующей" />
       <Button fx:id="form_choice_button" layoutX="190.0" layoutY="456.0" mnemonicParsing="false" onAction="#choose_form" prefHeight="38.0" prefWidth="154.0" text="Выбор формы" />
+      <ChoiceBox fx:id="body_template_choice_box" layoutX="358.0" layoutY="506.0" prefHeight="25.0" prefWidth="154.0" />
+      <Label fx:id="deleting_part_num_label11" layoutX="358.0" layoutY="455.0" prefHeight="37.0" prefWidth="154.0" style="-fx-background-color: #EAEAEA;" text="   Задать тело из набора" />
 </children>
 </AnchorPane>

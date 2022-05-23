@@ -182,7 +182,7 @@ public class SmoothedCubicSplineController {
         }
         else if(arc_separation_radio.isSelected()){
             Cartesian_Arclenght_Calculator calc = new Cartesian_Arclenght_Calculator(radius);
-            double arc = calc.calculate_arclenght_precisely(start,end,0.001);
+            double arc = calc.calculate_arclenght_precisely(start,end,0.00001);
             int num_of_seps = Math.round((float)(arc/step));
 
             separator = new Arclength_Separator(radius,calc,num_of_seps);
@@ -190,7 +190,7 @@ public class SmoothedCubicSplineController {
         else if(arithm_separation_radio.isSelected()){
 
             Cartesian_Arclenght_Calculator calc = new Cartesian_Arclenght_Calculator(radius);
-            double arc = calc.calculate_arclenght_precisely(start,end,0.001);
+            double arc = calc.calculate_arclenght_precisely(start,end,0.00001);
             double free_term = 2*arc/step;
             int num_of_seps = Math.round((float)((Math.sqrt(1 + 4 * free_term) - 1)/2 ));
 
@@ -202,7 +202,7 @@ public class SmoothedCubicSplineController {
             double p = 1/common_ratio;
 
             Cartesian_Arclenght_Calculator calc = new Cartesian_Arclenght_Calculator(radius);
-            double arc = calc.calculate_arclenght_precisely(start,end,0.001);
+            double arc = calc.calculate_arclenght_precisely(start,end,0.00001);
 
             int num_of_seps = 0;
 

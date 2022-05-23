@@ -1,7 +1,7 @@
 package _examples;
 
-import calculation.grid_builder.Body_Part;
-import calculation.grid_builder.ChangeAble_Body;
+import calculation.grid_building.Body_Part;
+import calculation.grid_building.ChangeAble_Body;
 import math.arclenght.Arclenght_Calculator;
 import math.arclenght.Cartesian_Arclenght_Calculator;
 import math.math_primitives.Radius;

@@ -1,4 +1,4 @@
-package calculation.grid_builder;
+package calculation.grid_building;
 
 import math.math_primitives.Point;
 import math.math_primitives.Radius;
@@ -80,6 +80,8 @@ public class Body_Part {
     public double get_start(){ return this.start; }
 
     public double get_end(){ return this.end; }
+
+    public double get_length(){ return this.end - this.start; }
 
     public List<Double> get_ox_separation(){
         return this.ox_separator.get_separation();

@@ -1,7 +1,7 @@
 package user_interface.main_controllers;
 
-import calculation.grid_builder.ChangeAble_Body;
-import calculation.grid_builder.Grid;
+import calculation.grid_building.ChangeAble_Body;
+import calculation.grid_building.Grid;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
@@ -96,9 +96,9 @@ public class FlowController {
 
 
         Vector V_inf = new Vector(
-                calc_data.flow_velocity * Math.cos((Math.PI/180)*calc_data.attack_angle),
+                calc_data.flow_velocity * Math.cos(calc_data.attack_angle),
                 0,
-                calc_data.flow_velocity * Math.sin((Math.PI/180)*calc_data.attack_angle));
+                calc_data.flow_velocity * Math.sin(calc_data.attack_angle));
 
 
         ChangeAble_Body body = body_data.body;

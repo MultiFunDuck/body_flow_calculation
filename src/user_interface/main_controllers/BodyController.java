@@ -1,7 +1,7 @@
 package user_interface.main_controllers;
 
-import calculation.grid_builder.Body_Part;
-import calculation.grid_builder.ChangeAble_Body;
+import calculation.grid_building.Body_Part;
+import calculation.grid_building.ChangeAble_Body;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
