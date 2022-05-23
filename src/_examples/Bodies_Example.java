@@ -1,21 +1,22 @@
 package _examples;
 
-import radiis.angular_radius.Elliptic_Angular_Radius;
+import calculation.grid_builder.Body_Part;
+import calculation.grid_builder.ChangeAble_Body;
 import math.arclenght.Arclenght_Calculator;
 import math.arclenght.Cartesian_Arclenght_Calculator;
 import math.arclenght.Polar_Arclenght_Calculator;
-import calculation.grid_builder.Body_Part;
-import calculation.grid_builder.ChangeAble_Body;
-import radiis.angular_radius.Circle_Angular_Radius;
-import radiis.generatrix_radius.Cosine_Radius;
-import radiis.generatrix_radius.Cylinder_Radius;
-import radiis.generatrix_radius.Front_Augive_Radius;
-import radiis.generatrix_radius.Smoothed_Cubic_Spline_Radius;
 import math.math_primitives.Flat_Point;
 import math.math_primitives.Radius;
 import math.separator.Arclength_Separator;
 import math.separator.Even_Separator;
 import math.separator.Separator;
+import radiis.angular_radius.Circle_Angular_Radius;
+import radiis.angular_radius.Elliptic_Angular_Radius;
+import radiis.angular_radius.SuperElliptic_Angular_Radius;
+import radiis.generatrix_radius.Cosine_Radius;
+import radiis.generatrix_radius.Cylinder_Radius;
+import radiis.generatrix_radius.Front_Augive_Radius;
+import radiis.generatrix_radius.Smoothed_Cubic_Spline_Radius;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -275,6 +276,68 @@ public class Bodies_Example {
 
     }
 
+    public ChangeAble_Body superelliptic_body_example(){
+
+
+        //Augive front part
+        Radius _1L = new Front_Augive_Radius(0,2,1);
+        Arclenght_Calculator _1Lc = new Cartesian_Arclenght_Calculator(_1L);
+        Separator _1Ls = new Arclength_Separator(_1L,_1Lc,20);
+
+        Radius _1P = new SuperElliptic_Angular_Radius(1,1.5,4);
+        Arclenght_Calculator _1Pc = new Polar_Arclenght_Calculator(_1P);
+        Separator _1Ps = new Arclength_Separator(_1P,_1Pc,32);
+
+        Body_Part _1BP = new Body_Part(_1L,_1Ls,_1P,_1Ps);
+
+
+        //Cylinder mid part
+        Radius _2L = new Cylinder_Radius(2,3,1);
+        Separator _2Ls = new Even_Separator(_2L,10);
+
+        Radius _2P = new SuperElliptic_Angular_Radius(1,1.5,4);
+        Arclenght_Calculator _2Pc = new Polar_Arclenght_Calculator(_1P);
+        Separator _2Ps = new Arclength_Separator(_1P,_1Pc,32);
+
+        Body_Part _2BP = new Body_Part(_2L,_2Ls,_2P,_2Ps);
+
+
+        //Cosine mid part
+        Radius _3L = new Cosine_Radius(3,4,1,0.5);
+        Arclenght_Calculator _3Lc = new Cartesian_Arclenght_Calculator(_3L);
+        Separator _3Ls = new Arclength_Separator(_3L,_3Lc,10);
+
+        Radius _3P = new SuperElliptic_Angular_Radius(1,1.5,4);
+        Arclenght_Calculator _3Pc = new Polar_Arclenght_Calculator(_1P);
+        Separator _3Ps = new Arclength_Separator(_1P,_1Pc,32);
+
+        Body_Part _3BP = new Body_Part(_3L,_3Ls,_3P,_3Ps);
+
+
+        //End cylinder radius
+        Radius _4L = new Cylinder_Radius(4,5,0.5);
+        Separator _4Ls = new Even_Separator(_4L,20);
+
+        Radius _4P = new SuperElliptic_Angular_Radius(1,1.5,4);
+        Arclenght_Calculator _4Pc = new Polar_Arclenght_Calculator(_1P);
+        Separator _4Ps = new Arclength_Separator(_1P,_1Pc,32);
+
+        Body_Part _4BP = new Body_Part(_4L,_4Ls,_4P,_4Ps);
+
+
+        ChangeAble_Body body = new ChangeAble_Body();
+
+        body.add_part(_1BP);
+        body.add_part(_2BP);
+        body.add_part(_3BP);
+        body.add_part(_4BP);
+
+        body.init_Grid();
+        body.get_Grid().to_File(body_parts_storage + "/super_elliptic_body.mv");
+
+        return body;
+
+    }
 
     public ChangeAble_Body tapering_body_example(){
 
