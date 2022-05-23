@@ -70,7 +70,7 @@ public class Velocity_Calculator {
 
 
 
-        for(int i = 0; i < panels.size() - 1; i++){
+        for(int i = 0; i < panels.size() - 1 + 1; i++){
             for(int j = 0; j < panels.get(0).size(); j++){
                 circ_velocity = o.sum(
                         circ_velocity,
@@ -83,35 +83,35 @@ public class Velocity_Calculator {
             }
         }
 
-        int last = panels.size() - 1;
-        Panel last_one_example = panels.get(last).get(0);
-
-        if(last_one_example.get_3rd_p().isEqual(last_one_example.get_4th_p())){
-
-
-            for(int j = 0; j < panels.get(0).size(); j++){
-                circ_velocity = o.sum(
-                        circ_velocity,
-                        o.mul(mdv_solver.unit_circulation(
-                                from_which_point,panels.get(last).get(j)),
-                                panels.get(last).get(j).gamma)
-                );
-
-
-            }
-        }
-        else{
-            for(int j = 0; j < panels.get(0).size(); j++){
-                circ_velocity = o.sum(
-                        circ_velocity,
-                        o.mul(mdv_solver.inf_unit_circulation(
-                                from_which_point,panels.get(last).get(j)),
-                                panels.get(last).get(j).gamma)
-                );
-
-
-            }
-        }
+//        int last = panels.size() - 1;
+//        Panel last_one_example = panels.get(last).get(0);
+//
+//        if(last_one_example.get_3rd_p().isEqual(last_one_example.get_4th_p())){
+//
+//
+//            for(int j = 0; j < panels.get(0).size(); j++){
+//                circ_velocity = o.sum(
+//                        circ_velocity,
+//                        o.mul(mdv_solver.unit_circulation(
+//                                from_which_point,panels.get(last).get(j)),
+//                                panels.get(last).get(j).gamma)
+//                );
+//
+//
+//            }
+//        }
+//        else{
+//            for(int j = 0; j < panels.get(0).size(); j++){
+//                circ_velocity = o.sum(
+//                        circ_velocity,
+//                        o.mul(mdv_solver.inf_unit_circulation(
+//                                from_which_point,panels.get(last).get(j)),
+//                                panels.get(last).get(j).gamma)
+//                );
+//
+//
+//            }
+//        }
 
         return circ_velocity;
     }

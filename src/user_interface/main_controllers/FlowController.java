@@ -57,7 +57,7 @@ public class FlowController {
         Body_Data body_data = Body_Data.getInstance();
 
 
-        calc_data.attack_angle = Float.parseFloat(attack_angle_field.getText());
+        calc_data.attack_angle = Math.PI*Float.parseFloat(attack_angle_field.getText()) / 180;
         calc_data.flow_velocity = Float.parseFloat(flow_velocity_field.getText());
         calc_data.inner_density = Float.parseFloat(inner_density_field.getText());
         calc_data.inner_pressure = Float.parseFloat(inner_pressure_field.getText());
@@ -71,7 +71,7 @@ public class FlowController {
 
         body.init_Grid();
         if(calc_data.attack_angle != 0){
-            body.curve_tail(calc_data.main_parts_num, (Math.PI/180)*calc_data.attack_angle);
+            body.curve_tail(calc_data.main_parts_num, calc_data.attack_angle);
         }
 
         Grid grid = body.get_Grid();

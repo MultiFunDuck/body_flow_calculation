@@ -70,7 +70,7 @@ public class MDV_Solver {
                     }
                 }
 
-                subArray.set((subArray.size()-1),subArray.get(subArray.size()-1) + 1);  //Добавление еденичного столбца к последнему для избежания вырожденности
+                subArray.set((subArray.size()-1), 1.0);  //Замена последнего столбца на еденичный для регуляризации
 
                 unit_circulation_matrix.add(subArray);
 

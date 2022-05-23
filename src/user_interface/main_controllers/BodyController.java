@@ -46,7 +46,7 @@ public class BodyController {
             "Сглаживающий кубический сплайн");
 
     ObservableList<String> angular_radius = FXCollections.observableArrayList(
-            "Выберите форму","Окружность","Эллипс");
+            "Выберите форму","Окружность","Эллипс","СуперЭллипс");
 
     @FXML
     private ChoiceBox generatrix_radius_box;
@@ -165,7 +165,6 @@ public class BodyController {
         if(ox_radius != null && ang_radius != null){
             Body_Part part = new Body_Part(gen_data.radius,gen_data.separator,ang_data.radius,ang_data.separator);
 
-            System.out.println("It just works");
             body_data.parts.add(part);
 
             table_data.add(new PartViewData(body_data.parts.size(),(String)generatrix_radius_box.getValue(), (String)angular_radius_box.getValue()));
@@ -233,6 +232,8 @@ public class BodyController {
             return "CircleTab.fxml";
         if(name.equals("Эллипс"))
             return "EllipseTab.fxml";
+        if(name.equals("СуперЭллипс"))
+            return "SuperEllipseTab.fxml";
 
         return "FrontAugiveTab.fxml";
     }

@@ -12,14 +12,17 @@ import javafx.scene.layout.Pane;
 import math.arclenght.Polar_Arclenght_Calculator;
 import math.separator.Arclength_Separator;
 import math.separator.Even_Separator;
-import radiis.angular_radius.Elliptic_Angular_Radius;
+import radiis.angular_radius.SuperElliptic_Angular_Radius;
 import user_interface.data_classes.Angular_Radius_Data;
 import user_interface.data_classes.Body_Data;
 import user_interface.visualization.Line_Graph_Drawer;
 
 import java.io.File;
 
-public class EllipseController {
+public class SuperEllipseController {
+
+
+
 
     @FXML
     private Pane graph_pane;
@@ -46,14 +49,18 @@ public class EllipseController {
     private TextField big_axis_field;
 
     @FXML
+    private TextField super_num_field;
+
+    @FXML
     void set_generatrix(ActionEvent event) {
         Angular_Radius_Data radius_data = Angular_Radius_Data.getInstance();
         Body_Data body_data = Body_Data.getInstance();
 
         double b = Float.parseFloat(big_axis_field.getText());
         double a = Float.parseFloat(small_axis_field.getText());
+        double n = Float.parseFloat(super_num_field.getText());
 
-        radius_data.radius = new Elliptic_Angular_Radius(a,b);
+        radius_data.radius = new SuperElliptic_Angular_Radius(a,b,n);
 
 
 

@@ -38,8 +38,8 @@ public class Main extends Application {
         }
 
         //init_examples();
-        Calculation_Example example3 = new Calculation_Example("_examples/_calculation_example");
-        example3.simple_body_calc_example();
+//        Calculation_Example example3 = new Calculation_Example("_examples/_calculation_example");
+//        example3.simple_body_calc_example();
 
 
         Parent root = FXMLLoader.load(getClass().getResource("../user_interface/main_tabs/sample.fxml"));
