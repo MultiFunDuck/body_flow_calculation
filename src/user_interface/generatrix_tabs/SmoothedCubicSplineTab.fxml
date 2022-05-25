@@ -49,7 +49,7 @@
 
 <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user_interface.generatrix_controllers.SmoothedCubicSplineController">
   <tabs>
-    <Tab text="Кубический сплайн">
+    <Tab text="Сглаживающий Кубический сплайн">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #C3C3C3;">
                <children>

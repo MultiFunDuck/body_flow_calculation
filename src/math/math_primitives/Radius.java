@@ -11,7 +11,8 @@ public abstract class Radius {
 
     public double get_start(){
         return this.start;
-    };
+    }
+
     public double get_end(){
         return this.end;
     }
@@ -28,21 +29,19 @@ public abstract class Radius {
         return this.end - this.start;
     }
 
-    public void set_start (double start) throws Exception{
-        if(this.end < start){
-            throw new Exception("setting start of radius righter then end");
-        }
+    public void set_start (double start){
+
         this.start = start;
         this.length = this.end - this.start;
     }
 
-    public void set_end(double end) throws Exception{
-        if(this.start > end){
-            throw new Exception("setting end of radius lefter then start");
-        }
+    public void set_end(double end){
+
         this.end = end;
         this.length = this.end - this.start;
     }
+
+
 
     public boolean is_in_range(double x){
         return ((start <= x) && (x <= end));

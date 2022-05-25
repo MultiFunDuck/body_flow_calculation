@@ -13,10 +13,10 @@ public class Body_Part {
     double start;
     double end;
     double length;
-    Radius ox_radius;
-    Separator ox_separator;
-    Radius angle_radius;
-    Separator angle_separator;
+    public Radius ox_radius;
+    public Separator ox_separator;
+    public Radius angle_radius;
+    public Separator angle_separator;
     List<List<Point>> points;
 
     public Body_Part(Radius ox_radius, Separator ox_separation, Radius angle_radius, Separator angle_separation) {
@@ -57,16 +57,40 @@ public class Body_Part {
         }
     }
 
-    public void set_start(double start) throws Exception{
+    public void set_start(double start){
         this.start = start;
         this.ox_radius.set_start(start);
         this.ox_separator.start = start;
     }
 
-    public void set_end(double end) throws Exception{
+    public void set_end(double end){
         this.end = end;
         this.ox_radius.set_end(end);
         this.ox_separator.end = end;
+    }
+
+    public void set_length(double length){
+
+        this.end = start + length;
+        this.length = length;
+
+        this.ox_radius.set_end(start + length);
+
+        this.ox_separator.end = start + length;
+        this.ox_separator.length = length;
+
+    }
+
+    public void shift(double shift){
+
+        try {
+            set_end(end + shift);
+            set_start(start + shift);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     public double get_end_radius(){

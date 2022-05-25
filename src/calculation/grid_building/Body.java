@@ -122,4 +122,16 @@ public class Body {
     public List<Body_Part> get_parts(){
         return this.Parts;
     }
+
+    public void resize_part_length(int num_of_part, double length){
+
+        int num_of_parts = Parts.size();
+        double shift = length - Parts.get(num_of_part).length;
+        Parts.get(num_of_part).set_length(length);
+        for(int i = num_of_part + 1; i < num_of_parts; i++){
+
+            Parts.get(i).shift(shift);
+
+        }
+    }
 }

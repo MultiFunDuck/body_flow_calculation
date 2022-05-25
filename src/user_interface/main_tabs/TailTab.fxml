@@ -12,7 +12,7 @@
 <AnchorPane prefHeight="650.0" prefWidth="1024.0" style="-fx-background-color: #C3C3C3;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user_interface.main_controllers.TailController">
 <children>
       <Label fx:id="deleting_part_num_label1" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="154.0" style="-fx-background-color: #EAEAEA;" text="   Расчётные параметры" />
-      <Button fx:id="show_results_button" layoutX="471.0" layoutY="506.0" mnemonicParsing="false" onAction="#show_results" prefHeight="42.0" prefWidth="247.0" text="Отобразить результаты" />
+      <Button fx:id="show_results_button" layoutX="747.0" layoutY="507.0" mnemonicParsing="false" onAction="#show_results" prefHeight="42.0" prefWidth="247.0" text="Отобразить результаты" />
       <GridPane layoutX="15.0" layoutY="209.0" prefHeight="214.0" prefWidth="420.0" style="-fx-background-color: EAEAEA;">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -91,12 +91,12 @@
       </GridPane>
       <Pane layoutX="471.0" layoutY="47.0" prefHeight="376.0" prefWidth="524.0" style="-fx-background-color: EAEAEA;">
          <children>
-            <Pane layoutX="12.0" prefHeight="350.0" prefWidth="500.0" style="-fx-background-color: EAEAEA;" />
+            <Pane fx:id="graph_pane" layoutX="12.0" layoutY="13.0" prefHeight="350.0" prefWidth="500.0" style="-fx-background-color: EAEAEA;" />
          </children>
       </Pane>
       <Label fx:id="deleting_part_num_label11" layoutX="471.0" layoutY="14.0" prefHeight="25.0" prefWidth="228.0" style="-fx-background-color: #EAEAEA;" text="   График образующей хвостовой части" />
-      <Button fx:id="make_new_calculation_button" layoutX="471.0" layoutY="449.0" mnemonicParsing="false" onAction="#make_new_calculation" prefHeight="42.0" prefWidth="247.0" text="Произвести повторный расчёт" />
-      <GridPane layoutX="14.0" layoutY="480.0" prefHeight="95.0" prefWidth="420.0" style="-fx-background-color: EAEAEA;">
+      <Button fx:id="make_new_calculation_button" layoutX="747.0" layoutY="449.0" mnemonicParsing="false" onAction="#make_new_calculation" prefHeight="42.0" prefWidth="247.0" text="Произвести повторный расчёт" />
+      <GridPane layoutX="14.0" layoutY="480.0" prefHeight="95.0" prefWidth="337.0" style="-fx-background-color: EAEAEA;">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -113,7 +113,7 @@
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
-                  <TextField fx:id="tail_length" layoutX="31.0" layoutY="12.0" />
+                  <TextField fx:id="tail_length_field" layoutX="10.0" layoutY="12.0" prefHeight="25.0" prefWidth="149.0" text="2" />
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
@@ -123,7 +123,7 @@
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <TextField fx:id="tail_diameter" layoutX="31.0" layoutY="11.0" />
+                  <TextField fx:id="tail_diameter_field" layoutX="10.0" layoutY="11.0" prefHeight="25.0" prefWidth="149.0" text="0.3" />
                </children>
             </Pane>
          </children>
@@ -182,8 +182,41 @@
             </Pane>
          </children>
       </GridPane>
-      <Button fx:id="find_expected_values_button" layoutX="471.0" layoutY="563.0" mnemonicParsing="false" onAction="#find_expected_values" prefHeight="42.0" prefWidth="247.0" text="Найти ожидаемые параметры (2 расчёта)" />
+      <Button fx:id="find_expected_values_button" layoutX="747.0" layoutY="563.0" mnemonicParsing="false" onAction="#find_expected_values" prefHeight="42.0" prefWidth="247.0" text="Найти ожидаемые параметры (2 расчёта)" />
       <Label fx:id="deleting_part_num_label17" layoutX="14.0" layoutY="449.0" prefHeight="25.0" prefWidth="170.0" style="-fx-background-color: #EAEAEA;" text="   Задание параметров следа" />
       <Button fx:id="set_tail_params_button" layoutX="14.0" layoutY="584.0" mnemonicParsing="false" onAction="#set_tail_params" prefHeight="42.0" prefWidth="192.0" text="Задать параметры следа" />
+      <GridPane layoutX="364.0" layoutY="480.0" prefHeight="95.0" prefWidth="376.0" style="-fx-background-color: EAEAEA;">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="deleting_part_num_label14111" layoutX="9.0" layoutY="12.0" prefHeight="25.0" prefWidth="192.0" style="-fx-background-color: #EAEAEA;" text="Коэффициент релаксации длины" />
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+               <children>
+                  <TextField fx:id="tail_length_coef_field" layoutX="36.0" layoutY="12.0" prefHeight="25.0" prefWidth="141.0" text="1" />
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+               <children>
+                  <Label fx:id="deleting_part_num_label141111" layoutX="9.0" layoutY="11.0" prefHeight="25.0" prefWidth="199.0" style="-fx-background-color: #EAEAEA;" text="Коэффициент релаксации диаметра" />
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <TextField fx:id="tail_diam_coef_field" layoutX="35.0" layoutY="11.0" prefHeight="25.0" prefWidth="141.0" text="1" />
+               </children>
+            </Pane>
+         </children>
+      </GridPane>
+      <Button fx:id="calc_approx_tail_params_button" layoutX="364.0" layoutY="584.0" mnemonicParsing="false" onAction="#set_tail_params" prefHeight="42.0" prefWidth="192.0" text="Посчитать параметры следа" />
 </children>
 </AnchorPane>
