@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import user_interface.data_classes.Body_Data;
+import user_interface.visualization.Data_Exporter;
 import user_interface.visualization.Line_Graph_Drawer;
 
 import java.io.File;
@@ -37,22 +38,10 @@ public class ResultsController {
     private void initialize(){
         ObservableList<String> data_choices = FXCollections.observableArrayList(
                 "Gamma",
-                "V.x",
-                "V.y",
-                "V.z",
-                "V",
-                "tau_V.x",
-                "tau_V.y",
-                "tau_V.z",
-                "tau_V",
-                "circ_V.x",
-                "circ_V.y",
-                "circ_V.z",
-                "circ_V",
-                "V0.x",
-                "V0.y",
-                "V0.z",
-                "V0",
+                "V0.x_central",
+                "V0.y_central",
+                "V0.z_central",
+                "V0_central",
                 "V+.x",
                 "V+.y",
                 "V+.z",
@@ -61,6 +50,22 @@ public class ResultsController {
                 "V-.y",
                 "V-.z",
                 "V-",
+                "V0.x",
+                "V0.y",
+                "V0.z",
+                "V0",
+                "dV.x",
+                "dV.y",
+                "dV.z",
+                "dV",
+                "V+.n",
+                "V-.n",
+                "V0.n",
+                "dV.n",
+                "sum(Gamma_w).x",
+                "sum(Gamma_w).y",
+                "sum(Gamma_w).z",
+                "sum(Gamma_w)",
                 "Cp",
                 "Cp+",
                 "Cp-",
@@ -79,13 +84,43 @@ public class ResultsController {
 
         Body_Data body_data = Body_Data.getInstance();
         Line_Graph_Drawer drawer = new Line_Graph_Drawer(820,580);
-        drawer.draw_results_graph(value_name,
-                "./_graphs_of_results/" + value_name + angle_num + "_graph",
-                body_data.body,
-                angle_num);
+
+
+        if(value_name.contains("central")){
+            drawer.draw_central_results_graph(value_name,
+                    "./_graphs_of_results/" + value_name + angle_num + "_graph",
+                    body_data.body);
+        }
+        else{
+            drawer.draw_results_graph(value_name,
+                    "./_graphs_of_results/" + value_name + angle_num + "_graph",
+                    body_data.body,
+                    angle_num);
+        }
+
+
 
         Image img = new Image(new File("./_graphs_of_results/" + value_name + angle_num + "_graph.PNG").toURI().toString());
         graph_pane.getChildren().add(new ImageView(img));
+
+    }
+
+    @FXML
+    void export_data(ActionEvent event) {
+
+
+        String value_name = data_choicebox.getValue();
+        int angle_num = Integer.parseInt(angle_num_field.getText());
+        Data_Exporter exporter = new Data_Exporter();
+
+        if(value_name.contains("central")){
+            exporter.export_cross_section_data(value_name);
+        }
+        else{
+            exporter.export_generatrix_data(angle_num, value_name);
+        }
+
+
 
     }
 

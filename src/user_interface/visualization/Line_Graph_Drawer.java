@@ -209,66 +209,87 @@ public class Line_Graph_Drawer {
 
     }
 
+    public void draw_central_results_graph(String value_name, String destination, Body body){
+
+        List<Panel> cross_sections = body.grid.cross_sections;
+
+        int ox_size = cross_sections.size();
+
+
+        double[] data = new double[ox_size];
+        double[] plots = new double[ox_size];
+
+        for(int i = 0; i < ox_size; i++){
+
+            data[i] = get_cross_section_value_by_name(cross_sections.get(i), value_name);
+            plots[i] = cross_sections.get(i).middle.x;
+        }
+
+
+
+
+        XYSeries dataset =  new XYSeries(value_name, false,true);
+        for(int i = 0; i < data.length; i++){
+            dataset.add(data[i],plots[i]);
+        }
+
+
+
+        JFreeChart chart = ChartFactory.createXYLineChart(
+                value_name,  value_name,"Ось Ох вдоль тела ",
+                new XYSeriesCollection(dataset), PlotOrientation.HORIZONTAL, false, false, false);
+
+
+        ChartPanel chartPanel = new ChartPanel(chart);
+        chartPanel.setPreferredSize(new java.awt.Dimension(width, length));
+        chartPanel.setMouseZoomable(true, false);
+        try {
+            ChartUtilities.saveChartAsPNG(new File(destination + ".PNG"), chart, width, length);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private double get_cross_section_value_by_name(Panel cross_section, String value_name){
+
+        double value = 0;
+
+        switch (value_name){
+
+            case ("V0.x_central"):
+                value = cross_section.flow_velocity.x;
+                break;
+            case ("V0.y_central"):
+                value = cross_section.flow_velocity.y;
+                break;
+            case ("V0.z_central"):
+                value = cross_section.flow_velocity.z;
+                break;
+            case ("V0_central"):
+                value = cross_section.flow_velocity.length();
+                break;
+
+
+        }
+
+
+        return value;
+    }
+
     private double get_panel_value_by_name(Panel panel, String value_name){
 
         Operator o = Operator.getInstance();
         Vector V0 = o.diff(panel.flow_velocity, panel.tau_velocity);
         Vector Vplus = o.sum(V0,panel.tau_velocity);
         Vector Vminus = o.diff(V0,panel.tau_velocity);
+        Vector dV = o.diff(Vplus, Vminus);
         double value = 0;
 
         switch (value_name){
 
             case ("Gamma"):
                 value = panel.gamma;
-                break;
-            case ("V.x"):
-                value = panel.flow_velocity.x;
-                break;
-            case ("V.y"):
-                value = panel.flow_velocity.y;
-                break;
-            case ("V.z"):
-                value = panel.flow_velocity.z;
-                break;
-            case ("V"):
-                value = panel.flow_velocity.length();
-                break;
-            case ("tau_V.x"):
-                value = panel.tau_velocity.x;
-                break;
-            case ("tau_V.y"):
-                value = panel.tau_velocity.y;
-                break;
-            case ("tau_V.z"):
-                value = panel.tau_velocity.z;
-                break;
-            case ("tau_V"):
-                value = panel.tau_velocity.length();
-                break;
-            case ("circ_V.x"):
-                value = panel.circ_velocity.x;
-                break;
-            case ("circ_V.y"):
-                value = panel.circ_velocity.y;
-                break;
-            case ("circ_V.z"):
-                value = panel.circ_velocity.z;
-                break;
-            case ("circ_V"):
-                value = panel.circ_velocity.length();
-                break;
-            case ("V0.x"):
-                value = V0.x;
-                break;
-            case ("V0.y"):
-                value = V0.y;
-                break;
-            case ("V0.z"):
-                value = V0.z;
-                break;
-            case ("V0"):
-                value = V0.length();
                 break;
             case ("V+.x"):
                 value = Vplus.x;
@@ -282,6 +303,9 @@ public class Line_Graph_Drawer {
             case ("V+"):
                 value = Vplus.length();
                 break;
+
+
+
             case ("V-.x"):
                 value = Vminus.x;
                 break;
@@ -293,6 +317,70 @@ public class Line_Graph_Drawer {
                 break;
             case ("V-"):
                 value = Vminus.length();
+                break;
+
+
+
+            case ("V0.x"):
+                value = V0.x;
+                break;
+            case ("V0.y"):
+                value = V0.y;
+                break;
+            case ("V0.z"):
+                value = V0.z;
+                break;
+            case ("V0"):
+                value = V0.length();
+                break;
+
+
+
+            case ("dV.x"):
+                value = dV.x;
+                break;
+            case ("dV.y"):
+                value = dV.y;
+                break;
+            case ("dV.z"):
+                value = dV.z;
+                break;
+            case ("dV"):
+                value = dV.length();
+                break;
+
+
+
+            case ("V+.n"):
+                value = panel.normal_velocity;
+                break;
+            case ("V-.n"):
+                value = o.scalar_mul(panel.normal,Vminus);
+                break;
+            case ("V0.n"):
+                value = o.scalar_mul(panel.normal,V0);
+                break;
+            case ("dV.n"):
+                value = o.scalar_mul(panel.normal,dV);
+                break;
+
+
+
+            case ("sum(Gamma_w).x"):
+                value = panel.circ_velocity.x;
+                break;
+            case ("sum(Gamma_w).y"):
+                value = panel.circ_velocity.y;
+                break;
+            case ("sum(Gamma_w).z"):
+                value = panel.circ_velocity.z;
+                break;
+            case ("sum(Gamma_w)"):
+                value = panel.circ_velocity.length();
+                break;
+
+
+
             case ("Cp"):
                 value = panel.dimless_pressure;
                 break;
@@ -305,6 +393,7 @@ public class Line_Graph_Drawer {
             case ("P"):
                 value = panel.pressure;
                 break;
+
 
         }
 

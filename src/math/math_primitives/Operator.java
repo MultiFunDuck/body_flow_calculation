@@ -37,7 +37,7 @@ public class Operator {
     }
 
     public Vector diff(Vector v1, Vector v2){
-        return new Vector(v1.x + v2.x,v1.y + v2.y,v1.z + v2.z);
+        return new Vector(v1.x - v2.x,v1.y - v2.y,v1.z - v2.z);
     }
 
     public Vector mul(Vector v1, double c){

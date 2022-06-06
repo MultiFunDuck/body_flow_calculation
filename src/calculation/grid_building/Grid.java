@@ -19,10 +19,30 @@ public class Grid {
 
     public List<List<Point>> points;
     public List<List<Panel>> panels;
+    public List<Panel> cross_sections;
 
     public Grid(List<List<Point>> points, List<List<Panel>> panels) {
         this.points = points;
         this.panels = panels;
+        this.cross_sections = init_cross_sections(points);
+    }
+
+    private List<Panel> init_cross_sections(List<List<Point>> points){
+
+
+        Operator o = Operator.getInstance();
+        List<Panel> central_axis = new ArrayList<>();
+
+
+        int length_num = points.size();
+
+        for(int i = 1; i < length_num - 1; i++){
+
+            central_axis.add(new Panel(points.get(i)));
+
+        }
+
+        return central_axis;
     }
 
     public List<List<Point>> find_points_in_interval(double start, double end){
@@ -88,13 +108,14 @@ public class Grid {
             }
 
             fileWriter.write("\n");
-            fileWriter.write(this.panels.size()*this.panels.get(0).size() + " 4 29 Gamma V.n " +
-                    "V.x V.y V.z |V| " +
-                    "Tau_V.x Tau_V.y Tau_V.z |Tau_V| " +
-                    "Gamma_V.x Gamma_V.y Gamma_V.z |Gamma_V| " +
-                    "V0.x V0.y V0.z |V0| " +
+            fileWriter.write(this.panels.size()*this.panels.get(0).size() + " 4 29" +
+                    " Gamma " +
                     "V+.x V+.y V+.z |V+| " +
                     "V-.x V-.y V-.z |V-| " +
+                    "V0.x V0.y V0.z |V0| " +
+                    "dV.x dV.y dV.z |dV| " +
+                    "V.n V-.n V0.n dV.n " +
+                    "sum(Gamma_w).x sum(Gamma_w).y sum(Gamma_w).z |sum(Gamma_w)| " +
                     "Cp Cp+ Cp- P\n");
 
             for(int i = 0; i < this.panels.size(); i++){
@@ -139,7 +160,7 @@ public class Grid {
 
         write_dimless_pressure_to_panels(pressure_calculator, V_inf);
 
-
+        write_central_velocity_to_cross_sections(velocity_calculator, V_inf);
 
     }
 
@@ -206,7 +227,7 @@ public class Grid {
                 panels.get(i).get(j)
                         .circ_velocity = velocity_calculator
                         .calculate_circular_velocity_part(
-                                panels.get(i).get(j)
+                                panels.get(i).get(j).middle
                         );
             }
         }
@@ -278,6 +299,16 @@ public class Grid {
     }
 
 
+    public void write_central_velocity_to_cross_sections(Velocity_Calculator velocity_calculator, Vector V_inf){
+
+        for(int i = 0; i < cross_sections.size(); i++){
+            cross_sections.get(i)
+                    .flow_velocity = Operator.getInstance().sum(
+                            velocity_calculator.calculate_circular_velocity_part(cross_sections.get(i).middle),
+                    V_inf);
+        }
+
+    }
 
 
 

@@ -26,22 +26,28 @@ public class Velocity_Calculator {
 
     public Vector calculate_tau_velocity_part(Panel mid, Panel front, Panel back, Panel left, Panel right){
 
-        Vector tau1 = new Vector(0,0,0);
+        Vector tau1 = null;
+        try {
+            tau1 = new Vector(o.diff(o.div(o.sum(mid.get_3rd_p(),mid.get_4th_p()),2),mid.middle)).get_normalized_vector();
+        } catch (Exception e) {
+            System.out.println("Exception while normalizing tau1 vector. Tau1.length() = 0");
+            e.printStackTrace();
+        }
         Vector tau2 = new Vector(0,0,0);
 
         try {
             if(back == null){
-                tau1 = new Vector(o.diff(front.middle,mid.middle)).get_normalized_vector();
+
                 double length = (mid.length() + front.length())/2;
                 tau1 = o.mul(tau1, (front.gamma - mid.gamma)/length);
             }
             else if(front == null){
-                tau1 = new Vector(o.diff(mid.middle,back.middle)).get_normalized_vector();
+
                 double length = (back.length() + mid.length())/2;
                 tau1 = o.mul(tau1,(mid.gamma - back.gamma)/length);
             }
             else{
-                tau1 = new Vector(o.diff(front.middle,back.middle)).get_normalized_vector();
+
                 double length = (back.length()/2 + front.length()/2) + mid.length();
                 tau1 = o.mul(tau1,(front.gamma - back.gamma) / length);
             }
@@ -63,22 +69,21 @@ public class Velocity_Calculator {
         return o.div(o.sum(tau2,tau1),-2);
     }
 
-    public Vector calculate_circular_velocity_part(Panel from_which){
+    public Vector calculate_circular_velocity_part(Point from_which_point){
 
         Vector circ_velocity = new Vector(0,0,0);
-        Point from_which_point = from_which.middle;
+
 
 
 
         for(int i = 0; i < panels.size() - 1; i++){
             for(int j = 0; j < panels.get(0).size(); j++){
-                circ_velocity = o.sum(
-                        circ_velocity,
-                        o.mul(mdv_solver.unit_circulation(
-                                        from_which_point,panels.get(i).get(j)),
-                                        panels.get(i).get(j).gamma)
-                );
 
+                Panel to_which_panel = panels.get(i).get(j);
+
+
+                circ_velocity = o.sum(circ_velocity,
+                        o.mul(mdv_solver.unit_circulation(from_which_point,to_which_panel), to_which_panel.gamma));
 
             }
         }
@@ -86,32 +91,28 @@ public class Velocity_Calculator {
         int last = panels.size() - 1;
         Panel last_one_example = panels.get(last).get(0);
 
-        if(last_one_example.get_3rd_p().isEqual(last_one_example.get_4th_p())){
+        for(int j = 0; j < panels.get(0).size() - 1; j++){
 
+            Panel to_which = panels.get(last).get(j);
 
-            for(int j = 0; j < panels.get(0).size(); j++){
-                circ_velocity = o.sum(
-                        circ_velocity,
-                        o.mul(mdv_solver.unit_circulation(
-                                from_which_point,panels.get(last).get(j)),
-                                panels.get(last).get(j).gamma)
-                );
+            circ_velocity = o.sum(circ_velocity,
+                    o.mul(mdv_solver.unit_circulation(from_which_point,to_which), to_which.gamma));
 
+        }
+
+        if(!last_one_example.get_3rd_p().isEqual(last_one_example.get_4th_p())){
+
+            for(int j = 0; j < panels.get(0).size() - 1; j++){
+
+                Panel to_which = panels.get(last).get(j);
+
+                circ_velocity = o.sum(circ_velocity,
+                        o.mul(mdv_solver.inf_unit_circulation(from_which_point,to_which), to_which.gamma));
 
             }
-        }
-        else{
-            for(int j = 0; j < panels.get(0).size(); j++){
-                circ_velocity = o.sum(
-                        circ_velocity,
-                        o.mul(mdv_solver.inf_unit_circulation(
-                                from_which_point,panels.get(last).get(j)),
-                                panels.get(last).get(j).gamma)
-                );
 
-
-            }
         }
+
 
         return circ_velocity;
     }

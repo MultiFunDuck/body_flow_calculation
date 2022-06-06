@@ -27,6 +27,7 @@ import user_interface.data_classes.PartViewData;
 import user_interface.visualization.Line_Graph_Drawer;
 
 import java.io.File;
+import java.net.URL;
 
 public class BodyController {
 
@@ -183,16 +184,26 @@ public class BodyController {
 
 
     @FXML
-    void choose_generatrix(){
-        String gen_value = (String)generatrix_radius_box.getValue();
+    void choose_generatrix() {
+        String gen_value = (String) generatrix_radius_box.getValue();
 
+        URL url = null;
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../generatrix_tabs/" + map_names_to_files(gen_value)));
             Parent root1 = fxmlLoader.load();
+
+
+//            url = new File("generatrix_tabs/" + map_names_to_files(gen_value)).toURL();
+//            Parent root1 = FXMLLoader.load(url);
+
+
             Stage stage1 = new Stage();
             stage1.setScene(new Scene(root1, 900, 600));
             stage1.show();
         } catch (Exception e) {
+            System.out.println("!!!!!!!!!!!!!!!!!!!");
+            System.out.println(url.toString());
+            System.out.println("!!!!!!!!!!!!!!!!!!!");
             e.printStackTrace();
         }
     }
@@ -204,6 +215,10 @@ public class BodyController {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../form_tabs/" + map_names_to_files(gen_value)));
             Parent root1 = fxmlLoader.load();
+
+//            URL url = new File("form_tabs/" + map_names_to_files(gen_value)).toURL();
+//            Parent root1 = FXMLLoader.load(url);
+
             Stage stage1 = new Stage();
             stage1.setScene(new Scene(root1, 900, 600));
             stage1.show();

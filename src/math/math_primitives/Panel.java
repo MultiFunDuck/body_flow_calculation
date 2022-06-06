@@ -63,6 +63,7 @@ public class Panel {
         Vector V0 = o.diff(flow_velocity, tau_velocity);
         Vector Vplus = o.sum(V0,tau_velocity);
         Vector Vminus = o.diff(V0,tau_velocity);
+        Vector dV = o.diff(Vplus, Vminus);
 
         NumberFormat formatter = new DecimalFormat("#0.00000000");
         return this.hash
@@ -70,30 +71,8 @@ public class Panel {
                 + " " + this.points.get(1).hash
                 + " " + this.points.get(2).hash
                 + " " + this.points.get(3).hash
+
                 + " " + formatter.format(gamma)
-                + " " + formatter.format(normal_velocity)
-
-
-                + " " + formatter.format(flow_velocity.x)
-                + " " + formatter.format(flow_velocity.z)
-                + " " + formatter.format(flow_velocity.y)
-                + " " + formatter.format(velocity_module)
-
-                + " " + formatter.format(tau_velocity.x)
-                + " " + formatter.format(tau_velocity.z)
-                + " " + formatter.format(tau_velocity.y)
-                + " " + formatter.format(tau_velocity.length())
-
-                + " " + formatter.format(circ_velocity.x)
-                + " " + formatter.format(circ_velocity.z)
-                + " " + formatter.format(circ_velocity.y)
-                + " " + formatter.format(circ_velocity.length())
-
-
-                + " " + formatter.format(V0.x)
-                + " " + formatter.format(V0.z)
-                + " " + formatter.format(V0.y)
-                + " " + formatter.format(V0.length())
 
 
                 + " " + formatter.format(Vplus.x)
@@ -106,6 +85,30 @@ public class Panel {
                 + " " + formatter.format(Vminus.z)
                 + " " + formatter.format(Vminus.y)
                 + " " + formatter.format(Vminus.length())
+
+
+                + " " + formatter.format(V0.x)
+                + " " + formatter.format(V0.z)
+                + " " + formatter.format(V0.y)
+                + " " + formatter.format(V0.length())
+
+
+                + " " + formatter.format(dV.x)
+                + " " + formatter.format(dV.z)
+                + " " + formatter.format(dV.y)
+                + " " + formatter.format(dV.length())
+
+
+                + " " + formatter.format(normal_velocity)
+                + " " + formatter.format(o.scalar_mul(Vminus,normal))
+                + " " + formatter.format(o.scalar_mul(V0,normal))
+                + " " + formatter.format(o.scalar_mul(dV,normal))
+
+
+                + " " + formatter.format(circ_velocity.x)
+                + " " + formatter.format(circ_velocity.z)
+                + " " + formatter.format(circ_velocity.y)
+                + " " + formatter.format(circ_velocity.length())
 
 
                 + " " + formatter.format(this.dimless_pressure)

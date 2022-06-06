@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.net.URL;
 
 public class Main extends Application {
 
@@ -27,6 +28,11 @@ public class Main extends Application {
             results_on_grid.mkdir();
         }
 
+        File results = new File("_results");
+        if (!results.exists()) {
+            results.mkdir();
+        }
+
         File graphs_of_results = new File("_graphs_of_results");
         if (!graphs_of_results.exists()) {
             graphs_of_results.mkdir();
@@ -42,7 +48,12 @@ public class Main extends Application {
 //        example3.curved_body_calc_example();
 
 
+
         Parent root = FXMLLoader.load(getClass().getResource("../user_interface/main_tabs/sample.fxml"));
+
+//        URL url = new File("main_tabs/sample.fxml").toURL();
+//        Parent root = FXMLLoader.load(url);
+
         primaryStage.setTitle("Расчёт обтекания тела");
         primaryStage.setScene(new Scene(root, 1024, 680));
         primaryStage.show();
