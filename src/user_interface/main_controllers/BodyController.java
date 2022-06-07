@@ -1,5 +1,7 @@
 package user_interface.main_controllers;
 
+import _examples.Bodies_Example;
+import calculation.grid_building.Body;
 import calculation.grid_building.Body_Part;
 import calculation.grid_building.ChangeAble_Body;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -49,20 +51,55 @@ public class BodyController {
     ObservableList<String> angular_radius = FXCollections.observableArrayList(
             "Выберите форму","Окружность","Эллипс","СуперЭллипс");
 
+
+    ObservableList<String> body_presets = FXCollections.observableArrayList(
+            "Выберите тело",
+            "Ож_Цил_Кос_0.1_2",
+            "Ож_Цил_Кос_0.05_2",
+            "Ож_Цил_Кос_0.1_2.35",
+            "Ож_Цил_Кос_0.05_2.35",
+            "Ож_Цил_Кос_Цил_0.1_2",
+            "Ож_Цил_Кос_Цил_0.05_2",
+            "Ож_Цил_Кос_Цил_0.1_2.35",
+            "Ож_Цил_Кос_Цил_0.05_2.35");
+
     @FXML
     private ChoiceBox generatrix_radius_box;
 
     @FXML
     private ChoiceBox angular_radius_box;
 
+    @FXML
+    private ChoiceBox body_template_box;
+
+
+    @FXML
+    private Pane pane_for_graph;
+
+    @FXML
+    private TableView<PartViewData> parts_table;
+
+    @FXML
+    private TableColumn<PartViewData, Integer> num_column;
+
+    @FXML
+    private TableColumn<PartViewData, String> form_column;
+
+    @FXML
+    private TableColumn<PartViewData, String> generatrix_column;
+
+
 
     @FXML
     private void initialize(){
         generatrix_radius_box.setItems(generatrix_radius);
         angular_radius_box.setItems(angular_radius);
+        body_template_box.setItems(body_presets);
+
 
         generatrix_radius_box.setValue("Выберите образующую");
         angular_radius_box.setValue("Выберите форму");
+        body_template_box.setValue("Выберите тело");
 
         parts_table.setItems(table_data);
 
@@ -78,13 +115,6 @@ public class BodyController {
                 p -> new SimpleStringProperty(p.getValue().getForm())
         );
     }
-
-
-
-
-    @FXML
-    private Pane pane_for_graph;
-
 
 
     @FXML
@@ -201,9 +231,7 @@ public class BodyController {
             stage1.setScene(new Scene(root1, 900, 600));
             stage1.show();
         } catch (Exception e) {
-            System.out.println("!!!!!!!!!!!!!!!!!!!");
-            System.out.println(url.toString());
-            System.out.println("!!!!!!!!!!!!!!!!!!!");
+
             e.printStackTrace();
         }
     }
@@ -255,17 +283,59 @@ public class BodyController {
 
 
     @FXML
-    private TableView<PartViewData> parts_table;
+    void add_preset_body(ActionEvent event){
 
-    @FXML
-    private TableColumn<PartViewData, Integer> num_column;
+        String preset_name = (String) body_template_box.getValue();
+        Body_Data body_data = Body_Data.getInstance();
+        body_data.parts.clear();
+        body_data.body = null;
 
-    @FXML
-    private TableColumn<PartViewData, String> form_column;
+        Body preset = get_preset_by_name(preset_name);
 
-    @FXML
-    private TableColumn<PartViewData, String> generatrix_column;
+        for(Body_Part part: preset.get_parts()){
+            body_data.parts.add(part);
+        }
+
+    }
+
+    private Body get_preset_by_name(String preset_name){
+
+        Body preset = new Body();
+        Bodies_Example example = new Bodies_Example("_examples/_bodies_example");
 
 
+        switch (preset_name){
+
+            case ("Ож_Цил_Кос_0.1_2"):
+                preset = example.augive_cylinder_cosine_rough_short();
+                break;
+            case ("Ож_Цил_Кос_0.05_2"):
+                preset = example.augive_cylinder_cosine_precise_short();
+                break;
+            case ("Ож_Цил_Кос_0.1_2.35"):
+                preset = example.augive_cylinder_cosine_rough_long();
+                break;
+            case ("Ож_Цил_Кос_0.05_2.35"):
+                preset = example.augive_cylinder_cosine_precise_long();
+                break;
+
+
+            case ("Ож_Цил_Кос_Цил_0.1_2"):
+                preset = example.augive_cylinder_cosine_cylinder_rough_short();
+                break;
+            case ("Ож_Цил_Кос_Цил_0.05_2"):
+                preset = example.augive_cylinder_cosine_cylinder_precise_short();
+                break;
+            case ("Ож_Цил_Кос_Цил_0.1_2.35"):
+                preset = example.augive_cylinder_cosine_cylinder_rough_long();
+                break;
+            case ("Ож_Цил_Кос_Цил_0.05_2.35"):
+                preset = example.augive_cylinder_cosine_cylinder_precise_long();
+                break;
+
+        }
+
+        return preset;
+    }
 
 }

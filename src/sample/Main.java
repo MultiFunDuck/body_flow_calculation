@@ -43,9 +43,6 @@ public class Main extends Application {
             examples.mkdir();
         }
 
-        //init_examples();
-//        Calculation_Example example3 = new Calculation_Example("_examples/_calculation_example");
-//        example3.curved_body_calc_example();
 
 
 
