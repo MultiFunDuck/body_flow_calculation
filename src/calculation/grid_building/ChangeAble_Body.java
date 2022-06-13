@@ -9,8 +9,8 @@ public class ChangeAble_Body extends Body{
 
     Operator o = new Operator();
 
-    public void curve_tail(int num_of_segment, double attack_angle){
-        curve_segment(this.Parts.get(num_of_segment),attack_angle);
+    public void curve_tail(int num_of_segment, double attack_angle, double curvature_radius){
+        curve_segment(this.Parts.get(num_of_segment),attack_angle, curvature_radius);
         line_up_others(num_of_segment,attack_angle);
 
         this.grid.panels = this.init_panels(this.grid.points);
@@ -18,7 +18,7 @@ public class ChangeAble_Body extends Body{
 
 
 
-    private void curve_segment(Body_Part segment, double attack_angle){
+    private void curve_segment(Body_Part segment, double attack_angle, double curvature_radius){
 
 
         List<List<Point>> segment_points = segment.points;
@@ -27,30 +27,42 @@ public class ChangeAble_Body extends Body{
 
             for(int j = 0; j < segment_points.get(0).size(); j++){
 
-                curve_segment_point(segment_points.get(i).get(j),segment,attack_angle);
+                curve_segment_point(segment_points.get(i).get(j),segment,attack_angle, curvature_radius);
             }
         }
 
     }
 
-    private void curve_segment_point(Point cur, Body_Part curving_part, double attack_angle){
+    private void curve_segment_point(Point cur, Body_Part curving_part, double attack_angle, double curvature_radius){
 
         double end_tail_diam = 2*curving_part.get_end_radius();
-        double length = curving_part.length;
         double start = curving_part.start;
 
         if(end_tail_diam == 0){
             end_tail_diam = 0.001;
         }
 
-        double R = length/attack_angle;
-        double arcsh_arg = end_tail_diam * Math.tan(attack_angle) / ((2*R) * (Math.sin(length/R) + Math.tan(attack_angle)*(1 - Math.cos(length/R))));
+
+
+        double R = curvature_radius;
+        double a = attack_angle;
+        double arcsh_arg = end_tail_diam * Math.tan(a) / ((2*R) * (Math.sin(a) + Math.tan(a)*(1 - Math.cos(a))));
         double P = end_tail_diam / (2*(Math.log(arcsh_arg + Math.sqrt(arcsh_arg*arcsh_arg + 1))));
 
         double x = cur.x;
         double z = cur.z;
-        cur.x = start + R*Math.exp( -z/P) * Math.sin( (x - start) / R );
-        cur.z = z + R*Math.exp( -z/P) * (1 - Math.cos( (x - start) / R ));
+
+        if(x - start < R*a){
+            cur.x = start + R*Math.exp( -z/P) * Math.sin( (x - start) / R );
+            cur.z = z + R*Math.exp( -z/P) * (1 - Math.cos( (x - start) / R ));
+        }
+        else{
+
+            cur.x = start + R*Math.sin(a) + (x - start - R*a)*Math.cos(a) - z*Math.sin(a);
+            cur.z = (1 - Math.cos(a))*R + (x - start - R*a)*Math.sin(a) + z*Math.cos(a);
+
+        }
+
     }
 
 

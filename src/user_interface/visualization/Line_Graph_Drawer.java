@@ -34,7 +34,7 @@ public class Line_Graph_Drawer {
 
 
         JFreeChart chart = ChartFactory.createXYLineChart(
-                plot_name, "x axis ", "y axis ",
+                plot_name, "Вертикальня ось Оz", "Продольная ось Ох",
                 xyDataset, PlotOrientation.HORIZONTAL, false, false, false);
 
         ChartPanel chartPanel = new ChartPanel(chart);
@@ -74,7 +74,7 @@ public class Line_Graph_Drawer {
         }
 
         JFreeChart chart = ChartFactory.createXYLineChart(
-                chart_name, "x axis ", "y axis ",
+                chart_name, "Вертикальня ось Оz", "Продольная ось Ох",
                 new XYSeriesCollection(dataset), PlotOrientation.HORIZONTAL, false, false, false);
 
         ChartPanel chartPanel = new ChartPanel(chart);
@@ -99,7 +99,7 @@ public class Line_Graph_Drawer {
 
 
         JFreeChart chart = ChartFactory.createXYLineChart(
-                "График образующей", "x axis ", "y axis ",
+                "График образующей", "Вертикальня ось Оz", "Продольная ось Ох",
                 new XYSeriesCollection(dataset), PlotOrientation.HORIZONTAL, false, false, false);
 
         ChartPanel chartPanel = new ChartPanel(chart);
@@ -126,7 +126,7 @@ public class Line_Graph_Drawer {
 
 
         JFreeChart chart = ChartFactory.createXYLineChart(
-                "График формы", "x axis ", "y axis ",
+                "График формы", "Вертикальня ось Оz", "Поперечная ось Оу",
                 new XYSeriesCollection(dataset), PlotOrientation.HORIZONTAL, false, false, false);
 
         ChartPanel chartPanel = new ChartPanel(chart);
@@ -139,7 +139,7 @@ public class Line_Graph_Drawer {
         }
     }
 
-    public void draw_full_generatix(List<Body_Part> parts, String destination){
+    public void draw_full_generatrix(List<Body_Part> parts, String destination){
         XYSeries dataset =  new XYSeries("Spline Data", false,true);
 
         for(Body_Part part : parts){
@@ -151,7 +151,7 @@ public class Line_Graph_Drawer {
         }
 
         JFreeChart chart = ChartFactory.createXYLineChart(
-                "График образующей", "x axis ", "y axis ",
+                "График образующей", "Вертикальня ось Оz", "Продольная ось Ох",
                 new XYSeriesCollection(dataset), PlotOrientation.HORIZONTAL, false, false, false);
 
         ChartPanel chartPanel = new ChartPanel(chart);
@@ -194,7 +194,7 @@ public class Line_Graph_Drawer {
 
 
         JFreeChart chart = ChartFactory.createXYLineChart(
-                value_name,  value_name,"Ось Ох вдоль тела ",
+                value_name,  value_name,"Продольая ось Ох",
                 new XYSeriesCollection(dataset), PlotOrientation.HORIZONTAL, false, false, false);
 
 
@@ -236,7 +236,7 @@ public class Line_Graph_Drawer {
 
 
         JFreeChart chart = ChartFactory.createXYLineChart(
-                value_name,  value_name,"Ось Ох вдоль тела ",
+                value_name,  value_name,"Продольая ось Ох",
                 new XYSeriesCollection(dataset), PlotOrientation.HORIZONTAL, false, false, false);
 
 

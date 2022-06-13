@@ -69,9 +69,6 @@ public class EllipseController {
             radius_data.separator = new Arclength_Separator(radius_data.radius,calc,num_of_seps);
         }
 
-        for(int i = 0; i < radius_data.separator.num_of_separations; i++){
-            System.out.println(radius_data.separator.get_separation().get(i));
-        }
         show_graph(radius_data);
     }
 

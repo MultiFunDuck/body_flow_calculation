@@ -19,6 +19,7 @@ import radiis.generatrix_radius.Smoothed_Cubic_Spline_Radius;
 import user_interface.data_classes.Generatrix_Radius_Data;
 import user_interface.data_classes.PointViewData;
 import user_interface.data_classes.Points_List_Data;
+import user_interface.main_controllers.Message_Creator;
 import user_interface.visualization.Line_Graph_Drawer;
 
 import java.io.File;
@@ -136,11 +137,7 @@ public class SmoothedCubicSplineController {
 
         }
         else{
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Ошибка");
-            alert.setHeaderText(null);
-            alert.setContentText("Точка с координатой Х = "+ x_coord +" уже есть");
-            alert.showAndWait();
+            Message_Creator.show_alert("Точка с координатой Х = "+ x_coord +" уже есть");
         }
 
     }
@@ -160,11 +157,7 @@ public class SmoothedCubicSplineController {
             }
         }
         else{
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Ошибка");
-            alert.setHeaderText(null);
-            alert.setContentText("Нет точки с номером "+ delete_point_num);
-            alert.showAndWait();
+            Message_Creator.show_alert("Нет точки с номером "+ delete_point_num);
         }
     }
 
@@ -207,11 +200,7 @@ public class SmoothedCubicSplineController {
             int num_of_seps = 0;
 
             if(step/(1-p) <= arc){
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Ошибка");
-                alert.setHeaderText(null);
-                alert.setContentText("Суммарная длина разбиения меньше длины дуги!");
-                alert.showAndWait();
+                Message_Creator.show_alert("Суммарная длина разбиения меньше длины дуги!");
             }
             else{
                 double free_term = (1 - p) * arc/step;

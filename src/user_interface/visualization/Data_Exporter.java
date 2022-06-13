@@ -7,6 +7,8 @@ import user_interface.data_classes.Body_Data;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 
 public class Data_Exporter {
 
@@ -14,6 +16,7 @@ public class Data_Exporter {
     public void export_generatrix_data(int angle_num, String value_name){
 
         Body_Data body_data = Body_Data.getInstance();
+        NumberFormat formatter = new DecimalFormat("#0.00000000");
 
         int length_size = body_data.body.grid.panels.size();
         int angle_size = body_data.body.grid.panels.get(0).size(); System.out.println(length_size);
@@ -24,12 +27,10 @@ public class Data_Exporter {
 
             for(int i = 0; i < length_size; i++){
 
-                fileWriter.write(Double.toString(
-                        get_panel_value_by_name(
-                                body_data.body.grid.panels.get(i).get(angle_num%angle_size)
-                                , value_name)
-                    )
-                );
+                Panel cur = body_data.body.grid.panels.get(i).get(angle_num%angle_size);
+                double data = get_panel_value_by_name(cur, value_name);
+
+                fileWriter.write(formatter.format(data) + " " + formatter.format(cur.middle.x));
                 fileWriter.write("\n");
 
             }
@@ -48,8 +49,10 @@ public class Data_Exporter {
     public void export_cross_section_data(String value_name){
 
         Body_Data body_data = Body_Data.getInstance();
+        NumberFormat formatter = new DecimalFormat("#0.00000000");
 
         int length_size = body_data.body.grid.cross_sections.size();
+        System.out.println(length_size);
 
 
         try(FileWriter fileWriter = new FileWriter("./_results/" + value_name + ".txt", false))
@@ -57,12 +60,11 @@ public class Data_Exporter {
 
             for(int i = 0; i < length_size; i++){
 
-                fileWriter.write(Double.toString(
-                        get_cross_section_value_by_name(
-                                body_data.body.grid.cross_sections.get(i)
-                                , value_name)
-                        )
-                );
+
+                Panel cur = body_data.body.grid.cross_sections.get(i);
+                double data = get_cross_section_value_by_name(cur, value_name);
+
+                fileWriter.write(formatter.format(data) + " " + formatter.format(cur.middle.x));
                 fileWriter.write("\n");
 
             }

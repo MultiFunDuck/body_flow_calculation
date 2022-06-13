@@ -134,4 +134,10 @@ public class Body {
 
         }
     }
+
+    public void resize_part_diameter(int num_of_part, double diameter){
+
+
+
+    }
 }

@@ -108,8 +108,9 @@ public class Tail_Parameters_Calculator {
 
             for(int j = 0; j < circle_sep_num; j++){
 
+
                 Panel cur = body_data.body.grid.panels.get(i).get(j);
-                double x_dir = -cur.normal.x;
+                double x_dir = cur.normal.x;
                 pressure_drag += x_dir * cur.dimless_pressure * cur.width() * cur.length();
 
             }

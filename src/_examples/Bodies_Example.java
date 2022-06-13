@@ -205,7 +205,7 @@ public class Bodies_Example {
 
 
         body.init_Grid();
-        body.curve_tail(2,30*Math.PI/180);
+        body.curve_tail(2,30*Math.PI/180, 10);
         body.get_Grid().to_File(body_parts_storage + "/curved_body.mv");
 
         return body;
@@ -432,7 +432,448 @@ public class Bodies_Example {
     }
 
 
-    public ChangeAble_Body augive_cylinder_cosine_rough_short(){
+    public ChangeAble_Body augive_cylinder_cosine_rough_short16(){
+
+
+        //Augive front part
+        Radius _1L = new Front_Augive_Radius(0,1,1);
+        Arclenght_Calculator _1Lc = new Cartesian_Arclenght_Calculator(_1L);
+        Separator _1Ls = new Arclength_Separator(_1L,_1Lc,12);
+
+        Radius _1P = new Circle_Angular_Radius();
+        Separator _1Ps = new Even_Separator(_1P,16);
+
+        Body_Part _1BP = new Body_Part(_1L,_1Ls,_1P,_1Ps);
+
+
+        //Cylinder mid part
+        Radius _2L = new Cylinder_Radius(1,3,1);
+        Separator _2Ls = new Even_Separator(_2L,20);
+
+        Radius _2P = new Circle_Angular_Radius();
+        Separator _2Ps = new Even_Separator(_1P,16);
+
+        Body_Part _2BP = new Body_Part(_2L,_2Ls,_2P,_2Ps);
+
+
+        //Cosine mid part
+        Radius _3L = new Cosine_Radius(3,5,1,0.3);
+        Arclenght_Calculator _3Lc = new Cartesian_Arclenght_Calculator(_3L);
+        Separator _3Ls = new Arclength_Separator(_3L,_3Lc,21);
+
+        Radius _3P = new Circle_Angular_Radius();
+        Separator _3Ps = new Even_Separator(_1P,16);
+
+        Body_Part _3BP = new Body_Part(_3L,_3Ls,_3P,_3Ps);
+
+
+
+        ChangeAble_Body body = new ChangeAble_Body();
+
+        body.add_part(_1BP);
+        body.add_part(_2BP);
+        body.add_part(_3BP);
+
+        body.init_Grid();
+        body.get_Grid().to_File(body_parts_storage + "/augive_cylinder_cosine_rough_short.mv");
+
+        return body;
+
+    }
+
+    public ChangeAble_Body augive_cylinder_cosine_precise_short16(){
+
+
+        //Augive front part
+        Radius _1L = new Front_Augive_Radius(0,1,1);
+        Arclenght_Calculator _1Lc = new Cartesian_Arclenght_Calculator(_1L);
+        Separator _1Ls = new Arclength_Separator(_1L,_1Lc,23);
+
+        Radius _1P = new Circle_Angular_Radius();
+        Separator _1Ps = new Even_Separator(_1P,16);
+
+        Body_Part _1BP = new Body_Part(_1L,_1Ls,_1P,_1Ps);
+
+
+        //Cylinder mid part
+        Radius _2L = new Cylinder_Radius(1,3,1);
+        Separator _2Ls = new Even_Separator(_2L,40);
+
+        Radius _2P = new Circle_Angular_Radius();
+        Separator _2Ps = new Even_Separator(_1P,16);
+
+        Body_Part _2BP = new Body_Part(_2L,_2Ls,_2P,_2Ps);
+
+
+        //Cosine mid part
+        Radius _3L = new Cosine_Radius(3,5,1,0.3);
+        Arclenght_Calculator _3Lc = new Cartesian_Arclenght_Calculator(_3L);
+        Separator _3Ls = new Arclength_Separator(_3L,_3Lc,42);
+
+        Radius _3P = new Circle_Angular_Radius();
+        Separator _3Ps = new Even_Separator(_1P,16);
+
+        Body_Part _3BP = new Body_Part(_3L,_3Ls,_3P,_3Ps);
+
+
+        ChangeAble_Body body = new ChangeAble_Body();
+
+        body.add_part(_1BP);
+        body.add_part(_2BP);
+        body.add_part(_3BP);
+
+        body.init_Grid();
+        body.get_Grid().to_File(body_parts_storage + "/augive_cylinder_cosine_precise_short.mv");
+
+        return body;
+
+    }
+
+    public ChangeAble_Body augive_cylinder_cosine_rough_long16(){
+
+
+        //Augive front part
+        Radius _1L = new Front_Augive_Radius(0,1,1);
+        Arclenght_Calculator _1Lc = new Cartesian_Arclenght_Calculator(_1L);
+        Separator _1Ls = new Arclength_Separator(_1L,_1Lc,12);
+
+        Radius _1P = new Circle_Angular_Radius();
+        Separator _1Ps = new Even_Separator(_1P,16);
+
+        Body_Part _1BP = new Body_Part(_1L,_1Ls,_1P,_1Ps);
+
+
+        //Cylinder mid part
+        Radius _2L = new Cylinder_Radius(1,3,1);
+        Separator _2Ls = new Even_Separator(_2L,20);
+
+        Radius _2P = new Circle_Angular_Radius();
+        Separator _2Ps = new Even_Separator(_1P,16);
+
+        Body_Part _2BP = new Body_Part(_2L,_2Ls,_2P,_2Ps);
+
+
+        //Cosine mid part
+        Radius _3L = new Cosine_Radius(3,5.35,1,0.3);
+        Arclenght_Calculator _3Lc = new Cartesian_Arclenght_Calculator(_3L);
+        Separator _3Ls = new Arclength_Separator(_3L,_3Lc,24);
+
+        Radius _3P = new Circle_Angular_Radius();
+        Separator _3Ps = new Even_Separator(_1P,16);
+
+        Body_Part _3BP = new Body_Part(_3L,_3Ls,_3P,_3Ps);
+
+
+
+        ChangeAble_Body body = new ChangeAble_Body();
+
+        body.add_part(_1BP);
+        body.add_part(_2BP);
+        body.add_part(_3BP);
+
+        body.init_Grid();
+        body.get_Grid().to_File(body_parts_storage + "/augive_cylinder_cosine_rough_long.mv");
+
+        return body;
+
+    }
+
+    public ChangeAble_Body augive_cylinder_cosine_precise_long16(){
+
+
+        //Augive front part
+        Radius _1L = new Front_Augive_Radius(0,1,1);
+        Arclenght_Calculator _1Lc = new Cartesian_Arclenght_Calculator(_1L);
+        Separator _1Ls = new Arclength_Separator(_1L,_1Lc,23);
+
+        Radius _1P = new Circle_Angular_Radius();
+        Separator _1Ps = new Even_Separator(_1P,16);
+
+        Body_Part _1BP = new Body_Part(_1L,_1Ls,_1P,_1Ps);
+
+
+        //Cylinder mid part
+        Radius _2L = new Cylinder_Radius(1,3,1);
+        Separator _2Ls = new Even_Separator(_2L,40);
+
+        Radius _2P = new Circle_Angular_Radius();
+        Separator _2Ps = new Even_Separator(_1P,16);
+
+        Body_Part _2BP = new Body_Part(_2L,_2Ls,_2P,_2Ps);
+
+
+        //Cosine mid part
+        Radius _3L = new Cosine_Radius(3,5.35,1,0.3);
+        Arclenght_Calculator _3Lc = new Cartesian_Arclenght_Calculator(_3L);
+        Separator _3Ls = new Arclength_Separator(_3L,_3Lc,49);
+
+        Radius _3P = new Circle_Angular_Radius();
+        Separator _3Ps = new Even_Separator(_1P,16);
+
+        Body_Part _3BP = new Body_Part(_3L,_3Ls,_3P,_3Ps);
+
+
+
+        ChangeAble_Body body = new ChangeAble_Body();
+
+        body.add_part(_1BP);
+        body.add_part(_2BP);
+        body.add_part(_3BP);
+
+        body.init_Grid();
+        body.get_Grid().to_File(body_parts_storage + "/augive_cylinder_cosine_precise_long.mv");
+
+        return body;
+
+    }
+
+
+    public ChangeAble_Body augive_cylinder_cosine_cylinder_rough_short16(){
+
+
+        //Augive front part
+        Radius _1L = new Front_Augive_Radius(0,1,1);
+        Arclenght_Calculator _1Lc = new Cartesian_Arclenght_Calculator(_1L);
+        Separator _1Ls = new Arclength_Separator(_1L,_1Lc,12);
+
+        Radius _1P = new Circle_Angular_Radius();
+        Separator _1Ps = new Even_Separator(_1P,16);
+
+        Body_Part _1BP = new Body_Part(_1L,_1Ls,_1P,_1Ps);
+
+
+        //Cylinder mid part
+        Radius _2L = new Cylinder_Radius(1,3,1);
+        Separator _2Ls = new Even_Separator(_2L,20);
+
+        Radius _2P = new Circle_Angular_Radius();
+        Separator _2Ps = new Even_Separator(_1P,16);
+
+        Body_Part _2BP = new Body_Part(_2L,_2Ls,_2P,_2Ps);
+
+
+        //Cosine mid part
+        Radius _3L = new Cosine_Radius(3,5,1,0.3);
+        Arclenght_Calculator _3Lc = new Cartesian_Arclenght_Calculator(_3L);
+        Separator _3Ls = new Arclength_Separator(_3L,_3Lc,21);
+
+        Radius _3P = new Circle_Angular_Radius();
+        Separator _3Ps = new Even_Separator(_1P,16);
+
+        Body_Part _3BP = new Body_Part(_3L,_3Ls,_3P,_3Ps);
+
+
+        //Tail cylinder part
+        Radius _4L = new Cylinder_Radius(5,6,0.3);
+        Arclenght_Calculator _4Lc = new Cartesian_Arclenght_Calculator(_4L);
+        Separator _4Ls = new Arclength_Separator(_4L, _4Lc,10);
+
+        Radius _4P = new Circle_Angular_Radius();
+        Separator _4Ps = new Even_Separator(_1P,16);
+
+        Body_Part _4BP = new Body_Part(_4L,_4Ls,_4P,_4Ps);
+
+
+
+
+        ChangeAble_Body body = new ChangeAble_Body();
+
+        body.add_part(_1BP);
+        body.add_part(_2BP);
+        body.add_part(_3BP);
+        body.add_part(_4BP);
+
+        body.init_Grid();
+        body.get_Grid().to_File(body_parts_storage + "/augive_cylinder_cosine_cylinder_rough_short.mv");
+
+        return body;
+
+    }
+
+    public ChangeAble_Body augive_cylinder_cosine_cylinder_precise_short16(){
+
+
+        //Augive front part
+        Radius _1L = new Front_Augive_Radius(0,1,1);
+        Arclenght_Calculator _1Lc = new Cartesian_Arclenght_Calculator(_1L);
+        Separator _1Ls = new Arclength_Separator(_1L,_1Lc,23);
+
+        Radius _1P = new Circle_Angular_Radius();
+        Separator _1Ps = new Even_Separator(_1P,16);
+
+        Body_Part _1BP = new Body_Part(_1L,_1Ls,_1P,_1Ps);
+
+
+        //Cylinder mid part
+        Radius _2L = new Cylinder_Radius(1,3,1);
+        Separator _2Ls = new Even_Separator(_2L,40);
+
+        Radius _2P = new Circle_Angular_Radius();
+        Separator _2Ps = new Even_Separator(_1P,16);
+
+        Body_Part _2BP = new Body_Part(_2L,_2Ls,_2P,_2Ps);
+
+
+        //Cosine mid part
+        Radius _3L = new Cosine_Radius(3,5,1,0.3);
+        Arclenght_Calculator _3Lc = new Cartesian_Arclenght_Calculator(_3L);
+        Separator _3Ls = new Arclength_Separator(_3L,_3Lc,42);
+
+        Radius _3P = new Circle_Angular_Radius();
+        Separator _3Ps = new Even_Separator(_1P,16);
+
+        Body_Part _3BP = new Body_Part(_3L,_3Ls,_3P,_3Ps);
+
+
+        //Tail cylinder part
+        Radius _4L = new Cylinder_Radius(5,6,0.3);
+        Arclenght_Calculator _4Lc = new Cartesian_Arclenght_Calculator(_4L);
+        Separator _4Ls = new Arclength_Separator(_4L, _4Lc,20);
+
+        Radius _4P = new Circle_Angular_Radius();
+        Separator _4Ps = new Even_Separator(_1P,16);
+
+        Body_Part _4BP = new Body_Part(_4L,_4Ls,_4P,_4Ps);
+
+
+
+        ChangeAble_Body body = new ChangeAble_Body();
+
+        body.add_part(_1BP);
+        body.add_part(_2BP);
+        body.add_part(_3BP);
+        body.add_part(_4BP);
+
+        body.init_Grid();
+        body.get_Grid().to_File(body_parts_storage + "/augive_cylinder_cosine_cylinder_precise_short.mv");
+
+        return body;
+
+    }
+
+    public ChangeAble_Body augive_cylinder_cosine_cylinder_rough_long16(){
+
+
+        //Augive front part
+        Radius _1L = new Front_Augive_Radius(0,1,1);
+        Arclenght_Calculator _1Lc = new Cartesian_Arclenght_Calculator(_1L);
+        Separator _1Ls = new Arclength_Separator(_1L,_1Lc,12);
+
+        Radius _1P = new Circle_Angular_Radius();
+        Separator _1Ps = new Even_Separator(_1P,16);
+
+        Body_Part _1BP = new Body_Part(_1L,_1Ls,_1P,_1Ps);
+
+
+        //Cylinder mid part
+        Radius _2L = new Cylinder_Radius(1,3,1);
+        Separator _2Ls = new Even_Separator(_2L,20);
+
+        Radius _2P = new Circle_Angular_Radius();
+        Separator _2Ps = new Even_Separator(_1P,16);
+
+        Body_Part _2BP = new Body_Part(_2L,_2Ls,_2P,_2Ps);
+
+
+        //Cosine mid part
+        Radius _3L = new Cosine_Radius(3,5.35,1,0.3);
+        Arclenght_Calculator _3Lc = new Cartesian_Arclenght_Calculator(_3L);
+        Separator _3Ls = new Arclength_Separator(_3L,_3Lc,24);
+
+        Radius _3P = new Circle_Angular_Radius();
+        Separator _3Ps = new Even_Separator(_1P,16);
+
+        Body_Part _3BP = new Body_Part(_3L,_3Ls,_3P,_3Ps);
+
+
+        //Tail cylinder part
+        Radius _4L = new Cylinder_Radius(5.35,6.35,0.3);
+        Arclenght_Calculator _4Lc = new Cartesian_Arclenght_Calculator(_4L);
+        Separator _4Ls = new Arclength_Separator(_4L, _4Lc,10);
+
+        Radius _4P = new Circle_Angular_Radius();
+        Separator _4Ps = new Even_Separator(_1P,16);
+
+        Body_Part _4BP = new Body_Part(_4L,_4Ls,_4P,_4Ps);
+
+
+        ChangeAble_Body body = new ChangeAble_Body();
+
+        body.add_part(_1BP);
+        body.add_part(_2BP);
+        body.add_part(_3BP);
+        body.add_part(_4BP);
+
+        body.init_Grid();
+        body.get_Grid().to_File(body_parts_storage + "/augive_cylinder_cosine_cylinder_rough_long.mv");
+
+        return body;
+
+    }
+
+    public ChangeAble_Body augive_cylinder_cosine_cylinder_precise_long16(){
+
+
+        //Augive front part
+        Radius _1L = new Front_Augive_Radius(0,1,1);
+        Arclenght_Calculator _1Lc = new Cartesian_Arclenght_Calculator(_1L);
+        Separator _1Ls = new Arclength_Separator(_1L,_1Lc,23);
+
+        Radius _1P = new Circle_Angular_Radius();
+        Separator _1Ps = new Even_Separator(_1P,16);
+
+        Body_Part _1BP = new Body_Part(_1L,_1Ls,_1P,_1Ps);
+
+
+        //Cylinder mid part
+        Radius _2L = new Cylinder_Radius(1,3,1);
+        Separator _2Ls = new Even_Separator(_2L,40);
+
+        Radius _2P = new Circle_Angular_Radius();
+        Separator _2Ps = new Even_Separator(_1P,16);
+
+        Body_Part _2BP = new Body_Part(_2L,_2Ls,_2P,_2Ps);
+
+
+        //Cosine mid part
+        Radius _3L = new Cosine_Radius(3,5.35,1,0.3);
+        Arclenght_Calculator _3Lc = new Cartesian_Arclenght_Calculator(_3L);
+        Separator _3Ls = new Arclength_Separator(_3L,_3Lc,49);
+
+        Radius _3P = new Circle_Angular_Radius();
+        Separator _3Ps = new Even_Separator(_1P,16);
+
+        Body_Part _3BP = new Body_Part(_3L,_3Ls,_3P,_3Ps);
+
+
+        //Tail cylinder part
+        Radius _4L = new Cylinder_Radius(5.35,6.35,0.3);
+        Arclenght_Calculator _4Lc = new Cartesian_Arclenght_Calculator(_4L);
+        Separator _4Ls = new Arclength_Separator(_4L, _4Lc,20);
+
+        Radius _4P = new Circle_Angular_Radius();
+        Separator _4Ps = new Even_Separator(_1P,16);
+
+        Body_Part _4BP = new Body_Part(_4L,_4Ls,_4P,_4Ps);
+
+
+        ChangeAble_Body body = new ChangeAble_Body();
+
+        body.add_part(_1BP);
+        body.add_part(_2BP);
+        body.add_part(_3BP);
+        body.add_part(_4BP);
+
+        body.init_Grid();
+        body.get_Grid().to_File(body_parts_storage + "/augive_cylinder_cosine_cylinder_precise_long.mv");
+
+        return body;
+
+    }
+
+
+
+    public ChangeAble_Body augive_cylinder_cosine_rough_short32(){
 
 
         //Augive front part
@@ -481,7 +922,7 @@ public class Bodies_Example {
 
     }
 
-    public ChangeAble_Body augive_cylinder_cosine_precise_short(){
+    public ChangeAble_Body augive_cylinder_cosine_precise_short32(){
 
 
         //Augive front part
@@ -529,7 +970,7 @@ public class Bodies_Example {
 
     }
 
-    public ChangeAble_Body augive_cylinder_cosine_rough_long(){
+    public ChangeAble_Body augive_cylinder_cosine_rough_long32(){
 
 
         //Augive front part
@@ -578,7 +1019,7 @@ public class Bodies_Example {
 
     }
 
-    public ChangeAble_Body augive_cylinder_cosine_precise_long(){
+    public ChangeAble_Body augive_cylinder_cosine_precise_long32(){
 
 
         //Augive front part
@@ -628,7 +1069,7 @@ public class Bodies_Example {
     }
 
 
-    public ChangeAble_Body augive_cylinder_cosine_cylinder_rough_short(){
+    public ChangeAble_Body augive_cylinder_cosine_cylinder_rough_short32(){
 
 
         //Augive front part
@@ -690,7 +1131,7 @@ public class Bodies_Example {
 
     }
 
-    public ChangeAble_Body augive_cylinder_cosine_cylinder_precise_short(){
+    public ChangeAble_Body augive_cylinder_cosine_cylinder_precise_short32(){
 
 
         //Augive front part
@@ -751,7 +1192,7 @@ public class Bodies_Example {
 
     }
 
-    public ChangeAble_Body augive_cylinder_cosine_cylinder_rough_long(){
+    public ChangeAble_Body augive_cylinder_cosine_cylinder_rough_long32(){
 
 
         //Augive front part
@@ -811,7 +1252,7 @@ public class Bodies_Example {
 
     }
 
-    public ChangeAble_Body augive_cylinder_cosine_cylinder_precise_long(){
+    public ChangeAble_Body augive_cylinder_cosine_cylinder_precise_long32(){
 
 
         //Augive front part

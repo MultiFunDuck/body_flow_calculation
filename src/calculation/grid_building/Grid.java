@@ -67,6 +67,8 @@ public class Grid {
         return sub_points;
     }
 
+
+
     public void to_File(String file_name){
         try(FileWriter fileWriter = new FileWriter(file_name, false))
         {
@@ -93,8 +95,6 @@ public class Grid {
             System.out.println(ex.getMessage());
         }
     }
-
-
 
     public void to_File_with_data(String file_name){
         try(FileWriter fileWriter = new FileWriter(file_name, false))
@@ -132,7 +132,6 @@ public class Grid {
             System.out.println(ex.getMessage());
         }
     }
-
 
     public void write_down_data(Vector V_inf, double inner_pressure, double inner_density){
         MDV_Solver solver = new MDV_Solver(panels, V_inf);

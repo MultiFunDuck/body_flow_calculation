@@ -208,7 +208,7 @@ public class Calculation_Example {
 
         double angle = Math.PI/12;
         Ch_body.init_Grid();
-        Ch_body.curve_tail(2,angle);
+        Ch_body.curve_tail(2,angle, 10);
         Grid grid = Ch_body.get_Grid();
         grid.to_File(storage + "/curved_body_grid.mv");
 

@@ -14,6 +14,7 @@ import math.separator.*;
 import radiis.generatrix_radius.Front_Augive_Radius;
 import user_interface.data_classes.Body_Data;
 import user_interface.data_classes.Generatrix_Radius_Data;
+import user_interface.main_controllers.Message_Creator;
 import user_interface.visualization.Line_Graph_Drawer;
 
 import java.io.File;
@@ -90,11 +91,8 @@ public class FrontAugiveController {
             int num_of_seps = 0;
 
             if(step/(1-p) <= arc){
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Ошибка");
-                alert.setHeaderText(null);
-                alert.setContentText("Суммарная длина разбиения меньше длины дуги!");
-                alert.showAndWait();
+
+                Message_Creator.show_alert("Суммарная длина разбиения меньше длины дуги!");
             }
             else{
                 double free_term = (1 - p) * arc/step;

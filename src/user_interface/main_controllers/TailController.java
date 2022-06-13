@@ -105,14 +105,14 @@ public class TailController {
 
 
         Line_Graph_Drawer drawer = new Line_Graph_Drawer(500,350);
-        drawer.draw_full_generatix(body_data.parts.subList(calc_data.main_parts_num,body_data.parts.size()), "./_resources/tail_graph");
+        drawer.draw_full_generatrix(body_data.parts.subList(calc_data.main_parts_num,body_data.parts.size()), "./_resources/tail_graph");
         Image img = new Image(new File("./_resources/tail_graph.PNG").toURI().toString());
         graph_pane.getChildren().add(new ImageView(img));
     }
 
     @FXML
     void show_results(ActionEvent event) {
-        NumberFormat formatter = new DecimalFormat("#0.00000000");
+        NumberFormat formatter = new DecimalFormat("#0.00000");
         Tail_Parameters_Calculator calculator = new Tail_Parameters_Calculator();
         horner_pressure_field.setText(formatter.format(calculator.calc_horner_pressure()));
         calculated_pressure_field.setText(formatter.format(calculator.calc_bottom_pressure()));

@@ -1,5 +1,7 @@
 package user_interface.main_controllers;
 
+import _examples.Body_Part_Example;
+import calculation.grid_building.Body_Part;
 import calculation.grid_building.ChangeAble_Body;
 import calculation.grid_building.Grid;
 import javafx.event.ActionEvent;
@@ -16,6 +18,9 @@ import user_interface.data_classes.Calc_Props_Data;
 import user_interface.visualization.Line_Graph_Drawer;
 
 import java.io.File;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Formatter;
 
 public class FlowController {
 
@@ -49,6 +54,9 @@ public class FlowController {
     @FXML
     private TextField reynolds_num_field;
 
+    @FXML
+    private TextField curvature_radius_field;
+
 
     @FXML
     void set_calc_props(ActionEvent event) {
@@ -63,15 +71,31 @@ public class FlowController {
         calc_data.inner_pressure = Float.parseFloat(inner_pressure_field.getText());
         calc_data.main_parts_num = Integer.parseInt(main_body_parts_num_field.getText());
         calc_data.reynolds_num = Float.parseFloat(reynolds_num_field.getText());
+        calc_data.curvature_radius = Float.parseFloat(curvature_radius_field.getText());
 
         draw_generatrix(calc_data.main_parts_num);
 
 
         ChangeAble_Body body = body_data.body;
+        Body_Part tail = body.get_parts().get(calc_data.main_parts_num);
 
         body.init_Grid();
-        if(calc_data.attack_angle != 0){
-            body.curve_tail(calc_data.main_parts_num, calc_data.attack_angle);
+        if(calc_data.attack_angle != 0 && (tail.get_length() >= calc_data.curvature_radius*calc_data.attack_angle)){
+
+            body.curve_tail(calc_data.main_parts_num, calc_data.attack_angle, calc_data.curvature_radius);
+
+        }
+        else if (tail.get_length() < calc_data.curvature_radius*calc_data.attack_angle){
+
+            NumberFormat formatter = new DecimalFormat("#0.00000000");
+
+            Message_Creator.show_alert("Произведение радиуса кривизны на угол = " +
+                    formatter.format(calc_data.curvature_radius*calc_data.attack_angle) +
+                    "\n" +
+                    "Длина изгибаемого участка = " + formatter.format(tail.get_length()) +
+                    "\n" +
+                    "Невозможно применить преобразование!");
+
         }
 
         Grid grid = body.get_Grid();
@@ -82,7 +106,7 @@ public class FlowController {
     void draw_generatrix(int num_of_parts) {
         Body_Data body_data = Body_Data.getInstance();
         Line_Graph_Drawer drawer = new Line_Graph_Drawer(450,300);
-        drawer.draw_full_generatix(body_data.parts.subList(0,num_of_parts), "./_resources/generatrix_graph");
+        drawer.draw_full_generatrix(body_data.parts.subList(0,num_of_parts), "./_resources/generatrix_graph");
         Image img = new Image(new File("./_resources/generatrix_graph.PNG").toURI().toString());
         graph_pane.getChildren().add(new ImageView(img));
     }
@@ -106,6 +130,8 @@ public class FlowController {
 
         grid.write_down_data(V_inf, calc_data.inner_pressure, calc_data.inner_density);
         grid.to_File_with_data("./_results_on_grid/grid_with_data.mv");
+
+        Message_Creator.show_message("Расчёт окончен! \n Результаты см. в _results_on_grid/grid_with_results.mv");
 
     }
 

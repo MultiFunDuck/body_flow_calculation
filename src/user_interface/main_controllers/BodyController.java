@@ -54,14 +54,22 @@ public class BodyController {
 
     ObservableList<String> body_presets = FXCollections.observableArrayList(
             "Выберите тело",
-            "Ож_Цил_Кос_0.1_2",
-            "Ож_Цил_Кос_0.05_2",
-            "Ож_Цил_Кос_0.1_2.35",
-            "Ож_Цил_Кос_0.05_2.35",
-            "Ож_Цил_Кос_Цил_0.1_2",
-            "Ож_Цил_Кос_Цил_0.05_2",
-            "Ож_Цил_Кос_Цил_0.1_2.35",
-            "Ож_Цил_Кос_Цил_0.05_2.35");
+            "Ож_Цил_Кос_0.1_2_16",
+            "Ож_Цил_Кос_0.05_2_16",
+            "Ож_Цил_Кос_0.1_2.35_16",
+            "Ож_Цил_Кос_0.05_2.35_16",
+            "Ож_Цил_Кос_Цил_0.1_2_16",
+            "Ож_Цил_Кос_Цил_0.05_2_16",
+            "Ож_Цил_Кос_Цил_0.1_2.35_16",
+            "Ож_Цил_Кос_Цил_0.05_2.35_16",
+            "Ож_Цил_Кос_0.1_2_32",
+            "Ож_Цил_Кос_0.05_2_32",
+            "Ож_Цил_Кос_0.1_2.35_32",
+            "Ож_Цил_Кос_0.05_2.35_32",
+            "Ож_Цил_Кос_Цил_0.1_2_32",
+            "Ож_Цил_Кос_Цил_0.05_2_32",
+            "Ож_Цил_Кос_Цил_0.1_2.35_32",
+            "Ож_Цил_Кос_Цил_0.05_2.35_32");
 
     @FXML
     private ChoiceBox generatrix_radius_box;
@@ -135,18 +143,10 @@ public class BodyController {
 
 
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Сообщение");
-            alert.setHeaderText(null);
-            alert.setContentText("Заданное тело см. в _results_on_grid/grid.mv");
-            alert.showAndWait();
+            Message_Creator.show_message("Заданное тело см. в _results_on_grid/grid.mv");
         }
         else{
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Ошибка");
-            alert.setHeaderText(null);
-            alert.setContentText("Количество частей нулевое!");
-            alert.showAndWait();
+            Message_Creator.show_alert("Количество часте нулевое!");
         }
 
 
@@ -157,7 +157,7 @@ public class BodyController {
     void draw_generatrix(ActionEvent event) {
         Body_Data body_data = Body_Data.getInstance();
         Line_Graph_Drawer drawer = new Line_Graph_Drawer(625,375);
-        drawer.draw_full_generatix(body_data.parts, "_resources/generatrix_graph");
+        drawer.draw_full_generatrix(body_data.parts, "_resources/generatrix_graph");
         Image img = new Image(new File("./_resources/generatrix_graph.PNG").toURI().toString());
         pane_for_graph.getChildren().add(new ImageView(img));
     }
@@ -219,6 +219,8 @@ public class BodyController {
 
         URL url = null;
         try {
+
+
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../generatrix_tabs/" + map_names_to_files(gen_value)));
             Parent root1 = fxmlLoader.load();
 
@@ -241,6 +243,8 @@ public class BodyController {
         String gen_value = (String)angular_radius_box.getValue();
 
         try {
+
+
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../form_tabs/" + map_names_to_files(gen_value)));
             Parent root1 = fxmlLoader.load();
 
@@ -306,31 +310,60 @@ public class BodyController {
 
         switch (preset_name){
 
-            case ("Ож_Цил_Кос_0.1_2"):
-                preset = example.augive_cylinder_cosine_rough_short();
+            case ("Ож_Цил_Кос_0.1_2_16"):
+                preset = example.augive_cylinder_cosine_rough_short16();
                 break;
-            case ("Ож_Цил_Кос_0.05_2"):
-                preset = example.augive_cylinder_cosine_precise_short();
+            case ("Ож_Цил_Кос_0.05_2_16"):
+                preset = example.augive_cylinder_cosine_precise_short16();
                 break;
-            case ("Ож_Цил_Кос_0.1_2.35"):
-                preset = example.augive_cylinder_cosine_rough_long();
+            case ("Ож_Цил_Кос_0.1_2.35_16"):
+                preset = example.augive_cylinder_cosine_rough_long16();
                 break;
-            case ("Ож_Цил_Кос_0.05_2.35"):
-                preset = example.augive_cylinder_cosine_precise_long();
+            case ("Ож_Цил_Кос_0.05_2.35_16"):
+                preset = example.augive_cylinder_cosine_precise_long16();
                 break;
 
 
-            case ("Ож_Цил_Кос_Цил_0.1_2"):
-                preset = example.augive_cylinder_cosine_cylinder_rough_short();
+            case ("Ож_Цил_Кос_Цил_0.1_2_16"):
+                preset = example.augive_cylinder_cosine_cylinder_rough_short16();
                 break;
-            case ("Ож_Цил_Кос_Цил_0.05_2"):
-                preset = example.augive_cylinder_cosine_cylinder_precise_short();
+            case ("Ож_Цил_Кос_Цил_0.05_2_16"):
+                preset = example.augive_cylinder_cosine_cylinder_precise_short16();
                 break;
-            case ("Ож_Цил_Кос_Цил_0.1_2.35"):
-                preset = example.augive_cylinder_cosine_cylinder_rough_long();
+            case ("Ож_Цил_Кос_Цил_0.1_2.35_16"):
+                preset = example.augive_cylinder_cosine_cylinder_rough_long16();
                 break;
-            case ("Ож_Цил_Кос_Цил_0.05_2.35"):
-                preset = example.augive_cylinder_cosine_cylinder_precise_long();
+            case ("Ож_Цил_Кос_Цил_0.05_2.35_16"):
+                preset = example.augive_cylinder_cosine_cylinder_precise_long16();
+                break;
+
+
+
+            case ("Ож_Цил_Кос_0.1_2_32"):
+                preset = example.augive_cylinder_cosine_rough_short32();
+                break;
+            case ("Ож_Цил_Кос_0.05_2_32"):
+                preset = example.augive_cylinder_cosine_precise_short32();
+                break;
+            case ("Ож_Цил_Кос_0.1_2.35_32"):
+                preset = example.augive_cylinder_cosine_rough_long32();
+                break;
+            case ("Ож_Цил_Кос_0.05_2.35_32"):
+                preset = example.augive_cylinder_cosine_precise_long32();
+                break;
+
+
+            case ("Ож_Цил_Кос_Цил_0.1_2_32"):
+                preset = example.augive_cylinder_cosine_cylinder_rough_short32();
+                break;
+            case ("Ож_Цил_Кос_Цил_0.05_2_32"):
+                preset = example.augive_cylinder_cosine_cylinder_precise_short32();
+                break;
+            case ("Ож_Цил_Кос_Цил_0.1_2.35_32"):
+                preset = example.augive_cylinder_cosine_cylinder_rough_long32();
+                break;
+            case ("Ож_Цил_Кос_Цил_0.05_2.35_32"):
+                preset = example.augive_cylinder_cosine_cylinder_precise_long32();
                 break;
 
         }

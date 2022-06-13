@@ -58,7 +58,7 @@ public class Velocity_Calculator {
 
 
         try {
-            tau2 = new Vector(o.diff(right.middle, left.middle)).get_normalized_vector();
+            tau2= new Vector(o.diff(o.div(o.sum(mid.get_2nd_p(),mid.get_3rd_p()),2),mid.middle)).get_normalized_vector();
             double length = (left.length()/2 + right.length()/2) + mid.length();
             tau2 = o.mul(tau2,(right.gamma - left.gamma) / length);
         } catch (Exception e) {
@@ -91,7 +91,7 @@ public class Velocity_Calculator {
         int last = panels.size() - 1;
         Panel last_one_example = panels.get(last).get(0);
 
-        for(int j = 0; j < panels.get(0).size() - 1; j++){
+        for(int j = 0; j < panels.get(0).size() - 0; j++){
 
             Panel to_which = panels.get(last).get(j);
 
@@ -102,7 +102,7 @@ public class Velocity_Calculator {
 
         if(!last_one_example.get_3rd_p().isEqual(last_one_example.get_4th_p())){
 
-            for(int j = 0; j < panels.get(0).size() - 1; j++){
+            for(int j = 0; j < panels.get(0).size() - 0; j++){
 
                 Panel to_which = panels.get(last).get(j);
 

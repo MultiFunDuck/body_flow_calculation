@@ -15,6 +15,6 @@ public class Calc_Props_Data {
 
     }
 
-    public double reynolds_num, flow_velocity, inner_density, inner_pressure, attack_angle;
+    public double reynolds_num, flow_velocity, inner_density, inner_pressure, attack_angle, curvature_radius;
     public int main_parts_num;
 }

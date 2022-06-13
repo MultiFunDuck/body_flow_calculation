@@ -9,6 +9,10 @@ public abstract class Radius {
 
     public abstract double get_radius(double x);
 
+//    public abstract void set_end_diameter(double diameter);
+//
+//    public abstract void set_start_diameter(double diameter);
+
     public double get_start(){
         return this.start;
     }
