@@ -27,6 +27,18 @@ public class Back_Augive_Radius extends Radius {
     }
 
     @Override
+    public void set_start_diameter(double diameter) {
+
+    }
+
+    @Override
+    public void set_end_diameter(double diameter) {
+        this.diameter = diameter;
+    }
+
+
+
+    @Override
     public Radius get_derivative() {
         Radius derivative = new Radius() {
             @Override
@@ -48,6 +60,12 @@ public class Back_Augive_Radius extends Radius {
             public Radius get_derivative() {
                 return null;
             }
+
+            @Override
+            public void set_end_diameter(double diameter) {}
+
+            @Override
+            public void set_start_diameter(double diameter) {}
         };
 
         derivative.start = start;

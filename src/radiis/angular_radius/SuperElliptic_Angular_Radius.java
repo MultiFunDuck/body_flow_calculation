@@ -16,6 +16,13 @@ public class SuperElliptic_Angular_Radius extends Radius {
     }
 
     @Override
+    public void set_end_diameter(double diameter){}
+
+    @Override
+    public void set_start_diameter(double diameter){}
+
+
+    @Override
     public double get_radius(double angle) {
 
         double cos_a_n_pow = Math.pow(Math.abs(Math.cos(angle)) / a,n);
@@ -49,6 +56,12 @@ public class SuperElliptic_Angular_Radius extends Radius {
                 return Math.pow(cos_a_n_pow + sin_a_n_pow, 1/n - 1)*(cos_a*sin_a_n_min_one_pow/b - sin_a*cos_a_n_min_one_pow/a);
 
             }
+
+            @Override
+            public void set_end_diameter(double diameter){}
+
+            @Override
+            public void set_start_diameter(double diameter){}
 
             @Override
             public Radius get_derivative() {

@@ -9,12 +9,17 @@ import java.util.List;
 public class Cubic_Spline_Radius extends Radius {
 
     Cubic_Spline cubic_spline;
+    List<Flat_Point> flat_points;
+    double left_slope, right_slope;
 
 
     public Cubic_Spline_Radius(List<Flat_Point> flat_points, double left_slope, double right_slope){
+        this.flat_points = flat_points;
         this.cubic_spline = new Cubic_Spline(flat_points,left_slope,right_slope);
         this.start = cubic_spline.start;
         this.end = cubic_spline.end;
+        this.left_slope = left_slope;
+        this.right_slope = right_slope;
     }
 
     public double get_radius(double x){
@@ -26,6 +31,23 @@ public class Cubic_Spline_Radius extends Radius {
         }
         return 0;
     }
+
+    @Override
+    public void set_start_diameter(double diameter) {
+        this.flat_points.get(0).y = diameter/2;
+        this.cubic_spline = new Cubic_Spline(flat_points,left_slope,right_slope);
+        this.start = cubic_spline.start;
+        this.end = cubic_spline.end;
+    }
+
+    @Override
+    public void set_end_diameter(double diameter) {
+        this.flat_points.get(flat_points.size() - 1).y = diameter/2;
+        this.cubic_spline = new Cubic_Spline(flat_points,left_slope,right_slope);
+        this.start = cubic_spline.start;
+        this.end = cubic_spline.end;
+    }
+
 
     @Override
     public Radius get_derivative() {
@@ -41,6 +63,14 @@ public class Cubic_Spline_Radius extends Radius {
                 }
                 return 0;
             }
+
+
+            @Override
+            public void set_start_diameter(double diameter){}
+
+            @Override
+            public void set_end_diameter(double diameter) {}
+
 
             @Override
             public Radius get_derivative() {
@@ -59,6 +89,12 @@ public class Cubic_Spline_Radius extends Radius {
                     public Radius get_derivative() {
                         return null;
                     }
+
+                    @Override
+                    public void set_end_diameter(double diameter) {}
+
+                    @Override
+                    public void set_start_diameter(double diameter) {}
                 };
 
                 try {

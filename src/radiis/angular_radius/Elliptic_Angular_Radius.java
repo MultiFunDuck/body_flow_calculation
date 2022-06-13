@@ -14,6 +14,14 @@ public class Elliptic_Angular_Radius extends Radius {
         this.b = b;
     }
 
+
+    @Override
+    public void set_end_diameter(double diameter){}
+
+    @Override
+    public void set_start_diameter(double diameter){}
+
+
     @Override
     public double get_radius(double angle) {
 
@@ -45,6 +53,12 @@ public class Elliptic_Angular_Radius extends Radius {
                 return -(1/(a*a)+1/(b*b))*sin_a*cos_a/(denom*denom*denom);
 
             }
+
+            @Override
+            public void set_end_diameter(double diameter){}
+
+            @Override
+            public void set_start_diameter(double diameter){}
 
             @Override
             public Radius get_derivative() {

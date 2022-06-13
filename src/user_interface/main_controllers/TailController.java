@@ -102,6 +102,7 @@ public class TailController {
         Tail_Optimizer optimizer = new Tail_Optimizer();
 
         optimizer.resize_tail_length(tail_length);
+        optimizer.resize_tail_diameter(tail_diameter);
 
 
         Line_Graph_Drawer drawer = new Line_Graph_Drawer(500,350);

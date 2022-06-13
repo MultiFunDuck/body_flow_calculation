@@ -63,16 +63,9 @@ public class Tail_Parameters_Calculator {
         Body_Data body_data = Body_Data.getInstance();
         Calc_Props_Data calc_props_data = Calc_Props_Data.getInstance();
 
-
         int body_parts_num = calc_props_data.main_parts_num;
-        int all_parts_num = body_data.parts.size();
-        double tail_length = 0;
 
-        for(int i = body_parts_num; i < all_parts_num; i++){
-            tail_length += body_data.parts.get(i).get_length();
-        }
-
-        return tail_length;
+        return body_data.parts.get(body_parts_num).get_length();
 
     }
 

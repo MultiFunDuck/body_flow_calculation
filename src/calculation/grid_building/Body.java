@@ -137,7 +137,13 @@ public class Body {
 
     public void resize_part_diameter(int num_of_part, double diameter){
 
+        Parts.get(num_of_part - 1).set_end_diameter(diameter);
 
+        try {
+            Parts.get(num_of_part).set_start_diameter(diameter);
+        } catch (Exception e) {
+
+        }
 
     }
 }

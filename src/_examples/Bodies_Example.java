@@ -388,6 +388,12 @@ public class Bodies_Example {
                 }
 
                 @Override
+                public void set_end_diameter(double diameter) { }
+
+                @Override
+                public void set_start_diameter(double diameter) { }
+
+                @Override
                 public Radius get_derivative() {
                     return cos.get_derivative();
                 }

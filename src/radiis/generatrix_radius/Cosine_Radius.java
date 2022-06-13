@@ -25,6 +25,19 @@ public class Cosine_Radius extends Radius {
         return R;
     }
 
+
+    @Override
+    public void set_start_diameter(double diameter) {
+        this.start_diameter = diameter;
+    }
+
+    @Override
+    public void set_end_diameter(double diameter) {
+        this.end_diameter = diameter;
+    }
+
+
+
     @Override
     public Radius get_derivative() {
         Radius derivative = new Radius() {
@@ -39,6 +52,12 @@ public class Cosine_Radius extends Radius {
             public Radius get_derivative() {
                 return null;
             }
+
+            @Override
+            public void set_end_diameter(double diameter) {}
+
+            @Override
+            public void set_start_diameter(double diameter) {}
         };
 
         derivative.start = start;

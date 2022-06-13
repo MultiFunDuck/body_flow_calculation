@@ -93,6 +93,20 @@ public class Body_Part {
 
     }
 
+    public void set_start_diameter(double diameter){
+
+        this.ox_radius.set_start_diameter(diameter);
+
+    }
+
+    public void set_end_diameter(double diameter){
+
+        this.ox_radius.set_end_diameter(diameter);
+
+    }
+
+
+
     public double get_end_radius(){
         return this.ox_radius.get_end_radius();
     }
@@ -106,6 +120,8 @@ public class Body_Part {
     public double get_end(){ return this.end; }
 
     public double get_length(){ return this.end - this.start; }
+
+
 
     public List<Double> get_ox_separation(){
         return this.ox_separator.get_separation();

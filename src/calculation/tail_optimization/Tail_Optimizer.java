@@ -16,14 +16,15 @@ public class Tail_Optimizer {
         body_data.body.resize_part_length(main_parts_num,tail_length);
     }
 
-    public void resize_tail_radius(double tail_radius){
+    public void resize_tail_diameter(double new_tail_radius){
 
         Body_Data body_data = Body_Data.getInstance();
         Calc_Props_Data calc_data = Calc_Props_Data.getInstance();
 
         int main_parts_num = calc_data.main_parts_num;
-        int all_parts_num = body_data.parts.size();
 
+
+        body_data.body.resize_part_diameter(main_parts_num + 1, new_tail_radius);
 
 
     }

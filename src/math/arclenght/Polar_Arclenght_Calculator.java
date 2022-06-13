@@ -28,6 +28,12 @@ public class Polar_Arclenght_Calculator extends Arclenght_Calculator{
             }
 
             @Override
+            public void set_end_diameter(double diameter){}
+
+            @Override
+            public void set_start_diameter(double diameter){}
+
+            @Override
             public Radius get_derivative() {
                 return null;
             }

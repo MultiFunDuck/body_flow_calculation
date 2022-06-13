@@ -14,6 +14,16 @@ public class Cylinder_Radius extends Radius {
     }
 
     @Override
+    public void set_start_diameter(double diameter) {
+        this.diameter = diameter;
+    }
+
+    @Override
+    public void set_end_diameter(double diameter) {
+        this.diameter = diameter;
+    }
+
+    @Override
     public double get_radius(double x) {
         return diameter/2;
     }
@@ -30,6 +40,12 @@ public class Cylinder_Radius extends Radius {
             public Radius get_derivative() {
                 return null;
             }
+
+            @Override
+            public void set_end_diameter(double diameter) {}
+
+            @Override
+            public void set_start_diameter(double diameter) {}
         };
 
         derivative.start = start;

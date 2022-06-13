@@ -15,6 +15,14 @@ public class Circle_Angular_Radius extends Radius {
         return 1;
     }
 
+
+    @Override
+    public void set_end_diameter(double diameter){}
+
+    @Override
+    public void set_start_diameter(double diameter){}
+
+
     @Override
     public double get_start() {
         return 0;
@@ -34,6 +42,12 @@ public class Circle_Angular_Radius extends Radius {
                 return 0;
 
             }
+
+            @Override
+            public void set_end_diameter(double diameter) {}
+
+            @Override
+            public void set_start_diameter(double diameter) {}
 
             @Override
             public Radius get_derivative() {
